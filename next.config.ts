@@ -39,7 +39,7 @@ const nextConfig: NextConfig = {
         //         justify-content: center;
         //     }
         // `,
-        additionalData: mixins,
+        // additionalData: mixins,
     },
     images: {
         remotePatterns: [

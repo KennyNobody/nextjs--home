@@ -1,5 +1,6 @@
+import 'reset-css';
+import 'shared/styles/index.scss';
 import { ReactNode } from 'react';
-import 'shared/styles/index.css';
 import StoreProvider from 'shared/state/StoreProvider';
 import { robotoFont } from 'shared/next-fonts/robotoFont';
 import { PageWrapper } from 'shared/ui/PageWrapper/PageWrapper';
