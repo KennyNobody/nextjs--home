@@ -1,7 +1,6 @@
 import { errorLogger } from 'shared/lib/errorLogger';
 import { StrapiApiError, StrapiErrorResponse } from 'shared/types/ErrorTypes';
 
-// eslint-disable-next-line
 const extractStrapiError = (error: any): StrapiErrorResponse | undefined => {
     if (error.response?.data?.error) {
         return error.response.data.error;
@@ -17,7 +16,6 @@ const extractValidationErrors = (strapiError?: StrapiErrorResponse) => {
 };
 
 export const handleApiError = (
-    // eslint-disable-next-line
     error: any,
     endpoint: string,
     method: string = 'GET'

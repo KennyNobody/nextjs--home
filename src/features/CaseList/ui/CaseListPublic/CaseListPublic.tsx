@@ -1,4 +1,4 @@
-
+import classNames from 'classnames';
 import React, { useEffect } from 'react';
 import {
     ArticleCase,
@@ -15,7 +15,6 @@ import {
     getCaseListPagination
 } from '../../model/selectors/caseList';
 import { fetchCaseList } from '../../model/services/fetchCaseListData/fetchCaseListData';
-import classNames from "classnames";
 
 interface CaseListPublicInterface {
     className?: string;

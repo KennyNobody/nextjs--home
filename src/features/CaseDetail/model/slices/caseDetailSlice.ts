@@ -41,7 +41,6 @@ const caseDetailSlice = createSlice({
             .addCase(fetchCaseDetail.rejected, (state: CaseDetailSchema) => {
                 state.isLoading = false;
                 // TODO: Указать правильные типы
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-expect-error
                 state.errors = action.payload;
             });

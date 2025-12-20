@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import classNames from "classnames";
+import classNames from 'classnames';
 import cls from './Main.module.scss';
 
 interface MainProps {

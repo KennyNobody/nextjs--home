@@ -53,46 +53,9 @@ const nextConfig: NextConfig = {
                 hostname: 'localhost',
                 port: '1337',
                 pathname: '/uploads/**',
-            },
-            {
-                protocol: 'http',
-                hostname: 'localhost',
-                port: '7700',
-                pathname: '**',
-            },
-            {
-                protocol: 'https',
-                hostname: 's3.twcstorage.ru',
-                pathname: '**',
             }
         ],
     },
-    // turbopack(config: TurbopackOptions) {
-        // Grab the existing rule that handles SVG imports
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        // const fileLoaderRule = config.module.rules.find((rule) =>
-        //     rule.test?.test?.('.svg'),
-        // )
-
-        // config.module.rules.push(
-        //     {
-        //         ...fileLoaderRule,
-        //         test: /\.svg$/i,
-        //         resourceQuery: /url/, // *.svg?url
-        //     },
-        //     {
-        //         test: /\.svg$/i,
-        //         issuer: fileLoaderRule.issuer,
-        //         resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
-        //         use: ['@svgr/webpack'],
-        //     },
-        // )
-        //
-        // fileLoaderRule.exclude = /\.svg$/i;
-        //
-        // return config;
-    // },
 };
 
 export default nextConfig;

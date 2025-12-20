@@ -1,9 +1,9 @@
 'use client';
 
+import Link from 'next/link';
 import classNames from 'classnames';
 import cls from './Header.module.scss';
-import Link from "next/link";
-import {RouterEndpoints} from "shared/router/routerEndpoints";
+import { RouterEndpoints } from 'shared/router/routerEndpoints';
 
 
 export const Header = () => {

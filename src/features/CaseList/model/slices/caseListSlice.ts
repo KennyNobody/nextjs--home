@@ -83,7 +83,6 @@ const caseListSlice = createSlice({
             .addCase(fetchCaseList.rejected, (state: CaseListSchema, action) => {
                 state.isLoading = false;
                 // TODO: Указать правильные типы
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-expect-error
                 state.errors = action.payload;
             })
@@ -107,7 +106,6 @@ const caseListSlice = createSlice({
             .addCase(putCaseStatus.rejected, (state: CaseListSchema, action) => {
                 state.isLoading = false;
                 // TODO: Указать правильные типы
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-expect-error
                 state.errors = action.payload;
             });

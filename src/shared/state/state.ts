@@ -1,7 +1,7 @@
 import { appReducer } from 'app';
+import { $api } from '../api/api';
 import { configureStore } from '@reduxjs/toolkit';
 import { caseListReducer } from 'features/CaseList';
-import {$api} from '../api/api';
 
 const rootReducer = {
     app: appReducer,
