@@ -1,10 +1,4 @@
 import type { NextConfig } from 'next';
-import { readFileSync } from 'fs';
-import { join } from 'path';
-
-const globalDir = join(process.cwd(), 'src/shared/styles/global');
-const mixinsPath = join(globalDir, 'mixins.scss');
-const mixins = readFileSync(mixinsPath, 'utf8');
 
 const nextConfig: NextConfig = {
     reactStrictMode: true,
@@ -24,22 +18,6 @@ const nextConfig: NextConfig = {
                 ],
             },
         ]
-    },
-    sassOptions: {
-        // additionalData: '@import "src/styles/mixins.scss";',
-        // Или если используете абсолютные импорты:
-        // additionalData: `
-        //     @function rem($px) {
-        //         @return calc(#{$px} / 16 * 1rem);
-        //     }
-        //
-        //     @mixin flex-center {
-        //         display: flex;
-        //         align-items: center;
-        //         justify-content: center;
-        //     }
-        // `,
-        // additionalData: mixins,
     },
     images: {
         remotePatterns: [

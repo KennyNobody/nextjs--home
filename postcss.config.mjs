@@ -1,4 +1,4 @@
-export default {
+const config = {
     plugins: {
         'postcss-pxtorem': {
             rootValue: 16,
@@ -8,3 +8,5 @@ export default {
         },
     },
 };
+
+export default config;
