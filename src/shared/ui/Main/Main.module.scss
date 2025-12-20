@@ -1,0 +1,9 @@
+.block {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    & > *:last-of-type {
+        flex-grow: 1;
+    }
+}

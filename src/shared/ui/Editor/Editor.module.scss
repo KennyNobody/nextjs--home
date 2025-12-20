@@ -1,0 +1,22 @@
+.block {
+    line-height: 1.4;
+
+    & > * {
+        margin-bottom: 1em;
+    }
+
+    & > *:last-of-type {
+        margin-bottom: 0;
+    }
+
+    ul, ol {
+        gap: 1em;
+        display: flex;
+        flex-direction: column;
+    }
+
+    ul {
+        padding-left: r(16);
+        list-style-type: disc;
+    }
+}

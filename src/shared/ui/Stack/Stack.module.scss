@@ -1,0 +1,12 @@
+.block {
+    display: flex;
+    flex-direction: column;
+
+   &--title {
+       gap: r(20);
+   }
+
+    &--catalog {
+        gap: r(60);
+    }
+}
