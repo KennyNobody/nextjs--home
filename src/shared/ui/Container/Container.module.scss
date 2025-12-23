@@ -1,6 +1,18 @@
 .block {
     width: 100%;
-    margin: 0 auto;
-    padding: 0 15px;
-    max-width: 1410px;
+    padding: 0 50px;
+}
+
+@media (width <= 2160px) {
+    .block {
+        padding: 0 30px;
+        //background-color: blue;
+    }
+}
+
+@media (width <= 1200px) {
+    .block {
+        padding: 0 15px;
+        //background-color: red;
+    }
 }

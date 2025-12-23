@@ -1,10 +1,8 @@
-import { AppSchema } from 'app';
 import { AxiosInstance } from 'axios';
-import { CaseListSchema } from 'features/CaseList';
+import { AppMainSchema } from 'entities/AppMain';
 
 interface StateSchema {
-    app?: AppSchema;
-    caseList?: CaseListSchema;
+    appMain?: AppMainSchema;
 }
 
 export interface ThunkExtraArg {

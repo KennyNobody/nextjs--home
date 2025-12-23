@@ -42,6 +42,11 @@ const eslintConfig = defineConfig([
         languageOptions: {
             ecmaVersion: 'latest',
             sourceType: 'module',
+            globals: {
+                '_IS_DEV_': 'readonly',
+                '_BASE_URL_': 'readonly',
+                '_PROJECT_': 'readonly',
+            },
         }
     },
     globalIgnores([

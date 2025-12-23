@@ -29,53 +29,46 @@ interface StrapiSuccessResponse<T = unknown> {
     meta?: StrapiMeta;
 }
 
+interface StrapiError {
+    status: number;
+    message: string;
+}
+
 interface StrapiErrorDetails {
     path: string[];
     message: string;
     name: string;
 }
 
-interface StrapiValidationError {
-    status: 400;
+interface StrapiValidationError extends StrapiError{
     name: 'ValidationError';
-    message: string;
     details: {
         errors: StrapiErrorDetails[];
     };
 }
 
-interface StrapiApplicationError {
-    status: 400;
+interface StrapiApplicationError extends StrapiError {
     name: 'ApplicationError';
-    message: string;
     details?: Record<string, unknown>;
 }
 
-interface StrapiForbiddenError {
-    status: 403;
+interface StrapiForbiddenError extends StrapiError{
     name: 'ForbiddenError';
-    message: string;
     details?: Record<string, unknown>;
 }
 
-interface StrapiNotFoundError {
-    status: 404;
+interface StrapiNotFoundError extends StrapiError {
     name: 'NotFoundError';
-    message: string;
     details?: Record<string, unknown>;
 }
 
-interface StrapiUnauthorizedError {
-    status: 401;
+interface StrapiUnauthorizedError extends StrapiError {
     name: 'UnauthorizedError';
-    message: string;
     details?: Record<string, unknown>;
 }
 
-interface StrapiInternalError {
-    status: 500;
+interface StrapiInternalError extends StrapiError{
     name: 'InternalError';
-    message: string;
     details?: Record<string, unknown>;
 }
 
@@ -87,16 +80,17 @@ type StrapiErrorResponse =
     | StrapiUnauthorizedError
     | StrapiInternalError;
 
-interface StrapiApiError extends ApiError {
-    strapiError?: StrapiErrorResponse;
-    validationErrors?: StrapiErrorDetails[];
-}
+// interface StrapiApiError extends ApiError {
+//     strapiError?: StrapiErrorResponse;
+//     validationErrors?: StrapiErrorDetails[];
+// }
 
 export type {
     ApiError,
     StrapiMeta,
     ErrorLogEntry,
-    StrapiApiError,
+    // StrapiApiError,
+    StrapiError,
     StrapiErrorDetails,
     StrapiInternalError,
     StrapiNotFoundError,

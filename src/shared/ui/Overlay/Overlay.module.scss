@@ -1,0 +1,34 @@
+.block {
+    inset: 0;
+    opacity: 1;
+    display: block;
+    position: fixed;
+    max-height: 100vh;
+    visibility: visible;
+    transition: 0.3s opacity;
+
+    // TODO: Протестировать в других браузерах
+    backdrop-filter: blur(0.4rem);
+
+    &[hidden] {
+        opacity: 0;
+        max-height: 0;
+        visibility: hidden;
+    }
+}
+
+[data-theme="theme-light"] {
+    .block {
+        &::before {
+            background-color: rgb(43 43 43 / 50%);
+        }
+    }
+}
+
+[data-theme="theme-dark"] {
+    .block {
+        &::before {
+            background-color: rgb(255 255 255 / 15%);
+        }
+    }
+}

@@ -1,0 +1,28 @@
+.block {
+    margin: 0;
+    border: none;
+    padding: 5px;
+    display: flex;
+    cursor: pointer;
+    background: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+[data-theme="theme-light"] {
+    .icon {
+        fill: var(--dark-primary);
+    }
+}
+
+[data-theme="theme-dark"] {
+    .icon {
+        fill: var(--light-primary);
+    }
+}

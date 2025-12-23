@@ -1,4 +1,114 @@
 .block {
-    gap: 30px;
-    display: flex;
+    padding: 36px 0;
+}
+
+.avatar {
+    margin-right: 14px;
+}
+
+.switcher {
+    flex-shrink: 0;
+}
+
+.name {
+    margin-right: 32px;
+
+    &--front {
+        flex-grow: 1;
+    }
+}
+
+.button {
+    display: none;
+    visibility: hidden;
+}
+
+.head {
+    flex-grow: 1;
+}
+
+.relative {
+    position: relative;
+}
+
+.nav {
+    display: none;
+    visibility: hidden;
+}
+
+@media (width <= 2160px) {
+    .block {
+        padding: 24px 0;
+    }
+
+    .name {
+        margin-right: 22px;
+    }
+
+    .avatar {
+        margin-right: 12px;
+    }
+}
+
+@media (width <= 1200px) {
+    .block {
+        padding: 14px 0;
+    }
+
+    .avatar {
+        margin-right: 10px;
+    }
+
+    .name {
+        flex-grow: 1;
+    }
+
+    .switcher {
+        display: none;
+        visibility: hidden;
+    }
+
+    .nav {
+        left: 0;
+        right: 0;
+        position: absolute;
+
+        &--desktop {
+            display: none;
+            visibility: hidden;
+        }
+    }
+
+    .button {
+        display: flex;
+        visibility: visible;
+    }
+
+    .head {
+        gap: 8px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav {
+        gap: 8px;
+        z-index: 7;
+        display: flex;
+        visibility: visible;
+        flex-direction: column;
+
+        &[hidden] {
+            display: none;
+            visibility: hidden;
+        }
+    }
+
+    .overlay {
+        z-index: 5;
+    }
+
+    .wrapper {
+        z-index: 6;
+        position: relative;
+    }
 }

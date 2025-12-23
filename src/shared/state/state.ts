@@ -1,11 +1,9 @@
-import { appReducer } from 'app';
-import { $api } from '../api/api';
+import { $apiClient } from '../api/apiClient';
 import { configureStore } from '@reduxjs/toolkit';
-import { caseListReducer } from 'features/CaseList';
+import { appMainReducer } from 'entities/AppMain';
 
 const rootReducer = {
-    app: appReducer,
-    caseList: caseListReducer,
+    appMain: appMainReducer,
 };
 
 const makeStore = () => {
@@ -15,7 +13,7 @@ const makeStore = () => {
             getDefaultMiddleware({
                 thunk: {
                     extraArgument: {
-                        api: $api,
+                        api: $apiClient,
                     },
                 },
             }).concat(),
