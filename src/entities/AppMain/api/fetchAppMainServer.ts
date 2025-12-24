@@ -5,14 +5,12 @@ import { paramsSerializer } from 'shared/lib/paramsSerializer';
 const fetchAppMainServer = async () => {
     try {
         const response = await $apiServer(ApiRoutes.MAIN, {
-            params: {
-                populate: '*',
-            },
+            params: { populate: '*' },
             paramsSerializer,
+            cache: 'force-cache',
         });
 
-        const data = await response.json();
-        return data;
+        return await response.json();
     } catch (error) {
         console.error(error);
         return [];

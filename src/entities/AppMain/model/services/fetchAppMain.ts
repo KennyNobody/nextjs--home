@@ -1,31 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ApiRoutes } from 'shared/api/apiEndpoints';
-import { ThunkConfig } from 'shared/state/StateSchema';
-import { AppMainResponseType } from '../types/AppMainResponse';
+import { fetchAppMainClient } from '../../api/fetchAppMainClient';
 
-export const fetchAppMain = createAsyncThunk<AppMainResponseType, undefined, ThunkConfig<string>>(
+export const fetchAppMain = createAsyncThunk(
     'appMain/fetchAppMain',
-
-    async (props, thunkApi) => {
-        const {
-            extra,
-            rejectWithValue,
-        } = thunkApi;
-
+    async (_, { rejectWithValue }) => {
         try {
-            const params: Record<string, string | number | string[]> = {
-                'populate': '*',
-            };
-
-            const response = await extra.api.get<AppMainResponseType>(
-                ApiRoutes.MAIN,
-                { params },
-            );
-
-            return response.data;
+            return await fetchAppMainClient();
         } catch (e) {
-            console.log(e);
             return rejectWithValue('error');
         }
-    },
+    }
 );

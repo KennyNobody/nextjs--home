@@ -1,9 +1,24 @@
 .block {
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+    padding-bottom: 115px;
 
-    & > *:last-of-type {
-        flex-grow: 1;
+    &--detail {
+        padding-bottom: 0;
+    }
+}
+
+@media (width <= 2160px) {
+    .block {
+        padding-bottom: 110px;
+    }
+}
+
+@media (width <= 1200px) {
+    .block {
+        padding-bottom: 40px;
+
+        &--list {
+            padding-top: 100px;
+        }
     }
 }

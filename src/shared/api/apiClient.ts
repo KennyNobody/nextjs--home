@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 import { handleApiError } from 'shared/lib/apiErrorHandler';
 import { paramsSerializer } from 'shared/lib/paramsSerializer';
 
-const baseUrl = `${process.env.NEXT_PUBLIC_MEDIA_URL}/api/`;
+const baseUrl = `${process.env.NEXT_PUBLIC_URL}/api/`;
 
 const $apiClient = axios.create({
     baseURL: baseUrl,

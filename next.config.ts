@@ -3,6 +3,7 @@ import { BuildMode, BuildProject } from './config/types/types';
 
 const nextConfig: NextConfig = {
     reactStrictMode: true,
+    // cacheComponents: true,
     // env: {
     //     _IS_DEV_: process.env.NODE_ENV === BuildMode.DEV ? 'true' : 'false',
     //     _BASE_URL_: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',

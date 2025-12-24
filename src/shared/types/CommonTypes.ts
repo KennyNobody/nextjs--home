@@ -1,5 +1,5 @@
-// import { SectionType } from 'widgets/SectionsStack';
 import { MediaFileType } from 'entities/Media';
+import { SectionType } from 'entities/Section';
 
 enum LangShownType {
     RU = 'Ру',
@@ -46,22 +46,22 @@ interface MetaPageType {
     canonicalURL?: string;
 }
 
-interface PageResponseType {
-    data: {
-        title: string;
-        slug: string;
-        createdAt: string;
-        updatedAt: string;
-        publishedAt: string;
-        locale: string;
-        localizations: {
-            data: [any],
-        };
-        seo: MetaPageType;
-        // section: SectionType[];
-    };
-    meta: any;
-}
+// interface PageResponseType {
+//     data: {
+//         title: string;
+//         slug: string;
+//         createdAt: string;
+//         updatedAt: string;
+//         publishedAt: string;
+//         locale: string;
+//         localizations: {
+//             data: [any],
+//         };
+//         seo: MetaPageType;
+//         section: SectionType[];
+//     };
+//     meta: any;
+// }
 
 // interface PageIndexResponseType extends Omit<PageResponseType, 'data'> {
 //     data: PageResponseType['data'] & {
@@ -77,6 +77,5 @@ export {
     type MetaSocial,
     type MetaPageType,
     type BaseResponseType,
-    type PageResponseType,
     // type PageIndexResponseType,
 };

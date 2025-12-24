@@ -1,6 +1,6 @@
 export {
-    fetchAppMainServer,
-} from './model/services/fetchAppMainServer';
+    fetchPageServer,
+} from '../Page/api/fetchPageServer';
 
 export {
     type AppMainResponseType,
@@ -24,3 +24,11 @@ export {
     getAppMainErrors,
     getAppMainLoading,
 } from './model/selectors/appMain';
+
+export {
+    fetchAppMainServer,
+} from './api/fetchAppMainServer';
+
+export {
+    fetchAppMainClient,
+} from './api/fetchAppMainClient';

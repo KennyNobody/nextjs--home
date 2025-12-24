@@ -2,19 +2,18 @@ import { ReactNode } from 'react';
 import classNames from 'classnames';
 import cls from './Stack.module.scss';
 
-enum StackSize {
-    SMALL = 'small',
-    MEDIUM = 'medium',
+export enum StackSizeType {
     LARGE = 'large',
+    MIDDLE = 'middle',
 }
 
 interface StackProps {
-    size?: StackSize;
     className?: string;
     children: ReactNode;
+    size: StackSizeType;
 }
 
-const Stack = (props: StackProps) => {
+export const Stack = (props: StackProps) => {
     const {
         size,
         children,
@@ -35,8 +34,3 @@ const Stack = (props: StackProps) => {
         </div>
     );
 };
-
-export {
-    Stack,
-    StackSize,
-}

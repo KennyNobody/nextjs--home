@@ -7,6 +7,7 @@ const baseUrl = `${process.env.NEXT_PUBLIC_URL}/api/`;
 interface FetchConfig extends RequestInit {
     params?: Record<string, any>;
     paramsSerializer?: (params: Record<string, any>) => string;
+    cache?: 'force-cache';
 }
 
 const $apiServer = async (endpoint: string, config: FetchConfig = {}) => {

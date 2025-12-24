@@ -1,26 +1,24 @@
+import { MetaPageType } from 'shared/types/CommonTypes';
 import { ResponseType } from 'shared/types/ResponseType';
+import { SectionType } from 'entities/Section';
 
-interface Meta {
-    metaTitle: string;
-    metaDescription: string;
-
-    shareImage: unknown;
-    keywords: string;
-    metaRobots: string;
-    structuredData: string;
-    metaViewport: string;
-    canonicalURL: string;
+interface PageType {
+    title: string;
+    slug: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    locale: string;
+    localizations: {
+        data: [any],
+    };
+    seo: MetaPageType;
+    section?: SectionType[];
 }
 
-interface PageType<T = unknown> {
-    // seo: Meta;
-    sections: T;
-}
-
-type PageServerResponse<T = unknown> = ResponseType<PageType<T>>
+type PageServerResponse<T = unknown> = ResponseType<PageType>
 
 export type {
-    Meta,
     PageType,
     PageServerResponse,
 }

@@ -1,39 +1,19 @@
-// import { Metadata } from 'next';
 import { Metadata } from 'next';
 import FrontPage from 'pages-app/FrontPage';
-// import { fetchFrontPageData, FrontPageResponseType } from 'pages/FrontPage';
-// import { fetchAppData } from './services/fetchAppData';
-// import { AppResponseType } from './model/types/App';
+import { fetchPageServer } from '../entities/Page';
+import { ApiRoutes } from '../shared/api/apiEndpoints';
+import { generatePageMetadata } from '../shared/lib/generatePageMetadata';
 
-// export async function generateMetadata(): Promise<Metadata> {
-//     const response: FrontPageResponseType = await fetchFrontPageData({});
-//     const meta = response.data.seo;
-//
-//     return {
-//         title: meta.metaTitle,
-//         description: meta.metaDescription,
-//         keywords: meta.keywords,
-//         other: {
-//             'other': JSON.stringify(meta.structuredData),
-//         },
-//     }
-// }
-
-export const dynamic = 'force-dynamic';
-
-export async function generateMetadata(): Promise<Metadata> {
-    return {
-        title: 'Главная страница',
-        //  description: meta.metaDescription,
-        //  keywords: meta.keywords,
-        //  other: {
-        //  'other': JSON.stringify(meta.structuredData),
-        // },
-    }
+async function getPageData() {
+    return await fetchPageServer(ApiRoutes.PAGE_FRONT);
 }
 
-export default function Home() {
-    // const response: AppResponseType = await fetchAppData({});
+export async function generateMetadata(): Promise<Metadata> {
+    const response = await getPageData();
+    return generatePageMetadata(response?.data?.seo);
+}
 
-    return <FrontPage />;
+export default async function Page() {
+    const response = await getPageData();
+    return <FrontPage data={response?.data} />;
 }

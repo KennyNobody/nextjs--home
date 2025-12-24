@@ -36,14 +36,17 @@ export const Header = (props: HeaderProps) => {
     } = props;
 
     const layoutMode = useLayoutMode();
-    const [isOpened, setIsOpened] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
     const pathname = usePathname();
 
     useEffect(() => {
         // TODO: Решить или отключить правило
         // eslint-disable-next-line react-hooks/set-state-in-effect
-        setIsOpened(false);
+        setIsOpen(false);
     }, [pathname]);
+
+    const isFrontLayout = layoutMode === PageLayoutMode.FRONT;
+    const gridColClasses = classNames(grid['grid__col-2'], grid['grid__col-mob-4']);
 
     return (
         <div
@@ -59,10 +62,7 @@ export const Header = (props: HeaderProps) => {
                 <div className={classNames(grid.grid)}>
                     <div
                         className={
-                            classNames(
-                                grid['grid__col-2'],
-                                grid['grid__col-mob-4'],
-                            )
+                            classNames(gridColClasses)
                         }
                     >
 
@@ -75,32 +75,32 @@ export const Header = (props: HeaderProps) => {
                             }
                         >
                             <Overlay
-                                isVisible={isOpened || false}
+                                isVisible={isOpen}
                                 className={classNames(cls.overlay)}
                             />
                             <div className={classNames(cls.wrapper)}>
                                 <Head
-                                    isMain={layoutMode === PageLayoutMode.FRONT}
+                                    isMain={isFrontLayout}
                                 >
                                     <Avatar
-                                        isMain={layoutMode === PageLayoutMode.FRONT}
+                                        isMain={isFrontLayout}
                                         className={classNames(cls.avatar)}
                                         url={data?.preview?.data?.formats?.small?.url}
                                     />
                                     <Name
                                         name={data?.name}
                                         nickname={data?.nickname}
-                                        isMain={layoutMode === PageLayoutMode.FRONT}
+                                        isMain={isFrontLayout}
                                         className={
                                             classNames(
                                                 cls.name,
-                                                { [cls['name--front']]: layoutMode !== PageLayoutMode.FRONT },
+                                                { [cls['name--front']]: !isFrontLayout },
                                             )
                                         }
                                     />
                                     <MenuMobileButton
                                         className={classNames(cls.button)}
-                                        clickEvent={() => setIsOpened(!isOpened)}
+                                        onClick={() => setIsOpen(prev => !prev)}
                                     />
                                     {/* TODO: Раскомментировать, когда будет голова английская версия */}
                                     {/* { */}
@@ -124,8 +124,8 @@ export const Header = (props: HeaderProps) => {
                             </div>
                             <div className={classNames(cls.relative)}>
                                 <nav
-                                    hidden={!isOpened}
-                                    className={classNames(cls.nav)}
+                                    hidden={!isOpen}
+                                    className={classNames(cls.nav, cls['nav--mobile'])}
                                 >
                                     <LinkNav linkKey={ContentKeyType.DEV} href={RouterLinks.DEV.link}>Разработка</LinkNav>
                                     <LinkNav linkKey={ContentKeyType.PHOTO} href={RouterLinks.PHOTO.link}>Фото-проекты</LinkNav>
@@ -155,14 +155,13 @@ export const Header = (props: HeaderProps) => {
                     <div
                         className={
                             classNames(
-                                grid['grid__col-2'],
-                                grid['grid__col-mob-4'],
+                                gridColClasses,
                                 cls['column-nav'],
                             )
                         }
                     >
                         {
-                            layoutMode === PageLayoutMode.FRONT
+                            isFrontLayout
                             && data?.description
                             && (
                                 <Description
@@ -171,7 +170,7 @@ export const Header = (props: HeaderProps) => {
                             )
                         }
                         {
-                            layoutMode !== PageLayoutMode.FRONT
+                            isFrontLayout
                             && (
                                 <Nav
                                     // isLoading={isLoading}

@@ -1,0 +1,106 @@
+import React from 'react';
+import classNames from 'classnames';
+// import { ListPhoto } from '3_features/ListPhoto';
+import grid from 'shared/styles/grid.module.scss';
+import { Toolbar } from 'shared/ui/Toolbar/Toolbar';
+import { Container } from 'shared/ui/Container/Container';
+import { LinkTitle } from 'shared/ui/LinkTitle/LinkTitle';
+import { Stack, StackSizeType } from 'shared/ui/Stack/Stack';
+import { Title, TitleModeType } from 'shared/ui/Title/Title';
+import { LinkRegular } from 'shared/ui/LinkRegular/LinkRegular';
+import cls from './SectionPhoto.module.scss';
+import { SectionType } from '../../model/types/Section';
+import { RouterLinks } from 'shared/config/routerConfig';
+
+interface SectionProps {
+    isPreview: boolean;
+    className?: string;
+    data: SectionType | null;
+}
+
+export const SectionPhoto = (props: SectionProps) => {
+    const {
+        data,
+        isPreview,
+        className,
+    } = props;
+
+    return (
+        <section className={classNames(cls.section, className)}>
+            <Container>
+                <Stack size={StackSizeType.MEDIUM}>
+                    <div className={classNames(grid.grid, cls.grid)}>
+                        <div className={classNames(grid['grid__col-2'])}>
+                            {
+                                data?.title
+                                && (
+                                    <Title mode={TitleModeType.REGULAR}>
+                                        { data?.title }
+                                    </Title>
+                                )
+                            }
+                        </div>
+                        <div className={classNames(grid['grid__col-2'])}>
+                            <Toolbar className={classNames(cls.toolbarLinks)}>
+                                {
+                                    data?.linkTitle
+                                    && data?.linkPath
+                                    && (
+                                        <LinkTitle
+                                            href={data.linkPath}
+                                        >
+                                            { data.linkTitle }
+                                        </LinkTitle>
+                                    )
+                                }
+                            </Toolbar>
+                        </div>
+                    </div>
+                    Плитка фото
+                    {/*<ListPhoto isPreview={isPreview} />*/}
+                    {
+                        isPreview
+                        && (
+                            <div className={classNames(grid.grid, cls.grid)}>
+                                <div
+                                    className={
+                                        classNames(
+                                            grid['grid__col-2'],
+                                            cls['col-clear'],
+                                        )
+                                    }
+                                />
+                                <div
+                                    className={
+                                        classNames(
+                                            grid['grid__col-2'],
+                                            grid['grid__col-mob-4'],
+                                        )
+                                    }
+                                >
+                                    <Toolbar
+                                        className={
+                                            classNames(
+                                                cls['toolbar-bottom'],
+                                            )
+                                        }
+                                    >
+                                        <LinkRegular
+                                            href={RouterLinks.PHOTO.link}
+                                            text={'Все проекты'}
+                                        />
+                                        {/* TODO: Указать ссылку на CV */}
+                                        {/* <LinkRegular */}
+                                        {/*     to="#" */}
+                                        {/*     text={t('cv')} */}
+                                        {/* /> */}
+                                    </Toolbar>
+                                </div>
+                            </div>
+                        )
+                    }
+                </Stack>
+            </Container>
+        </section>
+    );
+};

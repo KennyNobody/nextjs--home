@@ -24,7 +24,11 @@ export const AppLayout = async (props: AppLayoutProps) => {
                 <AppLayoutClient data={response}>
                     <Header
                         data={response.data}
-                        className={classNames(cls.header)}
+                        className={
+                            classNames(
+                                cls.header,
+                            )
+                        }
                     />
                     { children }
                     <Footer

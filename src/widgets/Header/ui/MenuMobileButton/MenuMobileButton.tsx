@@ -4,19 +4,19 @@ import cls from './MenuMobileButton.module.scss';
 
 interface MenuMobileButtonProps {
     className?: string;
-    clickEvent: () => void;
+    onClick: () => void;
 }
 
 export const MenuMobileButton = (props: MenuMobileButtonProps) => {
     const {
+        onClick,
         className,
-        clickEvent,
     } = props;
 
     return (
         <button
             type="button"
-            onClick={clickEvent}
+            onClick={onClick}
             className={classNames(cls.block, className)}
         >
             <Icon

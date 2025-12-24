@@ -1,0 +1,45 @@
+.grid {
+    gap: 30px 20px;
+}
+
+.title {
+    width: 60%;
+    height: var(--title-line-height-l);
+}
+
+.link {
+    width: 35%;
+    height: var(--link-regular-line-height-l);
+}
+
+.main {
+    height: 30vh;
+}
+
+@media (width <= 2160px) {
+    .title {
+        width: 65%;
+        height: var(--title-line-height-m);
+    }
+
+    .link {
+        width: 35%;
+        height: var(--link-regular-line-height-m);
+    }
+}
+
+@media (width <= 1200px) {
+    .title {
+        width: 80%;
+        height: var(--title-line-height-s);
+    }
+
+    .link {
+        width: 45%;
+        height: var(--link-regular-line-height-s);
+    }
+
+    .grid {
+        gap: 20px 10px;
+    }
+}

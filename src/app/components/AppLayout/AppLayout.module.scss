@@ -6,10 +6,11 @@
     flex-direction: column;
     justify-content: space-between;
 
-    &--fixed {
-        height: 100vh;
-        overflow: hidden;
-    }
+    // TODO: Доработать Fixed состояние
+    //&--fixed {
+    //    height: 100vh;
+    //    overflow: hidden;
+    //}
 }
 
 [data-theme="theme-light"] {
@@ -30,58 +31,9 @@
     left: 0;
     right: 0;
     width: 100%;
-
-    &--front {
-        margin-bottom: 180px;
-    }
-
-    &--list {
-        margin-bottom: 95px;
-    }
-
-    &--detail {
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 2;
-        position: absolute;
-    }
-
-    &--static {}
 }
 
 .footer {
     z-index: 2;
     position: relative;
-}
-
-@media (width <= 2160px) {
-    .header {
-        &--front {
-            margin-bottom: 150px;
-        }
-
-        &--list {
-            margin-bottom: 80px;
-        }
-    }
-}
-
-@media (width <= 1200px) {
-    .header {
-        &--front {
-            margin-bottom: 60px;
-        }
-
-        &--list {
-            z-index: 5;
-            position: fixed;
-            margin-bottom: 0;
-        }
-
-        &--detail {
-            z-index: 5;
-            position: fixed;
-        }
-    }
 }
