@@ -17,10 +17,10 @@ enum ContentKeyType {
     POST = 'post',
 }
 
-interface BaseResponseType {
-    data: any;
-    meta: any;
-}
+// interface BaseResponseType {
+//     data: any;
+//     meta: any;
+// }
 
 enum SocialNetwork {
     FACEBOOK = 'Facebook',
@@ -46,29 +46,6 @@ interface MetaPageType {
     canonicalURL?: string;
 }
 
-// interface PageResponseType {
-//     data: {
-//         title: string;
-//         slug: string;
-//         createdAt: string;
-//         updatedAt: string;
-//         publishedAt: string;
-//         locale: string;
-//         localizations: {
-//             data: [any],
-//         };
-//         seo: MetaPageType;
-//         section: SectionType[];
-//     };
-//     meta: any;
-// }
-
-// interface PageIndexResponseType extends Omit<PageResponseType, 'data'> {
-//     data: PageResponseType['data'] & {
-//         section: SectionType[];
-//     };
-// }
-
 export {
     LangShownType,
     LangEngineType,
@@ -76,6 +53,6 @@ export {
     SocialNetwork,
     type MetaSocial,
     type MetaPageType,
-    type BaseResponseType,
+    // type BaseResponseType,
     // type PageIndexResponseType,
 };

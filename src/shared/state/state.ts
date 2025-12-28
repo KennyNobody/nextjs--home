@@ -1,9 +1,11 @@
 import { $apiClient } from '../api/apiClient';
 import { configureStore } from '@reduxjs/toolkit';
 import { appMainReducer } from 'entities/AppMain';
+import { postReducer } from 'entities/Post';
 
 const rootReducer = {
     appMain: appMainReducer,
+    post: postReducer,
 };
 
 const makeStore = () => {

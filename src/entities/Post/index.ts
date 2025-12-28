@@ -1,0 +1,23 @@
+export {
+    type PostSchema,
+} from './model/types/PostSchema';
+
+export {
+    postActions,
+    postReducer,
+    getPostList,
+} from './model/slices/postSlice';
+
+export {
+    type ArticlePostType,
+} from './model/types/ArticlePost';
+
+export {
+    GridPosts,
+} from './ui/GridPosts/GridPosts';
+
+export {
+    getPostErrors,
+    getPostLoading,
+    getPostPagination,
+} from './model/selectors/postSelector';

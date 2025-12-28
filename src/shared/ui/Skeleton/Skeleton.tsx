@@ -28,7 +28,7 @@ export const Skeleton = (props: SkeletonProps) => {
                 className={
                     classNames(
                         cls.block,
-                        themeProp && cls[`block--${mode}`],
+                        themeProp && cls[`block--${themeProp}`],
                         className,
                     )
                 }
@@ -53,7 +53,7 @@ export const Skeleton = (props: SkeletonProps) => {
                             className={
                                 classNames(
                                     cls.inner,
-                                    themeProp && cls[`inner--${mode}`],
+                                    themeProp && cls[`inner--${themeProp}`],
                                 )
                             }
                         />
