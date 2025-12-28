@@ -48,7 +48,7 @@ export const ArticlePost = (props: ArticlePostProps) => {
 
     const article = () => (
         <Link
-            href={`${RouterLinks.POSTS_DETAIL.link}${data?.id}`}
+            href={`${RouterLinks.POSTS_DETAIL.link}/${data?.id}`}
             className={
                 classNames(
                     cls.article,

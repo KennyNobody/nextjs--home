@@ -9,6 +9,7 @@ import { fetchPostClient } from '../../api/fetchPostClient';
 interface FetchPostListProps {
     replace?: boolean;
     page?: number;
+    mode: 'start' | 'next';
 }
 
 export const fetchPostList = createAsyncThunk<ResponseType<ArticlePostType[]>, FetchPostListProps, ThunkConfig<string>>(
