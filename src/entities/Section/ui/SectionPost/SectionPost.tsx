@@ -1,6 +1,5 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import classNames from 'classnames';
-// import { useTranslation } from 'react-i18next';
 import grid from 'shared/styles/grid.module.scss';
 import { Toolbar } from 'shared/ui/Toolbar/Toolbar';
 import { Container } from 'shared/ui/Container/Container';
@@ -10,7 +9,8 @@ import { Title, TitleModeType } from 'shared/ui/Title/Title';
 import { LinkRegular } from 'shared/ui/LinkRegular/LinkRegular';
 import cls from './SectionPost.module.scss';
 import { SectionType } from '../../model/types/Section';
-import { ListPost } from 'features/ListPost';
+import { ListPostServer } from 'features/ListPost';
+import {GridPosts} from "../../../Post";
 
 interface SectionProps {
     isPreview: boolean;
@@ -24,8 +24,6 @@ export const SectionPost = (props: SectionProps) => {
         isPreview,
         className,
     } = props;
-
-    // const { t } = useTranslation();
 
     return (
         <section className={classNames(cls.section, className)}>
@@ -97,7 +95,9 @@ export const SectionPost = (props: SectionProps) => {
                             )
                         }
                     </div>
-                    <ListPost isPreview={isPreview} />
+                    <Suspense fallback={<GridPosts showSkeleton/>}>
+                        <ListPostServer isPreview={isPreview} />
+                    </Suspense>
                     {
                         isPreview
                         && (

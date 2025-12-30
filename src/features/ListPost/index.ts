@@ -1,3 +1,7 @@
 export {
-    ListPost,
-} from './ui/ListPost';
+    ListPostClient,
+} from './ui/ListPostClient/ListPostClient';
+
+export {
+    ListPostServer,
+} from './ui/ListPostServer/ListPostServer';

@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
 import cls from './End.module.scss';
 import { AppTheme } from 'shared/types/Theme';
 
@@ -13,7 +12,6 @@ export const End = (props: EndProps) => {
         themeProp,
         className,
     } = props;
-    const { t } = useTranslation();
 
     return (
         <p
@@ -25,7 +23,7 @@ export const End = (props: EndProps) => {
                 )
             }
         >
-            { t('articlesMessage') }
+            Дальше ничего нет
         </p>
     );
 };

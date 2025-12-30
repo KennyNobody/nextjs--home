@@ -1,8 +1,9 @@
+'use client';
 
 import {
     useRef,
     useEffect,
-    RefObject,
+    RefObject, useMemo,
 } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
@@ -13,29 +14,35 @@ import {
     ArticlePostType,
     getPostPagination,
 } from 'entities/Post';
-import cls from './ListPost.module.scss';
+import cls from './ListPostClient.module.scss';
 import { PaginationType } from 'entities/Pagination';
 import { useAppDispatch } from 'shared/state/hooks';
 import { addRandomNulls } from 'shared/helpers/addRandomNulls';
 import { useInfiniteScroll } from 'shared/hooks/useInfiniteScroll';
-import {fetchPostList} from "../../../entities/Post/model/services/fetchPostList";
 
-interface ListPostsProps {
+interface ListPostClientProps {
     className?: string;
     isPreview?: boolean;
+    dataPrefetch?: ArticlePostType[];
+    paginationPrefetch?: PaginationType;
 }
 
-export const ListPost = (props: ListPostsProps) => {
+export const ListPostClient = (props: ListPostClientProps) => {
     const {
         isPreview,
         className,
+        dataPrefetch,
+        paginationPrefetch,
     } = props;
 
     const triggerRef = useRef<HTMLDivElement>(null);
-    const dispatch = useAppDispatch();
-    const data: ArticlePostType[] = useSelector(getPostList.selectAll);
     const isLoading: boolean = useSelector(getPostLoading) || false;
-    const pagination: PaginationType | undefined = useSelector(getPostPagination);
+    const dispatch = useAppDispatch();
+    const dataRedux: ArticlePostType[] = useSelector(getPostList.selectAll);
+    const paginationRedux: PaginationType | undefined = useSelector(getPostPagination);
+
+    const data = dataPrefetch || dataRedux;
+    const pagination = paginationPrefetch || paginationRedux;
 
     const {
         pageCount = 1,
@@ -53,7 +60,7 @@ export const ListPost = (props: ListPostsProps) => {
     };
 
     useEffect(() => {
-        dispatch(fetchPostList({}));
+        // dispatch(fetchPostList({}));
     }, []);
 
     useInfiniteScroll({
@@ -61,16 +68,16 @@ export const ListPost = (props: ListPostsProps) => {
         callback: loadNextPage,
     });
 
+    const displayData = useMemo(() => {
+        return isPreview ? addRandomNulls(data) : data;
+    }, [isPreview, data]);
+
 
     return (
-        <div
-            className={
-                classNames(cls.block, className)
-            }
-        >
+        <div className={classNames(cls.block, className)}>
             <GridPosts
                 showSkeleton={isLoading && !data?.length}
-                data={isPreview ? addRandomNulls(data) : data}
+                data={displayData}
                 showEnd={!isPreview && !isLoading && page === pageCount}
             />
             {!isPreview && <div ref={triggerRef} />}

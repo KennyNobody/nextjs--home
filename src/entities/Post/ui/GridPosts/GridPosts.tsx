@@ -10,7 +10,7 @@ interface GridPostsProps {
     className?: string;
     data?: (ArticlePostType | null)[];
     showSkeleton?: boolean;
-    showEnd: boolean;
+    showEnd?: boolean;
 }
 
 export const GridPosts = (props: GridPostsProps) => {

@@ -1,8 +1,14 @@
 import { Metadata } from 'next';
 import { RouterLinks } from 'shared/config/routerConfig';
-import CaseListPublicPage from 'pages-app/CaseListPublicPage';
+import { StoreInitializer } from 'shared/state/StoreInitializer';
+import { fetchPostServer } from 'entities/Post';
+import { ApiRoutes } from 'shared/api/apiEndpoints';
 
 export const dynamic = 'force-dynamic';
+
+// async function getPostList() {
+//     return await fetchPostServer(ApiRoutes.POSTS_LIST);
+// }
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
@@ -10,8 +16,18 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 }
 
-export default function Page() {
+export default async function Page() {
+    // const responseList = await getPostList();
+
     return (
-        <CaseListPublicPage />
-    );
+        <>
+            {/*<StoreInitializer*/}
+            {/*    postData={responseList}*/}
+            {/*/>;*/}
+            <p>
+                Страница постов
+            </p>
+            {/*<CaseListPublicPage />;*/}
+        </>
+    )
 }

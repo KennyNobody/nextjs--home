@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useTranslation } from 'react-i18next';
 // import { DevFilter } from '3_features/DevFilter';
 import grid from 'shared/styles/grid.module.scss';
 import { Toolbar } from 'shared/ui/Toolbar/Toolbar';
@@ -21,12 +20,10 @@ export const SectionLoading = (props: SectionProps) => {
         className,
     } = props;
 
-    const { t } = useTranslation();
-
     return (
         <section className={classNames(cls.section, className)}>
             <Container>
-                <Stack size={StackSizeType.MEDIUM}>
+                <Stack size={StackSizeType.MIDDLE}>
                     <div className={classNames(grid.grid, cls.grid)}>
                         <div className={classNames(grid['grid__col-2'])}>
                             <Skeleton
@@ -53,8 +50,8 @@ export const SectionLoading = (props: SectionProps) => {
                                         }
                                     >
                                         <LinkRegular
-                                            to="#"
-                                            text={t('resume')}
+                                            href="#"
+                                            text={'Резюме'}
                                             className={classNames(cls.link)}
                                         />
                                     </div>

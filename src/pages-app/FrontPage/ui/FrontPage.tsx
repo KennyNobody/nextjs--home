@@ -1,5 +1,3 @@
-'use client';
-
 import { PageType } from 'entities/Page';
 import { Main } from 'shared/ui/Main/Main';
 import { SectionsStack } from 'widgets/SectionStack';

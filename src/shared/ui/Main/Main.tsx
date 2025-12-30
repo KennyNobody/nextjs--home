@@ -1,20 +1,20 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
-import cls from './Main.module.scss';
-import useLayoutMode from '../../hooks/useLayoutMode';
+import cls from './Main.module.scss';;
+import { getLayoutMode } from 'shared/helpers/getLayoutMode';
 
 interface MainProps {
     className?: string;
     children: ReactNode;
 }
 
-export const Main = (props: MainProps) => {
+export const Main = async (props: MainProps) => {
     const {
         children,
         className,
     } = props;
 
-    const layoutMode = useLayoutMode();
+    const layoutMode = await getLayoutMode();
 
     return (
         <main

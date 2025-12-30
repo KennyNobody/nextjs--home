@@ -8,9 +8,10 @@ const rootReducer = {
     post: postReducer,
 };
 
-const makeStore = () => {
+const makeStore = (preloadedState?: Partial<ReturnType<typeof configureStore>['getState']>) => {
     return configureStore({
         reducer: rootReducer,
+        preloadedState,
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({
                 thunk: {

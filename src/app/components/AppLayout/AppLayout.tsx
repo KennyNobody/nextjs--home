@@ -21,21 +21,21 @@ export const AppLayout = async (props: AppLayoutProps) => {
     return (
         <div className={classNames(cls.block)}>
             <StoreProvider>
-                <AppLayoutClient data={response}>
-                    <Header
-                        data={response.data}
-                        className={
-                            classNames(
-                                cls.header,
-                            )
-                        }
-                    />
-                    { children }
-                    <Footer
-                        data={response.data}
-                        className={classNames(cls.footer)}
-                    />
-                </AppLayoutClient>
+                {/*<AppLayoutClient data={response}>*/}
+                <Header
+                    data={response.data}
+                    className={
+                        classNames(
+                            cls.header,
+                        )
+                    }
+                />
+                { children }
+                <Footer
+                    data={response.data}
+                    className={classNames(cls.footer)}
+                />
+                {/*</AppLayoutClient>*/}
             </StoreProvider>
         </div>
     );

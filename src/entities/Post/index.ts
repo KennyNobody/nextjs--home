@@ -21,3 +21,7 @@ export {
     getPostLoading,
     getPostPagination,
 } from './model/selectors/postSelector';
+
+export {
+    fetchPostServer,
+} from './api/fetchPostServer';

@@ -7,7 +7,7 @@ import { ArticlePostType } from '../types/ArticlePost';
 import { PostSchema } from '../types/PostSchema';
 import { fetchPostList } from '../services/fetchPostList';
 import { StateSchema } from 'shared/state/StateSchema';
-import { PaginationType } from 'entities/Pagination';
+import { ResponseType } from 'shared/types/ResponseType';
 
 const postListAdapter = createEntityAdapter<ArticlePostType, number>({
     selectId: (item: ArticlePostType) => item.id,
@@ -23,6 +23,8 @@ const initialState: PostSchema = {
     category: undefined,
     ids: [],
     entities: {},
+    testData1: undefined,
+    testData2: undefined,
     pagination: {
         page: 1,
         pageCount: 1,
@@ -35,22 +37,30 @@ const postSlice = createSlice({
     name: 'postSlice',
     initialState,
     reducers: {
-        setPagination: (state, action: PayloadAction<PaginationType>) => {
-            state.pagination = action.payload;
-        },
-        addData: (state, action: PayloadAction<ArticlePostType[]>) => {
-            postListAdapter.addMany(state, action.payload);
-        },
-        replaceData: (state, action: PayloadAction<ArticlePostType[]>) => {
-            postListAdapter.setAll(state, action.payload);
-        },
-        toggleCategory: (state, action: PayloadAction<number | undefined>) => {
-            if (state.category === action.payload) {
-                state.category = undefined;
-            } else {
-                state.category = action.payload;
+        setResponseData: (state, action: PayloadAction<ResponseType<ArticlePostType[]>>) => {
+            const { data, meta } = action.payload;
+
+            if (data && meta?.pagination) {
+                state.pagination = meta.pagination;
+                postListAdapter.setAll(state, data);
             }
         },
+        // setPagination: (state, action: PayloadAction<PaginationType>) => {
+        //     state.pagination = action.payload;
+        // },
+        // addData: (state, action: PayloadAction<ArticlePostType[]>) => {
+        //     postListAdapter.addMany(state, action.payload);
+        // },
+        // replaceData: (state, action: PayloadAction<ArticlePostType[]>) => {
+        //     postListAdapter.setAll(state, action.payload);
+        // },
+        // toggleCategory: (state, action: PayloadAction<number | undefined>) => {
+        //     if (state.category === action.payload) {
+        //         state.category = undefined;
+        //     } else {
+        //         state.category = action.payload;
+        //     }
+        // },
     },
     extraReducers: (builder) => {
         const request = fetchPostList;
