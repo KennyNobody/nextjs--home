@@ -1,8 +1,11 @@
 import type { NextConfig } from 'next';
-import { BuildMode, BuildProject } from './config/types/types';
 
 const nextConfig: NextConfig = {
-    reactStrictMode: true,
+    /* TODO: Включить reactStrictMode: true перед релизом для финальной проверки
+       Выключен в dev - двойной рендер очищает Redux до завершения гидратации.
+       Возможно стоит написать решение в месте конфликта
+    */
+    reactStrictMode: false,
     // cacheComponents: true,
     // env: {
     //     _IS_DEV_: process.env.NODE_ENV === BuildMode.DEV ? 'true' : 'false',

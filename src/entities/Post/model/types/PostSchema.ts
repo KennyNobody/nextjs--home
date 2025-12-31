@@ -7,7 +7,6 @@ export interface PostSchema extends EntityState<ArticlePostType, number> {
     // errors?: FetchBaseQueryError;
     errors?: string;
     category: number | undefined;
-    pagination: PaginationType;
-    testData1?: number;
-    testData2?: number;
+    pagination?: PaginationType;
+    isInit: boolean;
 }

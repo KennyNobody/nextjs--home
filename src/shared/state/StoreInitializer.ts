@@ -1,41 +1,26 @@
 'use client';
 
-import {
-    appMainActions,
-    AppMainResponseType,
-} from 'entities/AppMain';
+import { Action } from 'redux';
 import { useLayoutEffect, useRef } from 'react';
 import { useAppStore } from './hooks';
-import { ArticlePostType, postActions } from 'entities/Post';
-import { ResponseType } from '../types/ResponseType';
 
 interface StoreInitializerProps {
-    appData?: AppMainResponseType;
-    postData?: ResponseType<ArticlePostType[]>;
+    actions: Action[];
 }
 
 export const StoreInitializer = (props: StoreInitializerProps) => {
     const {
-        appData,
-        postData,
+        actions,
     } = props;
     const store = useAppStore();
     const initialized = useRef<boolean | null>(null);
 
     useLayoutEffect(() => {
         if (initialized.current === null) {
-            if (postData) {
-                store.dispatch(postActions.setResponseData(postData));
-            }
-
-            if (appData) {
-                store.dispatch(appMainActions.setResponseData(appData));
-            }
-
+            actions?.forEach(store.dispatch);
             initialized.current = true;
         }
     }, []);
-
 
     return null;
 };

@@ -4,7 +4,7 @@ import { fetchPageServer, Page, PageMode } from 'entities/Page';
 import { generatePageMetadata } from 'shared/lib/generatePageMetadata';
 
 async function getPageData() {
-    return await fetchPageServer(ApiRoutes.PAGE_PHOTO);
+    return await fetchPageServer(ApiRoutes.PAGE_DEV);
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -17,7 +17,7 @@ export default async function PageApp() {
 
     return (
         <Page
-            mode={PageMode.DETAIL}
+            mode={PageMode.INDEX}
             data={response?.data}
         />
     )

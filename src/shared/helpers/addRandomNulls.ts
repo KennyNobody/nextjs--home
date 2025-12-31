@@ -1,7 +1,7 @@
-import { PostArticleType } from 'entities/Post';
+import { ArticlePostType } from 'entities/Post';
 
-const addRandomNulls = (inputArray: PostArticleType[]): (PostArticleType | null)[] => {
-    const resultArray: (PostArticleType | null)[] = [];
+const addRandomNulls = (inputArray: ArticlePostType[]): (ArticlePostType | null)[] => {
+    const resultArray: (ArticlePostType | null)[] = [];
     const nullInterval = 12;
     const nullPosition = [1, 2, 4, 5];
 

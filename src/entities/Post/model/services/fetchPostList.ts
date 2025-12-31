@@ -5,22 +5,29 @@ import { ResponseType } from 'shared/types/ResponseType';
 import { ApiRequestParams } from 'shared/types/ApiRequestParams';
 import { ArticlePostType } from '../types/ArticlePost';
 import { fetchPostClient } from '../../api/fetchPostClient';
+import { getPostPagination } from '../selectors/postSelector';
 
 interface FetchPostListProps {
     replace?: boolean;
-    page?: number;
     mode: 'start' | 'next';
 }
 
 export const fetchPostList = createAsyncThunk<ResponseType<ArticlePostType[]>, FetchPostListProps, ThunkConfig<string>>(
     'post/fetchPostList',
-    async (props, { rejectWithValue }) => {
-        const { page } = props;
+    async (props, thunkAPI) => {
+        // const { page } = props;
+        const {
+            getState,
+            rejectWithValue,
+        } = thunkAPI;
+
+        const pagination = getPostPagination(getState());
+        const page = (pagination?.page ?? 1) + 1;
 
         try {
             const params: ApiRequestParams = {
                 pagination: {
-                    page: page || 1,
+                    page,
                     pageSize: 8,
                 },
                 populate: 'main.preview,category',

@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { ReactNode } from 'react';
 import {
+    appMainActions,
     fetchAppMainServer,
     AppMainResponseType,
 } from 'entities/AppMain';
@@ -8,7 +9,7 @@ import { Footer } from 'widgets/Footer';
 import { Header } from 'widgets/Header';
 import cls from './AppLayout.module.scss';
 import StoreProvider from 'shared/state/StoreProvider';
-import { AppLayoutClient } from '../AppLayoutClient/AppLayoutClient';
+import { StoreInitializer } from 'shared/state/StoreInitializer';
 
 interface AppLayoutProps {
     children: ReactNode;
@@ -21,7 +22,9 @@ export const AppLayout = async (props: AppLayoutProps) => {
     return (
         <div className={classNames(cls.block)}>
             <StoreProvider>
-                {/*<AppLayoutClient data={response}>*/}
+                <StoreInitializer actions={[
+                    appMainActions.setResponseData(response),
+                ]} />
                 <Header
                     data={response.data}
                     className={
@@ -35,7 +38,6 @@ export const AppLayout = async (props: AppLayoutProps) => {
                     data={response.data}
                     className={classNames(cls.footer)}
                 />
-                {/*</AppLayoutClient>*/}
             </StoreProvider>
         </div>
     );

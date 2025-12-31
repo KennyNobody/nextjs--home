@@ -1,5 +1,5 @@
 import { errorLogger } from 'shared/lib/errorLogger';
-import { StrapiApiError, StrapiErrorResponse } from 'shared/types/ErrorTypes';
+import { ApiError, StrapiErrorResponse } from 'shared/types/ErrorTypes';
 
 const extractStrapiError = (error: any): StrapiErrorResponse | undefined => {
     if (error.response?.data?.error) {
@@ -19,18 +19,19 @@ export const handleApiError = (
     error: any,
     endpoint: string,
     method: string = 'GET'
-): StrapiApiError => {
+): ApiError => {
     const strapiError = extractStrapiError(error);
     const validationErrors = extractValidationErrors(strapiError);
 
-    const apiError: StrapiApiError = {
+    const apiError: ApiError = {
         message: strapiError?.message || error.response?.data?.message || error.message || 'Unknown error',
         status: strapiError?.status || error.response?.status || 500,
         timestamp: new Date().toISOString(),
         endpoint,
         method,
-        strapiError,
-        validationErrors,
+        // TODO: Нормально разобраться с ошибками
+        // strapiError,
+        // validationErrors,
     };
 
     // Логируем только НЕ-400 ошибки (5xx, 404 и др.)

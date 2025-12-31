@@ -17,7 +17,7 @@ export default async function PageApp() {
 
     return (
         <Page
-            mode={PageMode.DETAIL}
+            mode={PageMode.INDEX}
             data={response?.data}
         />
     )

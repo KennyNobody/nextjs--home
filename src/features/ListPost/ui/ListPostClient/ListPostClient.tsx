@@ -2,23 +2,24 @@
 
 import {
     useRef,
-    useEffect,
-    RefObject, useMemo,
+    useMemo, useEffect,
 } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import {
     GridPosts,
     getPostList,
+    getPostIsInit,
     getPostLoading,
     ArticlePostType,
-    getPostPagination,
+    getPostPagination, postActions,
 } from 'entities/Post';
 import cls from './ListPostClient.module.scss';
 import { PaginationType } from 'entities/Pagination';
 import { useAppDispatch } from 'shared/state/hooks';
 import { addRandomNulls } from 'shared/helpers/addRandomNulls';
 import { useInfiniteScroll } from 'shared/hooks/useInfiniteScroll';
+import { fetchPostList } from '../../../../entities/Post/model/services/fetchPostList';
 
 interface ListPostClientProps {
     className?: string;
@@ -38,11 +39,13 @@ export const ListPostClient = (props: ListPostClientProps) => {
     const triggerRef = useRef<HTMLDivElement>(null);
     const isLoading: boolean = useSelector(getPostLoading) || false;
     const dispatch = useAppDispatch();
+
     const dataRedux: ArticlePostType[] = useSelector(getPostList.selectAll);
     const paginationRedux: PaginationType | undefined = useSelector(getPostPagination);
+    const isReduxInitialized = useSelector(getPostIsInit);
 
-    const data = dataPrefetch || dataRedux;
-    const pagination = paginationPrefetch || paginationRedux;
+    const data = isReduxInitialized ? dataRedux : (dataPrefetch || []);
+    const pagination = isReduxInitialized ? paginationRedux : paginationPrefetch;
 
     const {
         pageCount = 1,
@@ -51,27 +54,27 @@ export const ListPostClient = (props: ListPostClientProps) => {
 
     const loadNextPage = () => {
         if (!isLoading && (pageCount > page)) {
-            // dispatch(fetchNextPostList({
-            //     getData,
-            //     replace: false,
-            // }));
-            console.log('Запрашиваем следующую страницу');
+            dispatch(fetchPostList({
+                mode: 'next',
+                replace: false,
+            }))
         }
     };
-
-    useEffect(() => {
-        // dispatch(fetchPostList({}));
-    }, []);
 
     useInfiniteScroll({
         triggerRef,
         callback: loadNextPage,
     });
 
+    useEffect(() => {
+        return () => {
+            dispatch(postActions.clearListData());
+        };
+    }, []);
+
     const displayData = useMemo(() => {
         return isPreview ? addRandomNulls(data) : data;
     }, [isPreview, data]);
-
 
     return (
         <div className={classNames(cls.block, className)}>

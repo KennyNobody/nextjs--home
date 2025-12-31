@@ -1,10 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { ThunkConfig } from 'shared/state/StateSchema';
-import { PageResponseType } from 'shared/types/CommonTypes';
+import { ResponseType } from 'shared/types/ResponseType';
+import { PageType } from '../types/Page';
 import { fetchPageClient } from '../../api/fetchPageClient';
 
-export const fetchPage = createAsyncThunk<PageResponseType, ApiRoutes, ThunkConfig<string>>(
+export const fetchPage = createAsyncThunk<ResponseType<PageType>, ApiRoutes, ThunkConfig<string>>(
     'page/fetchPage',
     async (route, { rejectWithValue }) => {
         try {

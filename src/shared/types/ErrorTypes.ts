@@ -23,11 +23,11 @@ interface StrapiMeta {
         total: number;
     };
 }
-
-interface StrapiSuccessResponse<T = unknown> {
-    data: T;
-    meta?: StrapiMeta;
-}
+//
+// interface StrapiSuccessResponse<T = unknown> {
+//     data: T;
+//     meta?: StrapiMeta;
+// }
 
 interface StrapiError {
     status: number;
@@ -89,14 +89,13 @@ export type {
     ApiError,
     StrapiMeta,
     ErrorLogEntry,
-    // StrapiApiError,
     StrapiError,
     StrapiErrorDetails,
     StrapiInternalError,
     StrapiNotFoundError,
     StrapiErrorResponse,
     StrapiForbiddenError,
-    StrapiSuccessResponse,
+    // StrapiSuccessResponse,
     StrapiValidationError,
     StrapiApplicationError,
     StrapiUnauthorizedError,

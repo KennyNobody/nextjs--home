@@ -1,5 +1,5 @@
 import { ListPostClient } from '../ListPostClient/ListPostClient';
-import { ArticlePostType, fetchPostServer } from 'entities/Post';
+import { ArticlePostType, fetchPostServer, postActions } from 'entities/Post';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { ResponseType } from 'shared/types/ResponseType';
 import { StoreInitializer } from 'shared/state/StoreInitializer';
@@ -18,7 +18,9 @@ export const ListPostServer = async (props: ListPostServerProps) => {
     return (
         <>
             <StoreInitializer
-                postData={response}
+                actions={[
+                    postActions.setResponseData(response),
+                ]}
             />
 
             <ListPostClient

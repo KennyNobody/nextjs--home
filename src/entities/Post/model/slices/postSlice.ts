@@ -23,14 +23,14 @@ const initialState: PostSchema = {
     category: undefined,
     ids: [],
     entities: {},
-    testData1: undefined,
-    testData2: undefined,
-    pagination: {
-        page: 1,
-        pageCount: 1,
-        pageSize: 8,
-        total: 1,
-    },
+    isInit: false,
+    pagination: undefined,
+    // pagination: {
+    //     page: 1,
+    //     pageCount: 1,
+    //     pageSize: 8,
+    //     total: 1,
+    // },
 };
 
 const postSlice = createSlice({
@@ -43,8 +43,14 @@ const postSlice = createSlice({
             if (data && meta?.pagination) {
                 state.pagination = meta.pagination;
                 postListAdapter.setAll(state, data);
+                state.isInit = true;
             }
         },
+        clearListData: (state) => {
+            postListAdapter.removeAll(state);
+            state.pagination = undefined;
+            state.isInit = false;
+        }
         // setPagination: (state, action: PayloadAction<PaginationType>) => {
         //     state.pagination = action.payload;
         // },

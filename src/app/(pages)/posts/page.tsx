@@ -1,33 +1,24 @@
 import { Metadata } from 'next';
-import { RouterLinks } from 'shared/config/routerConfig';
-import { StoreInitializer } from 'shared/state/StoreInitializer';
-import { fetchPostServer } from 'entities/Post';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
+import { fetchPageServer, Page, PageMode } from 'entities/Page';
+import { generatePageMetadata } from 'shared/lib/generatePageMetadata';
 
-export const dynamic = 'force-dynamic';
-
-// async function getPostList() {
-//     return await fetchPostServer(ApiRoutes.POSTS_LIST);
-// }
-
-export async function generateMetadata(): Promise<Metadata> {
-    return {
-        title: RouterLinks.POSTS.title,
-    }
+async function getPageData() {
+    return await fetchPageServer(ApiRoutes.PAGE_POST);
 }
 
-export default async function Page() {
-    // const responseList = await getPostList();
+export async function generateMetadata(): Promise<Metadata> {
+    const response = await getPageData();
+    return generatePageMetadata(response?.data?.seo);
+}
+
+export default async function PageApp() {
+    const response = await getPageData();
 
     return (
-        <>
-            {/*<StoreInitializer*/}
-            {/*    postData={responseList}*/}
-            {/*/>;*/}
-            <p>
-                Страница постов
-            </p>
-            {/*<CaseListPublicPage />;*/}
-        </>
+        <Page
+            mode={PageMode.INDEX}
+            data={response?.data}
+        />
     )
 }

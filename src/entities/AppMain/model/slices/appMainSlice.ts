@@ -22,9 +22,6 @@ const appMainSlice = createSlice({
         setResponseData: (state, action: PayloadAction<AppMainResponseType>) => {
             state.data = action.payload.data;
         },
-        resetData: (state) => {
-            state.data = undefined;
-        },
     },
     extraReducers: (builder) => {
         builder

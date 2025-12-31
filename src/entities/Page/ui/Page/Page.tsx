@@ -2,12 +2,22 @@ import { PageType } from 'entities/Page';
 import { Main } from 'shared/ui/Main/Main';
 import { SectionsStack } from 'widgets/SectionStack';
 
-interface FrontPageProps {
-    data?: PageType;
+enum PageMode {
+    FRONT,
+    INDEX,
+    DETAIL,
 }
 
-const FrontPage = (props: FrontPageProps) => {
-    const { data } = props;
+interface PageProps {
+    data?: PageType;
+    mode: PageMode;
+}
+
+const Page = (props: PageProps) => {
+    const {
+        data,
+        mode,
+    } = props;
 
     return (
         <Main>
@@ -15,9 +25,8 @@ const FrontPage = (props: FrontPageProps) => {
                 data?.section
                 && (
                     <SectionsStack
-                        isPreview
-                        isLoading={false}
                         data={data.section}
+                        isPreview={mode === PageMode.FRONT}
                     />
                 )
             }
@@ -25,4 +34,7 @@ const FrontPage = (props: FrontPageProps) => {
     );
 };
 
-export default FrontPage;
+export {
+    Page,
+    PageMode,
+}

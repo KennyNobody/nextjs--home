@@ -10,7 +10,7 @@ import { Stack, StackSizeType } from 'shared/ui/Stack/Stack';
 
 interface PageIndexProps {
     className?: string;
-    isLoading: boolean;
+    // TODO Нужен всегда?
     isPreview: boolean;
     data?: SectionType[];
 }
@@ -19,17 +19,16 @@ export const SectionsStack = (props: PageIndexProps) => {
     const {
         data,
         className,
-        isLoading,
         isPreview,
     } = props;
 
-    if (isLoading) {
-        return (
-            <Stack size={StackSizeType.LARGE}>
-                <SectionLoading isPreview />
-            </Stack>
-        );
-    }
+    // if (isLoading) {
+    //     return (
+    //         <Stack size={StackSizeType.LARGE}>
+    //             <SectionLoading isPreview />
+    //         </Stack>
+    //     );
+    // }
 
     return (
         <Stack size={StackSizeType.LARGE} className={className}>

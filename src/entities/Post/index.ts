@@ -18,6 +18,7 @@ export {
 
 export {
     getPostErrors,
+    getPostIsInit,
     getPostLoading,
     getPostPagination,
 } from './model/selectors/postSelector';
