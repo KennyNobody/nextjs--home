@@ -1,3 +1,7 @@
+export interface FilterParams {
+    [key: string]: string | number | boolean | FilterParams;
+}
+
 interface ApiRequestParams {
     pagination?: {
         page?: number;
@@ -5,6 +9,7 @@ interface ApiRequestParams {
     };
     populate?: string | string[];
     sort?: string;
+    filters?: FilterParams;
     // filters?: Record<string, any>;
     // sort?: string | string[];
 }

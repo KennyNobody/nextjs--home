@@ -8,18 +8,19 @@ import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import {
     GridPosts,
+    postActions,
     getPostList,
+    fetchPostList,
     getPostIsInit,
     getPostLoading,
     ArticlePostType,
-    getPostPagination, postActions,
+    getPostPagination,
 } from 'entities/Post';
 import cls from './ListPostClient.module.scss';
 import { PaginationType } from 'entities/Pagination';
 import { useAppDispatch } from 'shared/state/hooks';
 import { addRandomNulls } from 'shared/helpers/addRandomNulls';
 import { useInfiniteScroll } from 'shared/hooks/useInfiniteScroll';
-import { fetchPostList } from '../../../../entities/Post/model/services/fetchPostList';
 
 interface ListPostClientProps {
     className?: string;

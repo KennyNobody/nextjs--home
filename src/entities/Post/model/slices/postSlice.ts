@@ -50,7 +50,7 @@ const postSlice = createSlice({
             postListAdapter.removeAll(state);
             state.pagination = undefined;
             state.isInit = false;
-        }
+        },
         // setPagination: (state, action: PayloadAction<PaginationType>) => {
         //     state.pagination = action.payload;
         // },
@@ -60,13 +60,13 @@ const postSlice = createSlice({
         // replaceData: (state, action: PayloadAction<ArticlePostType[]>) => {
         //     postListAdapter.setAll(state, action.payload);
         // },
-        // toggleCategory: (state, action: PayloadAction<number | undefined>) => {
-        //     if (state.category === action.payload) {
-        //         state.category = undefined;
-        //     } else {
-        //         state.category = action.payload;
-        //     }
-        // },
+        toggleCategory: (state, action: PayloadAction<number | undefined>) => {
+            if (state.category === action.payload) {
+                state.category = undefined;
+            } else {
+                state.category = action.payload;
+            }
+        },
     },
     extraReducers: (builder) => {
         const request = fetchPostList;

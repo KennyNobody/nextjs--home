@@ -18,7 +18,7 @@ interface ArticleCategoryProps {
     theme?: AppTheme;
     mode: ArticleCategoryMode;
     data?: ArticleCategoryType;
-    clickEvent?: (arg0: ArticleCategoryType | undefined) => void;
+    onClick?: (arg0: ArticleCategoryType | undefined) => void;
 }
 
 export const ArticleCategory = (props: ArticleCategoryProps) => {
@@ -29,17 +29,17 @@ export const ArticleCategory = (props: ArticleCategoryProps) => {
         className,
         isActive,
         theme,
-        clickEvent,
+        onClick,
     } = props;
 
     const Tag: keyof IntrinsicElements = mode === ArticleCategoryMode.STATIC ? 'article' : 'label';
 
     const selectEvent = (): void => {
-        if (clickEvent) clickEvent(data);
+        if (onClick) onClick(data);
     };
 
     const unselectEvent = (): void => {
-        if (clickEvent && isActive) clickEvent(undefined);
+        if (onClick && isActive) onClick(undefined);
     };
 
     const skeleton = (

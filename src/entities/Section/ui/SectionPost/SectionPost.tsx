@@ -1,6 +1,9 @@
-import React, {Suspense} from 'react';
+import React, { Suspense } from 'react';
 import classNames from 'classnames';
+import { GridPosts } from 'entities/Post';
+import { FilterPostServer } from 'features/FilterPost';
 import grid from 'shared/styles/grid.module.scss';
+import { ListPostServer } from 'features/ListPost';
 import { Toolbar } from 'shared/ui/Toolbar/Toolbar';
 import { Container } from 'shared/ui/Container/Container';
 import { RouterLinks } from 'shared/config/routerConfig';
@@ -9,8 +12,6 @@ import { Title, TitleModeType } from 'shared/ui/Title/Title';
 import { LinkRegular } from 'shared/ui/LinkRegular/LinkRegular';
 import cls from './SectionPost.module.scss';
 import { SectionType } from '../../model/types/Section';
-import { ListPostServer } from 'features/ListPost';
-import {GridPosts} from "../../../Post";
 
 interface SectionProps {
     isPreview: boolean;
@@ -86,10 +87,9 @@ export const SectionPost = (props: SectionProps) => {
                                             )
                                         }
                                     >
-                                        <div>Фильтр постов</div>
-                                        {/*<PostFilter*/}
-                                        {/*    className={classNames(cls.category)}*/}
-                                        {/*/>*/}
+                                        <Suspense fallback={<div>Загрузка...</div>}>
+                                            <FilterPostServer />
+                                        </Suspense>
                                     </div>
                                 </>
                             )
