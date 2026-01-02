@@ -3,11 +3,11 @@ import { $apiServer } from 'shared/api/apiServer';
 import { paramsSerializer } from 'shared/lib/paramsSerializer';
 import { ApiRequestParams } from 'shared/types/ApiRequestParams';
 import { ResponseType } from '../../../shared/types/ResponseType';
-import { ArticlePostType } from '../model/types/ArticlePost';
+import { ArticleDevType } from '../model/types/ArticleDev';
 
-const fetchPostServer = async (
+const fetchDevServer = async (
     url: ApiRoutes
-): Promise<ResponseType<ArticlePostType[]>> => {
+): Promise<ResponseType<ArticleDevType[]>> => {
     try {
         // TODO: Удалить после тестирования
         // await new Promise(resolve => setTimeout(resolve, 10000));
@@ -36,5 +36,5 @@ const fetchPostServer = async (
 
 
 export {
-    fetchPostServer,
+    fetchDevServer,
 }

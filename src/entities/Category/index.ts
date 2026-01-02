@@ -29,3 +29,7 @@ export {
 export {
     fetchCategoryServer,
 } from './api/fetchCategoryServer';
+
+export {
+    GridCategory,
+} from './ui/GridCategory/GridCategory';

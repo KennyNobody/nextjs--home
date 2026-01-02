@@ -16,27 +16,27 @@
     }
 
     &--skeleton {
-        width: 60px;
+        width: 90px;
 
         &:nth-child(9n + 1),
         &:nth-child(9n + 3),
         &:nth-child(9n + 4) {
-            width: 100px;
+            width: 140px;
         }
 
         &:nth-child(9n),
         &:nth-child(9n + 2),
         &:nth-child(9n + 5),
         &:nth-child(9n + 6) {
-            width: 120px;
+            width: 165px;
         }
 
         &:nth-child(9n + 7) {
-            width: 170px;
+            width: 200px;
         }
 
         &:nth-child(9n + 8) {
-            width: 200px;
+            width: 240px;
         }
     }
 
@@ -112,22 +112,22 @@
             &:nth-child(9n + 1),
             &:nth-child(9n + 3),
             &:nth-child(9n + 4) {
-                width: 80px;
+                width: 110px;
             }
 
             &:nth-child(9n),
             &:nth-child(9n + 2),
             &:nth-child(9n + 5),
             &:nth-child(9n + 6) {
-                width: 95px;
-            }
-
-            &:nth-child(9n + 7) {
                 width: 130px;
             }
 
-            &:nth-child(9n + 8) {
+            &:nth-child(9n + 7) {
                 width: 160px;
+            }
+
+            &:nth-child(9n + 8) {
+                width: 190px;
             }
         }
     }
@@ -144,18 +144,18 @@
             &:nth-child(9n + 3),
             &:nth-child(9n + 4),
             &:nth-child(9n + 8) {
-                width: 50px;
+                width: 65px;
             }
 
             &:nth-child(9n + 2),
             &:nth-child(9n + 6),
             &:nth-child(9n + 7) {
-                width: 60px;
+                width: 90px;
             }
 
             &:nth-child(9n),
             &:nth-child(9n + 5) {
-                width: 85px;
+                width: 110px;
             }
         }
     }

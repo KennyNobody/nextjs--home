@@ -2,36 +2,34 @@
 
 import {
     useRef,
-    useMemo,
     useEffect,
     useCallback,
 } from 'react';
-import {
-    GridPosts,
-    getPostList,
-    postActions,
-    fetchPostList,
-    getPostIsInit,
-    getPostLoading,
-    ArticlePostType,
-    getPostPagination,
-} from 'entities/Post';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
+import {
+    GridDev,
+    devActions,
+    getDevList,
+    fetchDevList,
+    getDevIsInit,
+    getDevLoading,
+    ArticleDevType,
+    getDevPagination,
+} from 'entities/Dev';
 import { useAppDispatch } from 'shared/state/hooks';
+import cls from './ListDevClient.module.scss';
 import { PaginationType } from 'entities/Pagination';
-import { addRandomNulls } from 'shared/helpers/addRandomNulls';
 import { useInfiniteScroll } from 'shared/hooks/useInfiniteScroll';
-import cls from './ListPostClient.module.scss';
 
-interface ListPostClientProps {
+interface ListDevClientProps {
     className?: string;
     isPreview?: boolean;
-    dataPrefetch?: ArticlePostType[];
+    dataPrefetch?: ArticleDevType[];
     paginationPrefetch?: PaginationType;
 }
 
-export const ListPostClient = (props: ListPostClientProps) => {
+export const ListDevClient = (props: ListDevClientProps) => {
     const {
         isPreview,
         className,
@@ -40,14 +38,13 @@ export const ListPostClient = (props: ListPostClientProps) => {
     } = props;
 
     const triggerRef = useRef<HTMLDivElement>(null);
-    const isLoading: boolean = useSelector(getPostLoading) || false;
+    const isLoading: boolean = useSelector(getDevLoading) || false;
     const dispatch = useAppDispatch();
+    const dataRedux: ArticleDevType[] = useSelector(getDevList.selectAll);
+    const paginationRedux: PaginationType | undefined = useSelector(getDevPagination);
+    const isReduxInitialized = useSelector(getDevIsInit);
 
-    const dataRedux: ArticlePostType[] = useSelector(getPostList.selectAll);
-    const paginationRedux: PaginationType | undefined = useSelector(getPostPagination);
-    const isReduxInitialized = useSelector(getPostIsInit);
-
-    const data = isReduxInitialized ? dataRedux : (dataPrefetch || []);
+    const data = isReduxInitialized ? dataRedux : dataPrefetch;
     const pagination = isReduxInitialized ? paginationRedux : paginationPrefetch;
 
     const {
@@ -58,12 +55,19 @@ export const ListPostClient = (props: ListPostClientProps) => {
     // TODO: Какой в этом смысл?
     const loadNextPage = useCallback(() => {
         if (!isLoading && pageCount > page) {
-            dispatch(fetchPostList({
+            dispatch(fetchDevList({
                 mode: 'next',
                 replace: false,
             }));
         }
     }, [pageCount, page, dispatch, isLoading]);
+
+    const updateData = () => {
+        dispatch(fetchDevList({
+            mode: 'start',
+            replace: true,
+        }));
+    }
 
     useInfiniteScroll({
         triggerRef,
@@ -72,20 +76,20 @@ export const ListPostClient = (props: ListPostClientProps) => {
 
     useEffect(() => {
         return () => {
-            dispatch(postActions.clearListData());
+            dispatch(devActions.clearListData());
         };
     }, []);
 
-    const displayData = useMemo(() => {
-        return isPreview ? addRandomNulls(data) : data;
-    }, [isPreview, data]);
-
     return (
-        <div className={classNames(cls.block, className)}>
-            <GridPosts
-                data={displayData}
+        <div
+            className={
+                classNames(cls.block, className)
+            }
+        >
+            <GridDev
+                data={data}
                 showSkeleton={isLoading && !data?.length}
-                showEnd={!isPreview && !isLoading && page === pageCount}
+                showEnd={!isPreview && !isLoading && !isPreview && page === pageCount}
             />
             {!isPreview && <div ref={triggerRef} />}
         </div>

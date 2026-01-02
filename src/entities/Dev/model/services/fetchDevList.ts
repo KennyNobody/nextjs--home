@@ -4,17 +4,17 @@ import { ThunkConfig } from 'shared/state/StateSchema';
 import { ApiRequestParams } from 'shared/types/ApiRequestParams';
 import { ResponseType } from 'shared/types/ResponseType';
 
-import { fetchPostClient } from '../../api/fetchPostClient';
-import { getPostCategory, getPostPagination } from '../selectors/postSelector';
-import { ArticlePostType } from '../types/ArticlePost';
+import { fetchDevClient } from '../../api/fetchDevClient';
+import { getDevTag, getDevPagination } from '../selectors/devSelector';
+import { ArticleDevType } from '../types/ArticleDev';
 
 interface FetchPostListProps {
     replace?: boolean;
     mode: 'start' | 'next';
 }
 
-export const fetchPostList = createAsyncThunk<ResponseType<ArticlePostType[]>, FetchPostListProps, ThunkConfig<string>>(
-    'post/fetchPostList',
+export const fetchDevList = createAsyncThunk<ResponseType<ArticleDevType[]>, FetchPostListProps, ThunkConfig<string>>(
+    'dev/fetchDevList',
     async (props, thunkAPI) => {
         const { mode } = props;
         const {
@@ -22,8 +22,8 @@ export const fetchPostList = createAsyncThunk<ResponseType<ArticlePostType[]>, F
             rejectWithValue,
         } = thunkAPI;
 
-        const pagination = getPostPagination(getState());
-        const category = getPostCategory(getState());
+        const pagination = getDevPagination(getState());
+        const tag = getDevTag(getState());
         const page = (pagination?.page ?? 1) + 1;
 
         try {
@@ -45,17 +45,17 @@ export const fetchPostList = createAsyncThunk<ResponseType<ArticlePostType[]>, F
                 }
             }
 
-            if (category) {
+            if (tag) {
                 params.filters = {
-                    category: {
+                    tags: {
                         id: {
-                            $eq: category,
+                            $eq: tag,
                         },
                     },
                 };
             }
 
-            return await fetchPostClient(ApiRoutes.POSTS_LIST, params);
+            return await fetchDevClient(ApiRoutes.DEVS_LIST, params);
         } catch (e) {
             return rejectWithValue('error');
         }

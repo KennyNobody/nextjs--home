@@ -1,17 +1,18 @@
-import React, { Suspense } from 'react';
 import classNames from 'classnames';
+import React, { Suspense } from 'react';
 import { GridPosts } from 'entities/Post';
-import { FilterPostServer } from 'features/FilterPost';
 import grid from 'shared/styles/grid.module.scss';
 import { ListPostServer } from 'features/ListPost';
 import { Toolbar } from 'shared/ui/Toolbar/Toolbar';
-import { Container } from 'shared/ui/Container/Container';
+import { FilterPostServer } from 'features/FilterPost';
 import { RouterLinks } from 'shared/config/routerConfig';
+import { Container } from 'shared/ui/Container/Container';
 import { Stack, StackSizeType } from 'shared/ui/Stack/Stack';
 import { Title, TitleModeType } from 'shared/ui/Title/Title';
 import { LinkRegular } from 'shared/ui/LinkRegular/LinkRegular';
 import cls from './SectionPost.module.scss';
 import { SectionType } from '../../model/types/Section';
+import {ListCategory} from "../../../Category";
 
 interface SectionProps {
     isPreview: boolean;
@@ -48,25 +49,25 @@ export const SectionPost = (props: SectionProps) => {
                                 )
                             }
                         </div>
-                        <div
-                            className={
-                                classNames(
-                                    grid['grid__col-2'],
-                                    cls['cell-years'],
-                                )
-                            }
-                        >
-                            <Toolbar>
-                                {
-                                    data?.years
-                                     && (
-                                         <Title mode={TitleModeType.REGULAR}>
-                                             { data.years }
-                                         </Title>
-                                     )
-                                }
-                            </Toolbar>
-                        </div>
+                        {/*<div*/}
+                        {/*    className={*/}
+                        {/*        classNames(*/}
+                        {/*            grid['grid__col-2'],*/}
+                        {/*            cls['cell-years'],*/}
+                        {/*        )*/}
+                        {/*    }*/}
+                        {/*>*/}
+                        {/*    <Toolbar>*/}
+                        {/*        {*/}
+                        {/*            data?.years*/}
+                        {/*             && (*/}
+                        {/*                 <Title mode={TitleModeType.REGULAR}>*/}
+                        {/*                     { data.years }*/}
+                        {/*                 </Title>*/}
+                        {/*             )*/}
+                        {/*        }*/}
+                        {/*    </Toolbar>*/}
+                        {/*</div>*/}
                         {
                             !isPreview
                             && (
@@ -87,7 +88,11 @@ export const SectionPost = (props: SectionProps) => {
                                             )
                                         }
                                     >
-                                        <Suspense fallback={<div>Загрузка...</div>}>
+                                        <Suspense fallback={
+                                            <ListCategory
+                                                showSkeleton={true}
+                                            />
+                                        }>
                                             <FilterPostServer />
                                         </Suspense>
                                     </div>

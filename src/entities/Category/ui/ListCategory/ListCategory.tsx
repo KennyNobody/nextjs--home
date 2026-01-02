@@ -1,16 +1,17 @@
 import classNames from 'classnames';
-import cls from './ListCategory.module.scss';
+
+import { ArticleCategoryType } from '../../model/types/ArticleCategory';
 import {
     ArticleCategory,
     ArticleCategoryMode,
 } from '../ArticleCategory/ArticleCategory';
-import { ArticleCategoryType } from '../../model/types/ArticleCategory';
+import cls from './ListCategory.module.scss';
 
 interface ListCategoryProps {
     className?: string;
     showSkeleton: boolean;
-    selectedItem: number | undefined;
-    data: ArticleCategoryType[] | undefined;
+    selectedItem?: number;
+    data?: ArticleCategoryType[];
     selectEvent?: (arg?: ArticleCategoryType) => void;
 }
 

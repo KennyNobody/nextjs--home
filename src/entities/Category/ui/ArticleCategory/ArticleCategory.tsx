@@ -4,7 +4,6 @@ import { AppTheme } from 'shared/types/Theme';
 import { Skeleton, SkeletonMode } from 'shared/ui/Skeleton/Skeleton';
 import cls from './ArticleCategory.module.scss';
 import { ArticleCategoryType } from '../../model/types/ArticleCategory';
-import IntrinsicElements = JSX.IntrinsicElements;
 
 export enum ArticleCategoryMode {
     STATIC,
@@ -32,7 +31,7 @@ export const ArticleCategory = (props: ArticleCategoryProps) => {
         onClick,
     } = props;
 
-    const Tag: keyof IntrinsicElements = mode === ArticleCategoryMode.STATIC ? 'article' : 'label';
+    const Tag: keyof JSX.IntrinsicElements = mode === ArticleCategoryMode.STATIC ? 'article' : 'label';
 
     const selectEvent = (): void => {
         if (onClick) onClick(data);

@@ -3,12 +3,3 @@
 @use './base/main';
 @use './vars/colors';
 @use './vars/sizes';
-
-html {
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-}
-
-a, input, button {
-    outline-color: var(--blue);
-}

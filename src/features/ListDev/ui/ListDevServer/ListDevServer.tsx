@@ -1,20 +1,20 @@
 import {
-    postActions,
-    ArticlePostType,
-    fetchPostServer,
-} from 'entities/Post';
+    devActions,
+    ArticleDevType,
+    fetchDevServer,
+} from 'entities/Dev';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { ResponseType } from 'shared/types/ResponseType';
 import { StoreInitializer } from 'shared/state/StoreInitializer';
-import { ListPostClient } from '../ListPostClient/ListPostClient';
+import { ListDevClient } from '../ListDevClient/ListDevClient';
 
-interface ListPostServerProps {
+interface ListDevServerProps {
     isPreview?: boolean;
 }
 
-export const ListPostServer = async (props: ListPostServerProps) => {
+export const ListDevServer = async (props: ListDevServerProps) => {
     const { isPreview } = props;
-    const response: ResponseType<ArticlePostType[]> = await fetchPostServer(ApiRoutes.POSTS_LIST);
+    const response: ResponseType<ArticleDevType[]> = await fetchDevServer(ApiRoutes.DEVS_LIST);
 
     // TODO Добавить обработку исключений
     const { data, meta } = response;
@@ -23,11 +23,11 @@ export const ListPostServer = async (props: ListPostServerProps) => {
         <>
             <StoreInitializer
                 actions={[
-                    postActions.setResponseData(response),
+                    devActions.setResponseData(response),
                 ]}
             />
 
-            <ListPostClient
+            <ListDevClient
                 dataPrefetch={data}
                 isPreview={isPreview}
                 paginationPrefetch={meta?.pagination}

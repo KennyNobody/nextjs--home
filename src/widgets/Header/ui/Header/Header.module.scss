@@ -48,10 +48,11 @@
 }
 
 .nav {
-    display: none;
-    visibility: hidden;
+    &--desktop {
 
-    &[hidden] {
+    }
+
+    &--mobile {
         display: none;
         visibility: hidden;
     }

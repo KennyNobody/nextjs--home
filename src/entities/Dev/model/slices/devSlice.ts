@@ -3,69 +3,69 @@ import {
     PayloadAction,
     createEntityAdapter,
 } from '@reduxjs/toolkit';
-import { ArticlePostType } from '../types/ArticlePost';
-import { PostSchema } from '../types/PostSchema';
-import { fetchPostList } from '../services/fetchPostList';
+import { ArticleDevType } from '../types/ArticleDev';
+import { DevSchema } from '../types/DevSchema';
+import { fetchDevList } from '../services/fetchDevList';
 import { StateSchema } from 'shared/state/StateSchema';
 import { ResponseType } from 'shared/types/ResponseType';
 
-const postListAdapter = createEntityAdapter<ArticlePostType, number>({
-    selectId: (item: ArticlePostType) => item.id,
+const devListAdapter = createEntityAdapter<ArticleDevType, number>({
+    selectId: (item: ArticleDevType) => item.id,
 });
 
-export const getPostList = postListAdapter.getSelectors<StateSchema>(
-    (state) => state.post || postListAdapter.getInitialState(),
+export const getDevList = devListAdapter.getSelectors<StateSchema>(
+    (state) => state.dev || devListAdapter.getInitialState(),
 );
 
-const initialState: PostSchema = {
+const initialState: DevSchema = {
     isLoading: false,
     errors: undefined,
-    category: undefined,
+    tag: undefined,
     ids: [],
     entities: {},
     isInit: false,
     pagination: undefined,
-    currentRequestId: undefined,
 };
 
-const postSlice = createSlice({
-    name: 'postSlice',
+const devSlice = createSlice({
+    name: 'devSlice',
     initialState,
     reducers: {
-        setResponseData: (state, action: PayloadAction<ResponseType<ArticlePostType[]>>) => {
+        setResponseData: (state, action: PayloadAction<ResponseType<ArticleDevType[]>>) => {
             const { data, meta } = action.payload;
 
             if (data && meta?.pagination) {
                 state.pagination = meta.pagination;
-                postListAdapter.setAll(state, data);
+                devListAdapter.setAll(state, data);
                 state.isInit = true;
             }
         },
         clearListData: (state) => {
-            postListAdapter.removeAll(state);
+            devListAdapter.removeAll(state);
             state.pagination = undefined;
             state.isInit = false;
         },
-        toggleCategory: (state, action: PayloadAction<number | undefined>) => {
-            if (state.category === action.payload) {
-                state.category = undefined;
+        toggleTag: (state, action: PayloadAction<number | undefined>) => {
+            if (state.tag === action.payload) {
+                state.tag = undefined;
             } else {
-                state.category = action.payload;
+                state.tag = action.payload;
             }
         },
     },
     extraReducers: (builder) => {
-        const request = fetchPostList;
+        const request = fetchDevList;
 
         builder
             .addCase(request.pending, (state, action) => {
                 const { replace } = action.meta.arg;
                 if (replace) {
-                    postListAdapter.removeAll(state);
+                    devListAdapter.removeAll(state);
                     state.pagination = undefined;
                 }
 
                 state.currentRequestId = action.meta.requestId;
+
                 state.errors = undefined;
                 state.isLoading = true;
             })
@@ -76,12 +76,11 @@ const postSlice = createSlice({
                 const { data, meta } = action.payload;
                 const addData =
                     action?.meta?.arg?.replace
-                        ? postListAdapter.setAll
-                        : postListAdapter.addMany;
+                        ? devListAdapter.setAll
+                        : devListAdapter.addMany;
                 addData(state, data);
 
                 if (meta?.pagination) state.pagination = meta.pagination;
-
                 state.isLoading = false;
                 state.currentRequestId = undefined;
             })
@@ -97,6 +96,6 @@ const postSlice = createSlice({
 });
 
 export const {
-    reducer: postReducer,
-    actions: postActions,
-} = postSlice;
+    reducer: devReducer,
+    actions: devActions,
+} = devSlice;

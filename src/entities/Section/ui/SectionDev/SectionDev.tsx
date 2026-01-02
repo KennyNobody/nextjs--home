@@ -1,17 +1,17 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import classNames from 'classnames';
-// import { ListDev } from '3_features/ListDev';
-// import { DevFilter } from '3_features/DevFilter';
+import { ListDevServer } from 'features/ListDev';
+import grid from 'shared/styles/grid.module.scss';
 import { Toolbar } from 'shared/ui/Toolbar/Toolbar';
+import { SectionType } from 'entities/Section/index';
+import { FilterDevServer } from 'features/FilterDev';
+import { RouterLinks } from 'shared/config/routerConfig';
 import { Container } from 'shared/ui/Container/Container';
 import { LinkTitle } from 'shared/ui/LinkTitle/LinkTitle';
 import { Stack, StackSizeType } from 'shared/ui/Stack/Stack';
 import { Title, TitleModeType } from 'shared/ui/Title/Title';
 import { LinkRegular } from 'shared/ui/LinkRegular/LinkRegular';
 import cls from './SectionDev.module.scss';
-import grid from 'shared/styles/grid.module.scss';
-import { SectionType } from 'entities/Section/index';
-import { RouterLinks } from 'shared/config/routerConfig';
 
 interface SectionProps {
     isPreview: boolean;
@@ -82,14 +82,15 @@ export const SectionDev = (props: SectionProps) => {
                                             )
                                         }
                                     >
-                                        Фильтр DEV
-                                        {/*<DevFilter />*/}
+                                        <FilterDevServer />
                                     </div>
                                 </>
                             )
                         }
                     </div>
-                    {/*<ListDev isPreview={isPreview} />*/}
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <ListDevServer isPreview={isPreview} />
+                    </Suspense>
                     {
                         isPreview
                         && (

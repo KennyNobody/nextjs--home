@@ -1,10 +1,7 @@
 'use client';
 
-import {
-    postActions,
-    fetchPostList,
-    getPostCategory,
-} from 'entities/Post';
+import classNames from 'classnames';
+import { useSelector } from 'react-redux';
 import {
     ListCategory,
     getCategoryList,
@@ -12,17 +9,16 @@ import {
     getCategoryLoading,
     ArticleCategoryType,
 } from 'entities/Category';
-import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+import cls from './FilterDevClient.module.scss';
 import { useAppDispatch } from 'shared/state/hooks';
-import cls from './FilterPostClient.module.scss';
+import { devActions, fetchDevList, getDevTag } from 'entities/Dev';
 
-interface PostFilterClientProps {
+interface FilterDevClientProps {
     className?: string;
     dataPrefetch?: ArticleCategoryType[];
 }
 
-export const FilterPostClient = (props: PostFilterClientProps) => {
+export const FilterDevClient = (props: FilterDevClientProps) => {
     const {
         className,
         dataPrefetch,
@@ -30,25 +26,25 @@ export const FilterPostClient = (props: PostFilterClientProps) => {
 
     const dispatch = useAppDispatch();
     const isLoading: boolean = useSelector(getCategoryLoading) || false;
-    const activeCategory: number | undefined = useSelector(getPostCategory);
+    const activeTag: number | undefined = useSelector(getDevTag);
     const dataRedux: ArticleCategoryType[] = useSelector(getCategoryList.selectAll);
     const isReduxInitialized = useSelector(getCategoryIsInit);
     const data: ArticleCategoryType[] = isReduxInitialized ? dataRedux : (dataPrefetch || []);
 
-    const changeCategory = (item: ArticleCategoryType | undefined): void => {
-        dispatch(postActions.toggleCategory(item?.id || undefined));
-        dispatch(fetchPostList({
+    const changeTag = (item: ArticleCategoryType | undefined): void => {
+        dispatch(devActions.toggleTag(item?.id || undefined));
+        dispatch(fetchDevList({
             mode: 'start',
             replace: true,
         }));
-    };
+    }
 
     return (
         <div className={classNames(cls.block, className)}>
             <ListCategory
                 data={data}
-                selectEvent={changeCategory}
-                selectedItem={activeCategory}
+                selectEvent={changeTag}
+                selectedItem={activeTag}
                 showSkeleton={isLoading}
             />
         </div>

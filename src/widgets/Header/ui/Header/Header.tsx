@@ -1,27 +1,27 @@
 'use client';
 
-import { t } from 'i18next';
+import {t} from 'i18next';
 import classNames from 'classnames';
-import { usePathname } from 'next/navigation';
+import {usePathname} from 'next/navigation';
 import grid from 'shared/styles/grid.module.scss';
-import React, { useEffect, useState } from 'react';
-import { Overlay } from 'shared/ui/Overlay/Overlay';
-import { LinkNav } from 'shared/ui/LinkNav/LinkNav';
+import React, {useEffect, useState} from 'react';
+import {Overlay} from 'shared/ui/Overlay/Overlay';
+import {LinkNav} from 'shared/ui/LinkNav/LinkNav';
 import useLayoutMode from 'shared/hooks/useLayoutMode';
-import { ThemeSwitcher } from 'features/ThemeSwitcher';
-import { RouterLinks } from 'shared/config/routerConfig';
-import { PageLayoutMode } from 'shared/types/PageLayout';
-import { ContentKeyType } from 'shared/types/CommonTypes';
-import { Container } from 'shared/ui/Container/Container';
-import { AppMainType } from 'entities/AppMain/model/types/AppMain';
-import { WidgetMobile } from 'shared/ui/WidgetMobile/WidgetMobile';
-import { Nav } from '../Nav/Nav';
-import { Head } from '../Head/Head';
-import { Name } from '../Name/Name';
+import {ThemeSwitcher} from 'features/ThemeSwitcher';
+import {RouterLinks} from 'shared/config/routerConfig';
+import {PageLayoutMode} from 'shared/types/PageLayout';
+import {ContentKeyType} from 'shared/types/CommonTypes';
+import {Container} from 'shared/ui/Container/Container';
+import {AppMainType} from 'entities/AppMain/model/types/AppMain';
+import {WidgetMobile} from 'shared/ui/WidgetMobile/WidgetMobile';
+import {Nav} from '../Nav/Nav';
+import {Head} from '../Head/Head';
+import {Name} from '../Name/Name';
 import cls from './Header.module.scss';
-import { Avatar } from '../Avatar/Avatar';
-import { Description } from '../Description/Description';
-import { MenuMobileButton } from '../MenuMobileButton/MenuMobileButton';
+import {Avatar} from '../Avatar/Avatar';
+import {Description} from '../Description/Description';
+import {MenuMobileButton} from '../MenuMobileButton/MenuMobileButton';
 
 interface HeaderProps {
     data: AppMainType;
@@ -45,7 +45,7 @@ export const Header = (props: HeaderProps) => {
         setIsOpen(false);
     }, [pathname]);
 
-    const isFrontLayout = layoutMode === PageLayoutMode.FRONT;
+    // const isFrontLayout = layoutMode === PageLayoutMode.FRONT;
     const gridColClasses = classNames(grid['grid__col-2'], grid['grid__col-mob-4']);
 
     return (
@@ -80,21 +80,21 @@ export const Header = (props: HeaderProps) => {
                             />
                             <div className={classNames(cls.wrapper)}>
                                 <Head
-                                    isMain={isFrontLayout}
+                                    isMain={layoutMode === PageLayoutMode.FRONT}
                                 >
                                     <Avatar
-                                        isMain={isFrontLayout}
+                                        isMain={layoutMode === PageLayoutMode.FRONT}
                                         className={classNames(cls.avatar)}
                                         url={data?.preview?.data?.formats?.small?.url}
                                     />
                                     <Name
                                         name={data?.name}
                                         nickname={data?.nickname}
-                                        isMain={isFrontLayout}
+                                        isMain={layoutMode === PageLayoutMode.FRONT}
                                         className={
                                             classNames(
                                                 cls.name,
-                                                { [cls['name--front']]: !isFrontLayout },
+                                                { [cls['name--front']]: layoutMode !== PageLayoutMode.FRONT },
                                             )
                                         }
                                     />
@@ -161,7 +161,7 @@ export const Header = (props: HeaderProps) => {
                         }
                     >
                         {
-                            isFrontLayout
+                            layoutMode === PageLayoutMode.FRONT
                             && data?.description
                             && (
                                 <Description
@@ -170,7 +170,7 @@ export const Header = (props: HeaderProps) => {
                             )
                         }
                         {
-                            isFrontLayout
+                            layoutMode !== PageLayoutMode.FRONT
                             && (
                                 <Nav
                                     // isLoading={isLoading}

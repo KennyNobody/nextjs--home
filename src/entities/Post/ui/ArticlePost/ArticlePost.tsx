@@ -10,6 +10,7 @@ import { AppTheme } from 'shared/types/Theme';
 import { _BASE_URL_ } from 'shared/config/envConfig';
 import { RouterLinks } from 'shared/config/routerConfig';
 import { Skeleton, SkeletonMode } from 'shared/ui/Skeleton/Skeleton';
+import Image from "next/image";
 
 interface ArticlePostProps {
     className?: string;
@@ -63,7 +64,12 @@ export const ArticlePost = (props: ArticlePostProps) => {
                 && previewUrl
                 && (
                     <picture className={classNames(cls.picture)}>
-                        <img src={`${_BASE_URL_}${previewUrl}`} alt={altText} />
+                        <Image
+                            fill={true}
+                            alt={altText}
+                            src={`${_BASE_URL_}${previewUrl}`}
+                            sizes="(max-width: 1200px) 100vw, 50vw"
+                        />
                     </picture>
                 )
             }
