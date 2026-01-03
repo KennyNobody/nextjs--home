@@ -24,13 +24,13 @@
 }
 
 [data-theme="theme-light"] {
-    .wrapper {
+    .wrapper:not(.wrapper--theme-light, .wrapper--theme-dark) {
         border-color: var(--dark-secondary);
     }
 }
 
 [data-theme="theme-dark"] {
-    .block {
+    .wrapper:not(.wrapper--theme-light, .wrapper--theme-dark) {
         border-color: var(--light-secondary);
     }
 }

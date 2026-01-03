@@ -1,30 +1,30 @@
-import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { $apiServer } from 'shared/api/apiServer';
+import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { paramsSerializer } from 'shared/lib/paramsSerializer';
 import { ApiRequestParams } from 'shared/types/ApiRequestParams';
 import { ResponseType } from '../../../shared/types/ResponseType';
-import { ArticleCategoryType } from '../model/types/ArticleCategory';
+import { ArticlePhotoType } from '../model/types/ArticlePhoto';
 
-const fetchCategoryServer = async (
+const fetchPhotoServer = async (
     url: ApiRoutes
-): Promise<ResponseType<ArticleCategoryType[]>> => {
+): Promise<ResponseType<ArticlePhotoType[]>> => {
     try {
         // TODO: Удалить после тестирования
-        // await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 10000));
 
         const params: ApiRequestParams = {
             pagination: {
                 page: 1,
-                pageSize: 100,
+                pageSize: 8,
             },
-            populate: 'main.preview,category',
+            populate: 'main.preview',
             sort: 'publishedAt:DESC',
         };
 
         const response = await $apiServer(url, {
             params,
             paramsSerializer,
-            next: { revalidate: 10 }
+            next: { revalidate: 10 },
         });
 
         return await response.json();
@@ -34,6 +34,7 @@ const fetchCategoryServer = async (
     }
 };
 
+
 export {
-    fetchCategoryServer,
+    fetchPhotoServer,
 }

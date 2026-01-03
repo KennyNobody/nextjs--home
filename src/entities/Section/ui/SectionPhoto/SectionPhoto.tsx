@@ -1,6 +1,5 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import classNames from 'classnames';
-// import { ListPhoto } from '3_features/ListPhoto';
 import grid from 'shared/styles/grid.module.scss';
 import { Toolbar } from 'shared/ui/Toolbar/Toolbar';
 import { Container } from 'shared/ui/Container/Container';
@@ -11,6 +10,8 @@ import { LinkRegular } from 'shared/ui/LinkRegular/LinkRegular';
 import cls from './SectionPhoto.module.scss';
 import { SectionType } from '../../model/types/Section';
 import { RouterLinks } from 'shared/config/routerConfig';
+import {ListPhotoServer} from "../../../../features/ListPhoto";
+import {GridPhoto} from "../../../Photo";
 
 interface SectionProps {
     isPreview: boolean;
@@ -56,8 +57,9 @@ export const SectionPhoto = (props: SectionProps) => {
                             </Toolbar>
                         </div>
                     </div>
-                    Плитка фото
-                    {/*<ListPhoto isPreview={isPreview} />*/}
+                    <Suspense fallback={<GridPhoto showSkeleton={true} />}>
+                        <ListPhotoServer isPreview={isPreview} />
+                    </Suspense>
                     {
                         isPreview
                         && (

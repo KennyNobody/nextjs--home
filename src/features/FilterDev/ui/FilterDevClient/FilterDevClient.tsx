@@ -4,9 +4,6 @@ import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import {
     ListCategory,
-    getCategoryList,
-    getCategoryIsInit,
-    getCategoryLoading,
     ArticleCategoryType,
 } from 'entities/Category';
 import cls from './FilterDevClient.module.scss';
@@ -15,21 +12,17 @@ import { devActions, fetchDevList, getDevTag } from 'entities/Dev';
 
 interface FilterDevClientProps {
     className?: string;
-    dataPrefetch?: ArticleCategoryType[];
+    data?: ArticleCategoryType[];
 }
 
 export const FilterDevClient = (props: FilterDevClientProps) => {
     const {
+        data,
         className,
-        dataPrefetch,
     } = props;
 
     const dispatch = useAppDispatch();
-    const isLoading: boolean = useSelector(getCategoryLoading) || false;
     const activeTag: number | undefined = useSelector(getDevTag);
-    const dataRedux: ArticleCategoryType[] = useSelector(getCategoryList.selectAll);
-    const isReduxInitialized = useSelector(getCategoryIsInit);
-    const data: ArticleCategoryType[] = isReduxInitialized ? dataRedux : (dataPrefetch || []);
 
     const changeTag = (item: ArticleCategoryType | undefined): void => {
         dispatch(devActions.toggleTag(item?.id || undefined));
@@ -45,7 +38,6 @@ export const FilterDevClient = (props: FilterDevClientProps) => {
                 data={data}
                 selectEvent={changeTag}
                 selectedItem={activeTag}
-                showSkeleton={isLoading}
             />
         </div>
     );

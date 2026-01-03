@@ -34,7 +34,7 @@
 }
 
 [data-theme="theme-light"] {
-    .link {
+    .link:not(.link--theme-light, .link--theme-dark) {
         border-color: var(--dark-primary);
 
         svg {
@@ -44,7 +44,7 @@
 }
 
 [data-theme="theme-dark"] {
-    .link {
+    .link:not(.link--theme-light, .link--theme-dark) {
         border-color: var(--light-primary);
 
         svg {

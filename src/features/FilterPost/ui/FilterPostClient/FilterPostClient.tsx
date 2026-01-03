@@ -7,9 +7,6 @@ import {
 } from 'entities/Post';
 import {
     ListCategory,
-    getCategoryList,
-    getCategoryIsInit,
-    getCategoryLoading,
     ArticleCategoryType,
 } from 'entities/Category';
 import classNames from 'classnames';
@@ -19,21 +16,17 @@ import cls from './FilterPostClient.module.scss';
 
 interface PostFilterClientProps {
     className?: string;
-    dataPrefetch?: ArticleCategoryType[];
+    data?: ArticleCategoryType[];
 }
 
 export const FilterPostClient = (props: PostFilterClientProps) => {
     const {
+        data,
         className,
-        dataPrefetch,
     } = props;
 
     const dispatch = useAppDispatch();
-    const isLoading: boolean = useSelector(getCategoryLoading) || false;
     const activeCategory: number | undefined = useSelector(getPostCategory);
-    const dataRedux: ArticleCategoryType[] = useSelector(getCategoryList.selectAll);
-    const isReduxInitialized = useSelector(getCategoryIsInit);
-    const data: ArticleCategoryType[] = isReduxInitialized ? dataRedux : (dataPrefetch || []);
 
     const changeCategory = (item: ArticleCategoryType | undefined): void => {
         dispatch(postActions.toggleCategory(item?.id || undefined));
@@ -49,7 +42,6 @@ export const FilterPostClient = (props: PostFilterClientProps) => {
                 data={data}
                 selectEvent={changeCategory}
                 selectedItem={activeCategory}
-                showSkeleton={isLoading}
             />
         </div>
     );

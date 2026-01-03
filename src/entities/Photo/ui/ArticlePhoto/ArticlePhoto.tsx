@@ -5,20 +5,23 @@ import {
     ArticleCategory,
     ArticleCategoryMode,
 } from 'entities/Category';
-import cls from './ArticlePost.module.scss';
-import { ArticlePostType } from '../../model/types/ArticlePost';
+import {
+    Skeleton,
+    SkeletonMode,
+} from 'shared/ui/Skeleton/Skeleton';
 import { AppTheme } from 'shared/types/Theme';
+import cls from './ArticlePhoto.module.scss';
+import { ArticlePhotoType } from '../../model/types/ArticlePhoto';
 import { _BASE_URL_ } from 'shared/config/envConfig';
 import { RouterLinks } from 'shared/config/routerConfig';
-import { Skeleton, SkeletonMode } from 'shared/ui/Skeleton/Skeleton';
 
-interface ArticlePostProps {
+interface ArticlePhotoProps {
     className?: string;
     theme?: AppTheme;
-    data?: ArticlePostType;
+    data?: ArticlePhotoType;
 }
 
-export const ArticlePost = (props: ArticlePostProps) => {
+export const ArticlePhoto = (props: ArticlePhotoProps) => {
     const {
         data,
         theme,
@@ -35,6 +38,7 @@ export const ArticlePost = (props: ArticlePostProps) => {
             className={
                 classNames(
                     cls.article,
+                    theme && cls[`article--${theme}`],
                     cls['article--skeleton'],
                     className,
                 )
@@ -49,7 +53,7 @@ export const ArticlePost = (props: ArticlePostProps) => {
 
     const article = () => (
         <Link
-            href={`${RouterLinks.POSTS_DETAIL.link}/${data?.id}`}
+            href={`${RouterLinks.PHOTO_DETAIL.link}/${data?.id}`}
             className={
                 classNames(
                     cls.article,
@@ -105,7 +109,6 @@ export const ArticlePost = (props: ArticlePostProps) => {
                 data?.category?.data
                 && (
                     <ArticleCategory
-                        theme={theme}
                         className={cls.tag}
                         data={data?.category?.data}
                         mode={ArticleCategoryMode.STATIC}

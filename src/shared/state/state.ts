@@ -2,14 +2,14 @@ import { $apiClient } from '../api/apiClient';
 import { configureStore } from '@reduxjs/toolkit';
 import { appMainReducer } from 'entities/AppMain';
 import { postReducer } from 'entities/Post';
-import { categoryReducer } from 'entities/Category';
 import { devReducer } from 'entities/Dev';
+import { photoReducer } from 'entities/Photo';
 
 const rootReducer = {
     appMain: appMainReducer,
     post: postReducer,
-    category: categoryReducer,
     dev: devReducer,
+    photo: photoReducer,
 };
 
 const makeStore = (preloadedState?: Partial<ReturnType<typeof configureStore>['getState']>) => {

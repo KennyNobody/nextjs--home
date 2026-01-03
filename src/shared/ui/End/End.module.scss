@@ -13,13 +13,13 @@
 }
 
 [data-theme="theme-light"] {
-    .block {
+    .block:not(.block--theme-dark, .block--theme-light) {
         color: var(--dark-secondary);
     }
 }
 
 [data-theme="theme-dark"] {
-    .block {
+    .block:not(.block--theme-dark, .block--theme-light) {
         color: var(--light-secondary);
     }
 }

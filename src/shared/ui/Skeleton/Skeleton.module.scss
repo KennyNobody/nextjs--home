@@ -20,23 +20,23 @@
         );
     }
 
-    &.block--theme-light {
+    &--theme-light {
         background-color: var(--light-accent);
     }
 
-    &.block--theme-dark {
+    &--theme-dark {
         background-color: var(--dark-accent);
     }
 }
 
 [data-theme="theme-light"] {
-    .block {
+    .block:not(.block--theme-light, .block--theme-dark) {
         background-color: var(--light-accent);
     }
 }
 
 [data-theme="theme-dark"] {
-    .block {
+    .block:not(.block--theme-light, .block--theme-dark) {
         background-color: var(--dark-accent);
     }
 }
@@ -98,23 +98,23 @@
         );
     }
 
-    &.block--theme-light {
+    &--theme-light {
         background-color: var(--light-accent);
     }
 
-    &.block--theme-dark {
+    &--theme-dark {
         background-color: var(--dark-accent);
     }
 }
 
 [data-theme="theme-light"] {
-    .inner {
+    .inner:not(.inner--theme-light, .inner--theme-dark) {
         background-color: var(--light-accent);
     }
 }
 
 [data-theme="theme-dark"] {
-    .inner {
+    .inner:not(.inner--theme-light, .inner--theme-dark) {
         background-color: var(--dark-accent);
     }
 }

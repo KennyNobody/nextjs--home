@@ -28,14 +28,14 @@
 }
 
 [data-theme="theme-light"] {
-    .block {
+    .block:not(.block--theme-light, .block--theme-dark) {
         color: var(--dark-primary);
         background-color: var(--light-accent);
     }
 }
 
 [data-theme="theme-dark"] {
-    .block {
+    .block:not(.block--theme-light, .block--theme-dark) {
         color: var(--light-primary);
         background-color: var(--dark-accent);
     }

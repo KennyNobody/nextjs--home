@@ -7,6 +7,6 @@ import { ApiRequestParams } from 'shared/types/ApiRequestParams';
 
 export const fetchDevClient = async (route: ApiRoutes, params?: ApiRequestParams) => {
     const response: AxiosResponse<ResponseType<ArticleDevType[]>> = await $apiClient.get(route, { params });
-    await new Promise(resolve => setTimeout(resolve, 10000));
+    // await new Promise(resolve => setTimeout(resolve, 10000));
     return response.data;
 };

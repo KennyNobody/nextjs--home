@@ -1,11 +1,9 @@
 import {
-    categoryActions,
     fetchCategoryServer,
 } from 'entities/Category';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { ArticleCategoryType } from 'entities/Category';
 import { ResponseType } from 'shared/types/ResponseType';
-import { StoreInitializer } from 'shared/state/StoreInitializer';
 import { FilterDevClient } from '../FilterDevClient/FilterDevClient';
 
 export const FilterDevServer = async () => {
@@ -15,16 +13,6 @@ export const FilterDevServer = async () => {
     const { data } = response;
 
     return (
-        <>
-            <StoreInitializer
-                actions={[
-                    categoryActions.setResponseData(response),
-                ]}
-            />
-
-            <FilterDevClient
-                dataPrefetch={data}
-            />
-        </>
+        <FilterDevClient data={data} />
     );
 };

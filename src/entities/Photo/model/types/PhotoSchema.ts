@@ -1,11 +1,12 @@
 import { EntityState } from '@reduxjs/toolkit';
+import { ArticlePhotoType } from './ArticlePhoto';
 import { PaginationType } from 'entities/Pagination';
-import { ArticleCategoryType } from './ArticleCategory';
 
-export interface CategorySchema extends EntityState<ArticleCategoryType, number> {
+export interface PhotoSchema extends EntityState<ArticlePhotoType, number> {
     isLoading?: boolean;
     // errors?: FetchBaseQueryError;
     errors?: string;
+    pagination?: PaginationType;
     isInit: boolean;
     currentRequestId?: string;
 }

@@ -1,5 +1,6 @@
-import React, {Suspense} from 'react';
 import classNames from 'classnames';
+import { GridDev } from 'entities/Dev';
+import React, { Suspense } from 'react';
 import { ListDevServer } from 'features/ListDev';
 import grid from 'shared/styles/grid.module.scss';
 import { Toolbar } from 'shared/ui/Toolbar/Toolbar';
@@ -88,7 +89,7 @@ export const SectionDev = (props: SectionProps) => {
                             )
                         }
                     </div>
-                    <Suspense fallback={<div>Loading...</div>}>
+                    <Suspense fallback={<GridDev showSkeleton={true} />}>
                         <ListDevServer isPreview={isPreview} />
                     </Suspense>
                     {

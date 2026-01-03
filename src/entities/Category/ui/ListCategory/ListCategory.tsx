@@ -9,7 +9,7 @@ import cls from './ListCategory.module.scss';
 
 interface ListCategoryProps {
     className?: string;
-    showSkeleton: boolean;
+    showSkeleton?: boolean;
     selectedItem?: number;
     data?: ArticleCategoryType[];
     selectEvent?: (arg?: ArticleCategoryType) => void;

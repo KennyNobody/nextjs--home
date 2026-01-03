@@ -3,57 +3,61 @@ import {
     PayloadAction,
     createEntityAdapter,
 } from '@reduxjs/toolkit';
+import { ArticlePhotoType } from '../types/ArticlePhoto';
+import { PhotoSchema } from '../types/PhotoSchema';
+import { fetchPhotoList } from '../services/fetchPhotoList';
 import { StateSchema } from 'shared/state/StateSchema';
 import { ResponseType } from 'shared/types/ResponseType';
-import { ArticleCategoryType } from '../types/ArticleCategory';
-import { CategorySchema } from '../types/CategorySchema';
-import { fetchCategoryList } from '../services/fetchCategoryList';
 
-const categoryListAdapter = createEntityAdapter<ArticleCategoryType, number>({
-    selectId: (item: ArticleCategoryType) => item.id,
+const photoListAdapter = createEntityAdapter<ArticlePhotoType, number>({
+    selectId: (item: ArticlePhotoType) => item.id,
 });
 
-export const getCategoryList = categoryListAdapter.getSelectors<StateSchema>(
-    (state) => state.category || categoryListAdapter.getInitialState(),
+export const getPhotoList = photoListAdapter.getSelectors<StateSchema>(
+    (state) => state.photo || photoListAdapter.getInitialState(),
 );
 
-const initialState: CategorySchema = {
+const initialState: PhotoSchema = {
     isLoading: false,
     errors: undefined,
     ids: [],
     entities: {},
     isInit: false,
+    pagination: undefined,
     currentRequestId: undefined,
 };
 
-const categorySlice = createSlice({
-    name: 'categorySlice',
+const photoSlice = createSlice({
+    name: 'photoSlice',
     initialState,
     reducers: {
-        setResponseData: (state, action: PayloadAction<ResponseType<ArticleCategoryType[]>>) => {
-            const { data } = action.payload;
+        setResponseData: (state, action: PayloadAction<ResponseType<ArticlePhotoType[]>>) => {
+            const { data, meta } = action.payload;
 
-            if (data) {
-                categoryListAdapter.setAll(state, data);
+            if (data && meta?.pagination) {
+                state.pagination = meta.pagination;
+                photoListAdapter.setAll(state, data);
                 state.isInit = true;
             }
         },
         clearListData: (state) => {
-            categoryListAdapter.removeAll(state);
+            photoListAdapter.removeAll(state);
+            state.pagination = undefined;
             state.isInit = false;
-            state.currentRequestId = undefined;
-        }
+        },
     },
     extraReducers: (builder) => {
-        const request = fetchCategoryList;
+        const request = fetchPhotoList;
 
         builder
             .addCase(request.pending, (state, action) => {
                 const { replace } = action.meta.arg;
-                if (replace) categoryListAdapter.removeAll(state);
+                if (replace) {
+                    photoListAdapter.removeAll(state);
+                    state.pagination = undefined;
+                }
 
                 state.currentRequestId = action.meta.requestId;
-
                 state.errors = undefined;
                 state.isLoading = true;
             })
@@ -61,12 +65,14 @@ const categorySlice = createSlice({
                 // Предотвращаем race condition
                 if (state.currentRequestId !== action.meta.requestId) return;
 
-                const { data } = action.payload;
+                const { data, meta } = action.payload;
                 const addData =
                     action?.meta?.arg?.replace
-                        ? categoryListAdapter.setAll
-                        : categoryListAdapter.addMany;
+                        ? photoListAdapter.setAll
+                        : photoListAdapter.addMany;
                 addData(state, data);
+
+                if (meta?.pagination) state.pagination = meta.pagination;
 
                 state.isLoading = false;
                 state.currentRequestId = undefined;
@@ -83,6 +89,6 @@ const categorySlice = createSlice({
 });
 
 export const {
-    reducer: categoryReducer,
-    actions: categoryActions,
-} = categorySlice;
+    reducer: photoReducer,
+    actions: photoActions,
+} = photoSlice;
