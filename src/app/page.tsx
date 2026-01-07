@@ -1,14 +1,13 @@
-import { Metadata } from 'next';
 import {
-    Page,
-    PageMode,
-    fetchPageServer,
+    fetchPageIndex,
 } from 'entities/Page';
+import { Metadata } from 'next';
+import { Page } from 'pages/Page';
 import { ApiRoutes } from '../shared/api/apiEndpoints';
 import { generatePageMetadata } from '../shared/lib/generatePageMetadata';
 
 async function getPageData() {
-    return await fetchPageServer(ApiRoutes.PAGE_FRONT);
+    return await fetchPageIndex(ApiRoutes.PAGE_FRONT);
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,7 +20,7 @@ export default async function PageApp() {
 
     return (
         <Page
-            mode={PageMode.FRONT}
+            mode={'front'}
             data={response?.data}
         />
     );

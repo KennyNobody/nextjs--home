@@ -48,6 +48,7 @@ const nextConfig: NextConfig = {
                 pathname: '/uploads/**',
             }
         ],
+        qualities: [75, 90, 100],
     },
     turbopack: {
         rules: {

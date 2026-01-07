@@ -1,5 +1,5 @@
 import { ArticleCategoryType } from 'entities/Category';
-import { DetailContentType } from 'shared/types/DetailContent';
+import { DetailContentType } from 'entities/DetailContent';
 
 interface ArticleDevType {
     id: number;
@@ -10,7 +10,7 @@ interface ArticleDevType {
     createdAt: Date;
     updatedAt: Date;
     publishedAt?: Date;
-    main: DetailContentType;
+    main?: DetailContentType;
     tags?: {
         data: ArticleCategoryType[];
     };

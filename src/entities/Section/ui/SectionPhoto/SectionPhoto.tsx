@@ -1,7 +1,10 @@
-import React, {Suspense} from 'react';
+import React, { Suspense } from 'react';
 import classNames from 'classnames';
+import { GridPhoto } from 'entities/Photo';
 import grid from 'shared/styles/grid.module.scss';
 import { Toolbar } from 'shared/ui/Toolbar/Toolbar';
+import { ListPhotoServer } from 'features/ListPhoto';
+import { RouterLinks } from 'shared/config/routerConfig';
 import { Container } from 'shared/ui/Container/Container';
 import { LinkTitle } from 'shared/ui/LinkTitle/LinkTitle';
 import { Stack, StackSizeType } from 'shared/ui/Stack/Stack';
@@ -9,9 +12,6 @@ import { Title, TitleModeType } from 'shared/ui/Title/Title';
 import { LinkRegular } from 'shared/ui/LinkRegular/LinkRegular';
 import cls from './SectionPhoto.module.scss';
 import { SectionType } from '../../model/types/Section';
-import { RouterLinks } from 'shared/config/routerConfig';
-import {ListPhotoServer} from "../../../../features/ListPhoto";
-import {GridPhoto} from "../../../Photo";
 
 interface SectionProps {
     isPreview: boolean;

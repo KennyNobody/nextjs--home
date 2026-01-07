@@ -2,10 +2,10 @@ import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { $apiServer } from 'shared/api/apiServer';
 import { paramsSerializer } from 'shared/lib/paramsSerializer';
 
-const fetchPageServer = async (url: ApiRoutes) => {
+const fetchPageDetail = async (url: ApiRoutes, slug?: string) => {
     try {
-        const response = await $apiServer(url, {
-            params: { populate: '*' },
+        const response = await $apiServer(`${url}/${slug}`, {
+            params: { populate: 'main.preview,tags,category,seo' },
             paramsSerializer,
             next: { revalidate: 3600 }
         });
@@ -19,5 +19,5 @@ const fetchPageServer = async (url: ApiRoutes) => {
 
 
 export {
-    fetchPageServer,
+    fetchPageDetail,
 }

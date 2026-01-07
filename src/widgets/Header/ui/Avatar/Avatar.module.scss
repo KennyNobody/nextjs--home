@@ -25,23 +25,23 @@
         }
     }
 
-    &.block--theme-light {
+    &--theme-light {
         background-color: var(--bg-light);
     }
 
-    &.block--theme-dark {
+    &--theme-dark {
         background-color: var(--dark-primary);
     }
 }
 
 [data-theme="theme-light"] {
-    .block {
+    .block:not(.block--theme-light, .block--theme-dark) {
         background-color: var(--light-accent);
     }
 }
 
 [data-theme="theme-dark"] {
-    .block {
+    .block:not(.block--theme-light, .block--theme-dark) {
         background-color: var(--dark-accent);
     }
 }

@@ -19,7 +19,7 @@ export const Switcher = (props: SwitcherProps) => {
     } = props;
 
     return (
-        <label className={classNames(cls.label, className)}>
+        <label className={classNames(cls.label, className)} aria-label={'Переключить цветовую схему'}>
             <input
                 type="checkbox"
                 checked={isChecked}

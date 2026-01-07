@@ -9,20 +9,17 @@ import {
     ListCategory,
     ArticleCategoryType,
 } from 'entities/Category';
-import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/state/hooks';
-import cls from './FilterPostClient.module.scss';
+import { Fieldset } from 'shared/ui/Fieldset/Fieldset';
 
 interface PostFilterClientProps {
-    className?: string;
     data?: ArticleCategoryType[];
 }
 
 export const FilterPostClient = (props: PostFilterClientProps) => {
     const {
         data,
-        className,
     } = props;
 
     const dispatch = useAppDispatch();
@@ -37,12 +34,12 @@ export const FilterPostClient = (props: PostFilterClientProps) => {
     };
 
     return (
-        <div className={classNames(cls.block, className)}>
+        <Fieldset title={'Фильтр по категориям'}>
             <ListCategory
                 data={data}
                 selectEvent={changeCategory}
                 selectedItem={activeCategory}
             />
-        </div>
+        </Fieldset>
     );
 };

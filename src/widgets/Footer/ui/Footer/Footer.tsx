@@ -1,17 +1,15 @@
 'use client'
 
-import classNames from 'classnames';
 import React from 'react';
-import { ThemeSwitcher } from 'features/ThemeSwitcher';
+import classNames from 'classnames';
+import { AppMainType } from 'entities/AppMain';
 import grid from 'shared/styles/grid.module.scss';
-import { Controls } from 'shared/ui/Controls/Controls';
+import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import { Container } from 'shared/ui/Container/Container';
-import { IconKey } from 'shared/ui/IconSocial/IconSocial';
-import { LinkSocial } from 'shared/ui/LinkSocial/LinkSocial';
 import { Skeleton, SkeletonMode } from 'shared/ui/Skeleton/Skeleton';
 import cls from './Footer.module.scss';
+import { Socials } from '../Socials/Socials';
 import { FooterCaption } from '../FooterCaption/FooterCaption';
-import { AppMainType } from 'entities/AppMain';
 
 interface FooterProps {
     data: AppMainType;
@@ -73,25 +71,7 @@ export function Footer(props: FooterProps) {
                                 && (
                                     <>
                                         <ThemeSwitcher />
-                                        <Controls>
-                                            {/* TODO: Сделать данные динамичными */}
-                                            <LinkSocial
-                                                iconKey={IconKey.TG}
-                                                href="https://web.telegram.org/"
-                                            />
-                                            <LinkSocial
-                                                iconKey={IconKey.INST}
-                                                href="https://www.instagram.com/"
-                                            />
-                                            <LinkSocial
-                                                iconKey={IconKey.VK}
-                                                href="https://vk.com/feed"
-                                            />
-                                            <LinkSocial
-                                                iconKey={IconKey.GH}
-                                                href="https://github.com/KennyNobody/"
-                                            />
-                                        </Controls>
+                                        <Socials />
                                     </>
                                 )
                             }

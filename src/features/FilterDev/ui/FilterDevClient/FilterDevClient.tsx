@@ -1,25 +1,24 @@
 'use client';
 
-import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+import {
+    getDevTag,
+    devActions,
+    fetchDevList,
+} from 'entities/Dev';
 import {
     ListCategory,
     ArticleCategoryType,
 } from 'entities/Category';
-import cls from './FilterDevClient.module.scss';
+import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/state/hooks';
-import { devActions, fetchDevList, getDevTag } from 'entities/Dev';
+import { Fieldset } from 'shared/ui/Fieldset/Fieldset';
 
 interface FilterDevClientProps {
-    className?: string;
     data?: ArticleCategoryType[];
 }
 
 export const FilterDevClient = (props: FilterDevClientProps) => {
-    const {
-        data,
-        className,
-    } = props;
+    const { data } = props;
 
     const dispatch = useAppDispatch();
     const activeTag: number | undefined = useSelector(getDevTag);
@@ -33,12 +32,12 @@ export const FilterDevClient = (props: FilterDevClientProps) => {
     }
 
     return (
-        <div className={classNames(cls.block, className)}>
+        <Fieldset title={'Фильтр по тегам'}>
             <ListCategory
                 data={data}
                 selectEvent={changeTag}
                 selectedItem={activeTag}
             />
-        </div>
+        </Fieldset>
     );
 };

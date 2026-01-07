@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { Suspense } from 'react';
 import { GridPosts } from 'entities/Post';
+import { ListCategory } from 'entities/Category';
 import grid from 'shared/styles/grid.module.scss';
 import { ListPostServer } from 'features/ListPost';
 import { Toolbar } from 'shared/ui/Toolbar/Toolbar';
@@ -12,7 +13,6 @@ import { Title, TitleModeType } from 'shared/ui/Title/Title';
 import { LinkRegular } from 'shared/ui/LinkRegular/LinkRegular';
 import cls from './SectionPost.module.scss';
 import { SectionType } from '../../model/types/Section';
-import {ListCategory} from "../../../Category";
 
 interface SectionProps {
     isPreview: boolean;

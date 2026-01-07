@@ -1,6 +1,7 @@
 import { MetaPageType } from 'shared/types/CommonTypes';
 import { ResponseType } from 'shared/types/ResponseType';
 import { SectionType } from 'entities/Section';
+import { DetailContentType } from 'entities/DetailContent';
 
 interface PageType {
     title: string;
@@ -14,8 +15,10 @@ interface PageType {
     };
     seo: MetaPageType;
     section?: SectionType[];
+    main?: DetailContentType;
 }
 
+// TODO: Это используется?
 type PageServerResponse<T = unknown> = ResponseType<PageType>
 
 export type {

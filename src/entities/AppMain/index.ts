@@ -1,6 +1,6 @@
 export {
-    fetchPageServer,
-} from '../Page/api/fetchPageServer';
+    fetchPageIndex,
+} from '../Page/api/fetchPageIndex';
 
 export {
     type AppMainResponseType,

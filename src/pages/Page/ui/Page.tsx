@@ -2,15 +2,9 @@ import { PageType } from 'entities/Page';
 import { Main } from 'shared/ui/Main/Main';
 import { SectionsStack } from 'widgets/SectionStack';
 
-enum PageMode {
-    FRONT,
-    INDEX,
-    DETAIL,
-}
-
 interface PageProps {
     data?: PageType;
-    mode: PageMode;
+    mode: 'front' | 'index';
 }
 
 const Page = (props: PageProps) => {
@@ -26,7 +20,7 @@ const Page = (props: PageProps) => {
                 && (
                     <SectionsStack
                         data={data.section}
-                        isPreview={mode === PageMode.FRONT}
+                        isPreview={mode === 'front'}
                     />
                 )
             }
@@ -36,5 +30,4 @@ const Page = (props: PageProps) => {
 
 export {
     Page,
-    PageMode,
 }

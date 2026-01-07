@@ -4,10 +4,9 @@ export type {
 } from './model/types/Page';
 
 export {
-    fetchPageServer,
-} from './api/fetchPageServer';
+    fetchPageIndex,
+} from './api/fetchPageIndex';
 
 export {
-    Page,
-    PageMode,
-} from './ui/Page/Page';
+    fetchPageDetail,
+} from './api/fetchPageDetail';

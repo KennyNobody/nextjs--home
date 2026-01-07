@@ -1,39 +1,56 @@
 /**
  * Форматирует дату в указанный формат.
- * @param inputDate Строка с датой в формате ISO (например, "2025-05-04T15:32:45.739Z").
+ * @param inputDate Дата в формате ISO, Date объект или строка.
  * @param mode Режим форматирования: "numeric" (21.01.2025) или "text" (21 января 2025).
- * @returns Отформатированная дата или `null`, если входная строка невалидна.
+ * @param lang Язык форматирования (по умолчанию 'ru').
+ * @returns Отформатированная дата или null, если входная дата невалидна.
  */
-function formatDate(
-    inputDate: string,
-    mode: 'numeric' | 'text' = 'numeric'
-): string | null {
-    const date = new Date(inputDate);
 
-    // Проверяем валидность даты
-    if (isNaN(date.getTime())) {
+interface FormatDateParams {
+    inputDate: string | Date;
+    mode?: 'numeric' | 'text';
+    lang?: string;
+}
+
+function formatDate(args: FormatDateParams): string | null {
+    const {
+        inputDate,
+        mode = 'numeric',
+        lang = 'ru',
+    } = args;
+
+    if (!inputDate) {
         return null;
     }
 
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = date.getMonth(); // 0-11
-    const year = date.getFullYear();
+    const date = new Date(inputDate);
 
-    if (mode === 'numeric') {
-        const formattedMonth = (month + 1).toString().padStart(2, '0');
-        return `${day}.${formattedMonth}.${year}`;
-    } else if (mode === 'text') {
-        const monthNames = [
-            'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
-            'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
-        ];
-        return `${day} ${monthNames[month]} ${year}`;
+    if (Number.isNaN(date.getTime())) {
+        return null;
     }
 
-    // На случай, если передан неверный mode (можно заменить на throw new Error)
+    if (mode === 'numeric') {
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}.${month}.${year}`;
+    }
+
+    if (mode === 'text') {
+        const options: Intl.DateTimeFormatOptions = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        };
+
+        const formattedString = date.toLocaleDateString(lang, options);
+
+        return lang === 'ru'
+            ? formattedString.replace(/\s*г\.$/, '')
+            : formattedString;
+    }
+
     return null;
 }
 
-export {
-    formatDate,
-}
+export { formatDate };

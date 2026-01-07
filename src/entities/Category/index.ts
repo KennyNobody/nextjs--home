@@ -18,3 +18,11 @@ export {
 export {
     GridCategory,
 } from './ui/GridCategory/GridCategory';
+
+export {
+    ArticleTag,
+} from './ui/ArticleTag/ArticleTag';
+
+export {
+    ListTags,
+} from './ui/ListTags/ListTags';

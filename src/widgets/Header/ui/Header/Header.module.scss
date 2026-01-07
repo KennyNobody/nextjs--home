@@ -124,6 +124,11 @@
         &--mobile {
             display: flex;
             visibility: visible;
+
+            &[hidden] {
+                display: none;
+                visibility: hidden;
+            }
         }
 
         &--desktop {

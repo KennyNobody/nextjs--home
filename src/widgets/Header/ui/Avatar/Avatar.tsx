@@ -55,11 +55,12 @@ export const Avatar = (props: AvatarProps) => {
                         className={classNames(cls.decorator)}
                     >
                         <Image
-                            alt="#"
                             width={64}
                             height={64}
                             loading="lazy"
+                            alt="аватар автора"
                             src={`${_BASE_URL_}${url}`}
+                            aria-label={'увеличить фотографию'}
                             data-fancybox={galleryKey || 'avatar-gallery'}
                         />
                     </FancyboxDecorator>
@@ -72,6 +73,7 @@ export const Avatar = (props: AvatarProps) => {
     const regular = (
         <Link
             href={RouterLinks.MAIN.link}
+            aria-label={'На главную страницу'}
             className={
                 classNames(
                     cls.block,
@@ -95,10 +97,10 @@ export const Avatar = (props: AvatarProps) => {
                 && url
                 && (
                     <Image
-                        alt="#"
                         width={64}
                         height={64}
                         loading="lazy"
+                        alt="аватар автора"
                         src={`${_BASE_URL_}${url}`}
                     />
                 )

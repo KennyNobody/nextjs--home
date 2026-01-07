@@ -20,7 +20,6 @@ export const LinkSocial = (props: LinkSocialProps) => {
 
     return (
         <a
-            {...otherProps}
             target="_blank"
             rel="noopener noreferrer"
             className={
@@ -30,6 +29,7 @@ export const LinkSocial = (props: LinkSocialProps) => {
                     className
                 )
             }
+            {...otherProps}
         >
             <IconSocial
                 iconKey={iconKey}

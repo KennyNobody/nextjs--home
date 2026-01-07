@@ -1,5 +1,5 @@
 import { ArticleCategoryType } from 'entities/Category';
-import { DetailContentType } from 'shared/types/DetailContent';
+import { DetailContentType } from 'entities/DetailContent';
 
 interface ArticlePhotoType {
     id: number;
@@ -9,7 +9,7 @@ interface ArticlePhotoType {
     createdAt: Date;
     updatedAt: Date;
     publishedAt?: Date;
-    main: DetailContentType;
+    main?: DetailContentType;
     tags?: {
         data: ArticleCategoryType[];
     };

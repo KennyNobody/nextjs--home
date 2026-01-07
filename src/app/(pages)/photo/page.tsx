@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
+import { Page } from 'pages/Page';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
-import { fetchPageServer, Page, PageMode } from 'entities/Page';
+import { fetchPageIndex } from 'entities/Page';
 import { generatePageMetadata } from 'shared/lib/generatePageMetadata';
 
 async function getPageData() {
-    return await fetchPageServer(ApiRoutes.PAGE_PHOTO);
+    return await fetchPageIndex(ApiRoutes.PAGE_PHOTO);
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -17,7 +18,7 @@ export default async function PageApp() {
 
     return (
         <Page
-            mode={PageMode.INDEX}
+            mode={'index'}
             data={response?.data}
         />
     )

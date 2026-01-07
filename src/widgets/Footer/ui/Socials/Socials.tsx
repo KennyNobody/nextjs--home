@@ -14,19 +14,23 @@ export const Socials = (props: SocialsProps) => {
     const linksArray = [
         {
             iconKey: IconKey.TG,
-            href: 'https://web.telegram.org/',
+            href: 'https://t.me/Kenny_Nobody',
+            label: 'написать в телеграм',
         },
         {
             iconKey: IconKey.INST,
-            href: 'https://www.instagram.com/',
+            href: 'https://www.instagram.com/kenny_nobody/',
+            label: 'перейти в instagram'
         },
         {
             iconKey: IconKey.VK,
-            href: 'https://vk.com/feed',
+            href: 'https://vk.com/kenny_nobody',
+            label: 'перейти во вконтакте'
         },
         {
             iconKey: IconKey.GH,
             href: 'https://github.com/KennyNobody/',
+            label: 'перейти в github'
         },
     ];
 
@@ -38,6 +42,7 @@ export const Socials = (props: SocialsProps) => {
                         key={index}
                         href={item.href}
                         iconKey={item.iconKey}
+                        aria-label={item.label}
                     />
                 ))
             }

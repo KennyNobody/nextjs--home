@@ -1,7 +1,6 @@
+import { MediaFileType } from 'entities/Media';
 import { type BlocksContent } from '@strapi/blocks-react-renderer';
-import { MediaFileType } from '../../entities/Media';
 
-// TODO: shared импортирует MediaFileType из entities
 interface DetailContentType {
     id: number;
     preview?: {

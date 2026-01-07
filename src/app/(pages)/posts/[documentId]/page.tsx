@@ -1,23 +1,35 @@
 import { Metadata } from 'next';
+import { PageDetail } from 'pages/PageDetail';
+import { ArticlePostType } from 'entities/Post';
+import { fetchPageDetail } from 'entities/Page';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
-import { fetchPageServer, Page, PageMode } from 'entities/Page';
+import { ResponseType } from 'shared/types/ResponseType';
 import { generatePageMetadata } from 'shared/lib/generatePageMetadata';
 
-async function getPageData() {
-    return await fetchPageServer(ApiRoutes.PAGE_PHOTO);
+// TODO: Возможно вынести в shared
+type PageProps = {
+    params: Promise<{ documentId: string }>;
+};
+
+async function getPageData(documentId: string) {
+    return await fetchPageDetail(ApiRoutes.POSTS_LIST, documentId);
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-    const response = await getPageData();
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { documentId } = await params;
+    const response = await getPageData(documentId);
     return generatePageMetadata(response?.data?.seo);
 }
 
-export default async function PageApp() {
-    const response = await getPageData();
+export default async function PageApp( { params }: PageProps) {
+    const { documentId } = await params;
+    const response: ResponseType<ArticlePostType> = await getPageData(documentId);
 
+    if (!documentId) {
+        // TODO: Показать 404
+    }
     return (
-        <Page
-            mode={PageMode.DETAIL}
+        <PageDetail
             data={response?.data}
         />
     )

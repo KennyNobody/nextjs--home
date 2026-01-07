@@ -1,24 +1,43 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import classNames from 'classnames';
 import cls from './Editor.module.scss';
+import { AppTheme } from '../../types/Theme';
 
 interface EditorProps {
-    content: string;
+    data?: string;
+    theme?: AppTheme;
     className?: string;
+    children?: ReactNode;
 }
 
 export const Editor = (props: EditorProps) => {
     const {
-        content,
+        data,
+        theme,
+        children,
         className,
     } = props;
 
+    const classes = classNames(
+        cls.editor,
+        theme && cls[`editor--${theme}`],
+        className,
+    );
+
+    if (data) {
+        return (
+            <div
+                className={classes}
+                dangerouslySetInnerHTML={{
+                    __html: data,
+                }}
+            />
+        );
+    }
+
     return (
-        <div
-            className={classNames(cls.block, className)}
-            dangerouslySetInnerHTML={{
-                __html: content,
-            }}
-        />
+        <div className={classes}>
+            { children }
+        </div>
     );
 };
