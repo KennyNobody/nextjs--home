@@ -10,11 +10,11 @@
     flex-direction: column;
     justify-content: space-between;
 
-    &--theme-light {
+    &--light {
         background-color: var(--light-accent);
     }
 
-    &--theme-dark {
+    &--dark {
         background-color: var(--dark-accent);
     }
 
@@ -23,14 +23,14 @@
     }
 }
 
-[data-theme="theme-light"] {
-    .article:not(.article--theme-light, .article--theme-dark) {
+[data-theme="light"] {
+    .article:not(.article--light, .article--dark) {
         background-color: var(--light-accent);
     }
 }
 
-[data-theme="theme-dark"] {
-    .article:not(.article--theme-light, .article--theme-dark) {
+[data-theme="dark"] {
+    .article:not(.article--light, .article--dark) {
         background-color: var(--dark-accent);
     }
 }
@@ -65,23 +65,23 @@
     margin-bottom: 7px;
     letter-spacing: -0.38px;
 
-    &--theme-light {
+    &--light {
         color: var(--dark-primary);
     }
 
-    &--theme-dark {
+    &--dark {
         color: var(--light-accent);
     }
 }
 
-[data-theme="theme-light"] {
-    .title:not(.title--theme-light, .title--theme-dark) {
+[data-theme="light"] {
+    .title:not(.title--light, .title--dark) {
         color: var(--dark-primary);
     }
 }
 
-[data-theme="theme-dark"] {
-    .title:not(.title--theme-light, .title--theme-dark) {
+[data-theme="dark"] {
+    .title:not(.title--light, .title--dark) {
         color: var(--light-accent);
     }
 }
@@ -89,23 +89,23 @@
 .caption {
     font-size: 24px;
 
-    &--theme-light {
+    &--light {
         color: var(--dark-secondary);
     }
 
-    &--theme-dark {
+    &--dark {
         color: var(--light-secondary);
     }
 }
 
-[data-theme="theme-light"] {
-    .caption:not(.caption--theme-light, .caption--theme-dark) {
+[data-theme="light"] {
+    .caption:not(.caption--light, .caption--dark) {
         color: var(--dark-secondary);
     }
 }
 
-[data-theme="theme-dark"] {
-    .caption:not(.caption--theme-light, .caption--theme-dark) {
+[data-theme="dark"] {
+    .caption:not(.caption--light, .caption--dark) {
         color: var(--light-secondary);
     }
 }

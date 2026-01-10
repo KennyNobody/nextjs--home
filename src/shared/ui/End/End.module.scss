@@ -3,23 +3,23 @@
     font-size: 24px;
     text-align: center;
 
-    &.block--theme-light {
+    &--light {
         color: var(--dark-secondary);
     }
 
-    &.block--theme-dark {
+    &--dark {
         color: var(--light-secondary);
     }
 }
 
-[data-theme="theme-light"] {
-    .block:not(.block--theme-dark, .block--theme-light) {
+[data-theme="light"] {
+    .block:not(.block--dark, .block--light) {
         color: var(--dark-secondary);
     }
 }
 
-[data-theme="theme-dark"] {
-    .block:not(.block--theme-dark, .block--theme-light) {
+[data-theme="dark"] {
+    .block:not(.block--dark, .block--light) {
         color: var(--light-secondary);
     }
 }

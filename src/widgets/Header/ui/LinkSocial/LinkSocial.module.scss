@@ -9,7 +9,7 @@
     justify-content: center;
     height: var(--ui-item-height-l);
 
-    &--theme-light {
+    &--light {
         border-color: var(--dark-primary);
 
         svg {
@@ -17,7 +17,7 @@
         }
     }
 
-    &--theme-dark {
+    &--dark {
         border-color: var(--light-primary);
 
         svg {
@@ -33,7 +33,7 @@
     }
 }
 
-[data-theme="theme-light"] {
+[data-theme="light"] {
     .link {
         border-color: var(--dark-primary);
 
@@ -43,7 +43,7 @@
     }
 }
 
-[data-theme="theme-dark"] {
+[data-theme="dark"] {
     .link {
         border-color: var(--light-primary);
 

@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { Action } from 'redux';
 import { useLayoutEffect, useRef } from 'react';

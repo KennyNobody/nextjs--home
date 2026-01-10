@@ -12,7 +12,7 @@ export default function RootLayout(props: RootLayoutProps) {
     const { children } = props;
 
     return (
-        <html lang="ru" data-theme="theme-light" suppressHydrationWarning>
+        <html lang="ru" data-theme="light" suppressHydrationWarning>
             <body className={`${fontInter.variable}`}>
                 <ThemeProvider>
                     <AppLayout>

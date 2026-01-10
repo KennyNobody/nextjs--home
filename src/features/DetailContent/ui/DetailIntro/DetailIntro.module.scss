@@ -5,11 +5,23 @@
     margin: 0 auto;
     position: fixed;
 
-    &--theme-light {
+    &--light {
         color: var(--dark-primary);
     }
 
-    &--theme-dark {
+    &--dark {
+        color: var(--light-accent);
+    }
+}
+
+[data-theme="light"] {
+    .intro:not(.intro--light, .intro--dark) {
+        color: var(--dark-primary);
+    }
+}
+
+[data-theme="dark"] {
+    .intro:not(.intro--light, .intro--dark) {
         color: var(--light-accent);
     }
 }
@@ -44,7 +56,7 @@
     .intro-content {
         gap: 40px;
         height: 100vh;
-        padding: 150px 0 150px;
+        padding: 150px 0;
     }
 
     .title {

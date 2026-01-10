@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
@@ -6,8 +6,8 @@ import grid from 'shared/styles/grid.module.scss';
 import React, { useEffect, useState } from 'react';
 import { Overlay } from 'shared/ui/Overlay/Overlay';
 import { LinkNav } from 'shared/ui/LinkNav/LinkNav';
-import useLayoutMode from 'shared/hooks/useLayoutMode';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
+import useRouteConfig from 'shared/hooks/useLayoutMode';
 import { RouterLinks } from 'shared/config/routerConfig';
 import { PageLayoutMode } from 'shared/types/PageLayout';
 import { ContentKeyType } from 'shared/types/CommonTypes';
@@ -35,7 +35,7 @@ export const Header = (props: HeaderProps) => {
     } = props;
 
     const pathname = usePathname();
-    const layoutMode = useLayoutMode();
+    const { layoutMode } = useRouteConfig();
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     useEffect(() => {

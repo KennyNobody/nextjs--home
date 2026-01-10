@@ -13,14 +13,14 @@
     //}
 }
 
-[data-theme="theme-light"] {
+[data-theme="light"] {
     .block {
         color: var(--dark-primary);
         background-color: var(--bg-light);
     }
 }
 
-[data-theme="theme-dark"] {
+[data-theme="dark"] {
     .block {
         color: var(--light-primary);
         background-color: var(--bg-dark);

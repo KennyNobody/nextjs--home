@@ -15,13 +15,13 @@
     display: block;
 }
 
-[data-theme="theme-light"] {
+[data-theme="light"] {
     .icon {
         fill: var(--dark-primary);
     }
 }
 
-[data-theme="theme-dark"] {
+[data-theme="dark"] {
     .icon {
         fill: var(--light-primary);
     }

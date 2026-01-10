@@ -14,23 +14,23 @@
     transition: 0.3s all;
     height: var(--ui-item-height-l);
 
-    &--theme-light {
+    &--light {
         border-color: var(--dark-secondary);
     }
 
-    &--theme-dark {
+    &--dark {
         border-color: var(--light-secondary);
     }
 }
 
-[data-theme="theme-light"] {
-    .wrapper:not(.wrapper--theme-light, .wrapper--theme-dark) {
+[data-theme="light"] {
+    .wrapper:not(.wrapper--light, .wrapper--dark) {
         border-color: var(--dark-secondary);
     }
 }
 
-[data-theme="theme-dark"] {
-    .wrapper:not(.wrapper--theme-light, .wrapper--theme-dark) {
+[data-theme="dark"] {
+    .wrapper:not(.wrapper--light, .wrapper--dark) {
         border-color: var(--light-secondary);
     }
 }

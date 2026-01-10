@@ -1,6 +1,5 @@
 export type {
     PageType,
-    PageServerResponse,
 } from './model/types/Page';
 
 export {
@@ -8,5 +7,5 @@ export {
 } from './api/fetchPageIndex';
 
 export {
-    fetchPageDetail,
-} from './api/fetchPageDetail';
+    fetchArticleDetail,
+} from '../../shared/api/fetchArticleDetail';

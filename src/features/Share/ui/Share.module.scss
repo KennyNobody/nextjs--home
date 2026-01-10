@@ -22,11 +22,11 @@
     transition: 0.3s all;
     justify-content: center;
 
-    &--theme-light {
+    &--light {
         border-color: var(--dark-primary);
     }
 
-    &--theme-dark {
+    &--dark {
         border-color: var(--light-primary);
     }
 
@@ -35,14 +35,14 @@
     }
 }
 
-[data-theme="theme-light"] {
-    .button:not(.button--theme-light, .button--theme-dark) {
+[data-theme="light"] {
+    .button:not(.button--light, .button--dark) {
         border-color: var(--dark-primary);
     }
 }
 
-[data-theme="theme-dark"] {
-    .button:not(.button--theme-light, .button--theme-dark) {
+[data-theme="dark"] {
+    .button:not(.button--light, .button--dark) {
         border-color: var(--light-primary);
     }
 }
@@ -53,23 +53,23 @@
     display: block;
     transition: 0.3s all;
 
-    &--theme-light {
+    &--light {
         fill: var(--dark-primary);
     }
 
-    &--theme-dark {
+    &--dark {
         fill: var(--light-primary);
     }
 }
 
-[data-theme="theme-light"] {
-    .icon:not(.icon--theme-light, .icon--theme-dark) {
+[data-theme="light"] {
+    .icon:not(.icon--light, .icon--dark) {
         fill: var(--dark-primary);
     }
 }
 
-[data-theme="theme-dark"] {
-    .icon:not(.icon--theme-light, .icon--theme-dark) {
+[data-theme="dark"] {
+    .icon:not(.icon--light, .icon--dark) {
         fill: var(--light-primary);
     }
 }

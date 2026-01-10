@@ -1,4 +1,6 @@
-export interface FilterParams {
+
+
+interface FilterParams {
     [key: string]: string | number | boolean | FilterParams;
 }
 
@@ -15,5 +17,6 @@ interface ApiRequestParams {
 }
 
 export {
+    type FilterParams,
     type ApiRequestParams,
 }

@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
-import { PageDetail } from 'pages/PageDetail';
+import { PageDetail } from 'pagesApp/PageDetail';
 import { ArticleDevType } from 'entities/Dev';
-import { fetchPageDetail } from 'entities/Page';
+import { fetchArticleDetail } from 'entities/Page';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { ResponseType } from 'shared/types/ResponseType';
+import { ContentKeyType } from 'shared/types/CommonTypes';
 import { generatePageMetadata } from 'shared/lib/generatePageMetadata';
 
 // TODO: Возможно вынести в shared
@@ -11,8 +12,8 @@ type PageProps = {
     params: Promise<{ documentId: string }>;
 };
 
-async function getPageData(documentId: string) {
-    return await fetchPageDetail(ApiRoutes.DEVS_LIST, documentId);
+async function getPageData(documentId: string): Promise<ResponseType<ArticleDevType>> {
+    return await fetchArticleDetail(ApiRoutes.DEVS_LIST, documentId);
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -23,14 +24,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function PageApp( { params }: PageProps) {
     const { documentId } = await params;
-    const response: ResponseType<ArticleDevType> = await getPageData(documentId);
+    // throw new Error();
 
     if (!documentId) {
         // TODO: Показать 404
     }
+
     return (
         <PageDetail
-            data={response?.data}
+            slug={documentId}
+            mode={ContentKeyType.DEV}
         />
     )
 }

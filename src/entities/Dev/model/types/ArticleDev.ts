@@ -1,5 +1,6 @@
 import { ArticleCategoryType } from 'entities/Category';
 import { DetailContentType } from 'entities/DetailContent';
+import {MetaPageType} from "../../../../shared/types/CommonTypes";
 
 interface ArticleDevType {
     id: number;
@@ -9,6 +10,8 @@ interface ArticleDevType {
     documentId: string;
     createdAt: Date;
     updatedAt: Date;
+    // TODO: Точно всегда есть?
+    seo: MetaPageType;
     publishedAt?: Date;
     main?: DetailContentType;
     tags?: {

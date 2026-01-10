@@ -40,7 +40,7 @@
         }
     }
 
-    &--theme-light {
+    &--light {
         color: var(--dark-primary);
 
         &.block--content {
@@ -53,7 +53,7 @@
         }
     }
 
-    &--theme-dark {
+    &--dark {
         color: var(--light-primary);
 
         &.block--content {
@@ -67,8 +67,8 @@
     }
 }
 
-[data-theme="theme-light"] {
-    .block:not(.block--theme-light, .block--theme-dark) {
+[data-theme="light"] {
+    .block:not(.block--light, .block--dark) {
         color: var(--dark-primary);
 
         &.block--content {
@@ -82,8 +82,8 @@
     }
 }
 
-[data-theme="theme-dark"] {
-    .block:not(.block--theme-light, .block--theme-dark) {
+[data-theme="dark"] {
+    .block:not(.block--light, .block--dark) {
         color: var(--light-primary);
 
         &.block--content {

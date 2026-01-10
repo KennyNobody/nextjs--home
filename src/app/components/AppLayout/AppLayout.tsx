@@ -1,10 +1,10 @@
-import classNames from 'classnames';
-import { ReactNode } from 'react';
 import {
     appMainActions,
     fetchAppMainServer,
     AppMainResponseType,
 } from 'entities/AppMain';
+import { ReactNode } from 'react';
+import classNames from 'classnames';
 import { Footer } from 'widgets/Footer';
 import { Header } from 'widgets/Header';
 import cls from './AppLayout.module.scss';

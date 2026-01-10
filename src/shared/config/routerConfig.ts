@@ -1,10 +1,12 @@
 import { PageLayoutMode } from 'shared/types/PageLayout';
+import { ContentKeyType } from '../types/CommonTypes';
 
 interface RouterItem {
     id: number;
     title: string;
     link: RouterConfig;
     layoutMode: PageLayoutMode;
+    contentKey?: ContentKeyType;
 }
 
 type RouterLinksType = {
@@ -34,36 +36,42 @@ const RouterLinks: RouterLinksType = {
         title: 'Посты',
         link: RouterConfig.POSTS,
         layoutMode: PageLayoutMode.LIST,
+        contentKey: ContentKeyType.POST,
     },
     POSTS_DETAIL: {
         id: 3,
         title: 'Посты',
         link: RouterConfig.POSTS_DETAIL,
         layoutMode: PageLayoutMode.DETAIL,
+        contentKey: ContentKeyType.POST,
     },
     DEV: {
         id: 4,
         title: 'Разработка',
         link: RouterConfig.DEV,
         layoutMode: PageLayoutMode.LIST,
+        contentKey: ContentKeyType.DEV,
     },
     DEV_DETAIL: {
         id: 5,
         title: 'Разработка',
         link: RouterConfig.DEV_DETAIL,
         layoutMode: PageLayoutMode.DETAIL,
+        contentKey: ContentKeyType.DEV,
     },
     PHOTO: {
         id: 6,
         title: 'Фотография',
         link: RouterConfig.PHOTO,
         layoutMode: PageLayoutMode.LIST,
+        contentKey: ContentKeyType.PHOTO,
     },
     PHOTO_DETAIL: {
         id: 7,
         title: 'Фотография',
         link: RouterConfig.PHOTO_DETAIL,
         layoutMode: PageLayoutMode.DETAIL,
+        contentKey: ContentKeyType.PHOTO,
     },
     NOT_FOUND: {
         id: 8,

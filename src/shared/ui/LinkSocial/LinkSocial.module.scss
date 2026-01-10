@@ -9,7 +9,7 @@
     justify-content: center;
     height: var(--ui-item-height-l);
 
-    &--theme-light {
+    &--light {
         border-color: var(--dark-primary);
 
         svg {
@@ -17,7 +17,7 @@
         }
     }
 
-    &--theme-dark {
+    &--dark {
         border-color: var(--light-primary);
 
         svg {
@@ -33,8 +33,8 @@
     }
 }
 
-[data-theme="theme-light"] {
-    .link:not(.link--theme-light, .link--theme-dark) {
+[data-theme="light"] {
+    .link:not(.link--light, .link--dark) {
         border-color: var(--dark-primary);
 
         svg {
@@ -43,8 +43,8 @@
     }
 }
 
-[data-theme="theme-dark"] {
-    .link:not(.link--theme-light, .link--theme-dark) {
+[data-theme="dark"] {
+    .link:not(.link--light, .link--dark) {
         border-color: var(--light-primary);
 
         svg {

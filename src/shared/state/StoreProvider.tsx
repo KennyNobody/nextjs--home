@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/refs */
-'use client';
+'use client'
 
 import { Provider } from 'react-redux';
 import { ReactNode, useRef } from 'react';

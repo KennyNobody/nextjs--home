@@ -1,6 +1,6 @@
+import { ReactNode } from 'react';
 import classNames from 'classnames';
 import Link, { LinkProps } from 'next/link';
-import { ReactNode, useState, } from 'react';
 import { ContentKeyType } from 'shared/types/CommonTypes';
 import { Skeleton, SkeletonMode } from 'shared/ui/Skeleton/Skeleton';
 import cls from './LinkNav.module.scss';
@@ -8,6 +8,7 @@ import { AppTheme } from '../../types/Theme';
 
 interface LinkAppProps extends LinkProps {
     className?: string;
+    isActive?: boolean;
     children: ReactNode;
     themeProp?: AppTheme;
     isLoading?: boolean;
@@ -18,13 +19,12 @@ export const LinkNav = (props: LinkAppProps) => {
     const {
         linkKey,
         children,
+        isActive,
         themeProp,
         className,
         isLoading,
         ...otherProps
     } = props;
-
-    const [isActive, setIsActive] = useState<boolean>(false);
 
     const skeleton = (
         <Skeleton

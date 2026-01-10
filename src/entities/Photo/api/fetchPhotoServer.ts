@@ -10,7 +10,7 @@ const fetchPhotoServer = async (
 ): Promise<ResponseType<ArticlePhotoType[]>> => {
     try {
         // TODO: Удалить после тестирования
-        await new Promise(resolve => setTimeout(resolve, 10000));
+        // await new Promise(resolve => setTimeout(resolve, 10000));
 
         const params: ApiRequestParams = {
             pagination: {

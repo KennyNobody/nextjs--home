@@ -5,6 +5,7 @@ import { ApiRequestParams } from 'shared/types/ApiRequestParams';
 import { ResponseType } from '../../../shared/types/ResponseType';
 import { ArticleDevType } from '../model/types/ArticleDev';
 
+// TODO Вынести в shared
 const fetchDevServer = async (
     url: ApiRoutes
 ): Promise<ResponseType<ArticleDevType[]>> => {

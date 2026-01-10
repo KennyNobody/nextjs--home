@@ -1,5 +1,5 @@
+import Page from 'pagesApp/Page';
 import { Metadata } from 'next';
-import { Page } from 'pages/Page';
 import { fetchPageIndex } from 'entities/Page';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { generatePageMetadata } from 'shared/lib/generatePageMetadata';

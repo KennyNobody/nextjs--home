@@ -4,6 +4,8 @@
     "function-no-unknown": null,
     "scss/at-function-pattern": null,
     "no-duplicate-selectors": null,
-    "selector-class-pattern": [null]
+    "selector-class-pattern": [null],
+    "block-no-empty": null,
+    "keyframes-name-pattern": null
   }
 }

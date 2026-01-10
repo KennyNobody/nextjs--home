@@ -19,9 +19,8 @@ interface PageType {
 }
 
 // TODO: Это используется?
-type PageServerResponse<T = unknown> = ResponseType<PageType>
+// type PageServerResponse<T = unknown> = ResponseType<PageType>
 
 export type {
     PageType,
-    PageServerResponse,
 }

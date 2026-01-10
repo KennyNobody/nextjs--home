@@ -1,7 +1,7 @@
 // TODO: AddTests
 import { RouterItem, RouterLinks } from '../config/routerConfig';
 
-const getRouteConfig = (pathname: string) => {
+const findRouteByPathname = (pathname: string): RouterItem => {
     const routes: Record<string, RouterItem> = {
         '/': RouterLinks.MAIN,
         '/posts': RouterLinks.POSTS,
@@ -15,9 +15,23 @@ const getRouteConfig = (pathname: string) => {
     if (pathname.startsWith('/dev/')) return RouterLinks.DEV_DETAIL
     if (pathname.startsWith('/photo/')) return RouterLinks.PHOTO_DETAIL
 
-    return RouterLinks.NOT_FOUND;
-};
+    return RouterLinks.NOT_FOUND
+}
+
+const getClientRouteConfig = (pathname: string): RouterItem => {
+    return findRouteByPathname(pathname)
+}
+
+const getServerRouteConfig = async(): Promise<RouterItem> => {
+    const { headers } = await import('next/headers')
+    const headersList = await headers()
+    const pathname = headersList.get('x-pathname') || '/'
+
+    return findRouteByPathname(pathname)
+}
 
 export {
-    getRouteConfig,
-};
+    findRouteByPathname,
+    getClientRouteConfig,
+    getServerRouteConfig,
+}

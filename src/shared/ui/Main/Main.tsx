@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import classNames from 'classnames';
-import cls from './Main.module.scss';;
-import { getLayoutMode } from 'shared/helpers/getLayoutMode';
+import cls from './Main.module.scss';
+import { getServerRouteConfig } from 'shared/helpers/getRouteConfig';
 
 interface MainProps {
     className?: string;
@@ -14,7 +14,7 @@ export const Main = async (props: MainProps) => {
         className,
     } = props;
 
-    const layoutMode = await getLayoutMode();
+    const { layoutMode } = await getServerRouteConfig();
 
     return (
         <main

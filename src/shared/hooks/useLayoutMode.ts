@@ -1,14 +1,12 @@
 'use client'
 
 import { usePathname } from 'next/navigation';
-import { getRouteConfig } from '../helpers/getRouteConfig';
-import { PageLayoutMode } from '../types/PageLayout';
+import { RouterItem } from '../config/routerConfig';
+import { getClientRouteConfig } from '../helpers/getRouteConfig';
 
-const useLayoutModeKey = (): PageLayoutMode => {
+const useRouteConfig = (): RouterItem => {
     const pathname = usePathname();
-    const route = getRouteConfig(pathname);
-
-    return route.layoutMode || PageLayoutMode.STATIC;
+    return getClientRouteConfig(pathname);
 };
 
-export default useLayoutModeKey;
+export default useRouteConfig;

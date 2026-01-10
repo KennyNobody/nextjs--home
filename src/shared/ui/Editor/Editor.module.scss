@@ -73,7 +73,7 @@
         font-size: 30px;
     }
 
-    &--theme-light {
+    &--light {
         pre {
             background-color: #f4f4f4;
             color: #333;
@@ -85,7 +85,7 @@
         }
     }
 
-    &--theme-dark {
+    &--dark {
         pre {
             color: var(--light-primary);
             background-color: var(--bg-dark);
@@ -99,8 +99,8 @@
     }
 }
 
-[data-theme="theme-light"] {
-    .editor:not(.editor--theme-light, .editor--theme-dark) {
+[data-theme="light"] {
+    .editor:not(.editor--light, .editor--dark) {
         pre {
             background-color: #f4f4f4;
             color: #333;
@@ -113,8 +113,8 @@
     }
 }
 
-[data-theme="theme-dark"] {
-    .editor:not(.editor--theme-light, .editor--theme-dark) {
+[data-theme="dark"] {
+    .editor:not(.editor--light, .editor--dark) {
         pre {
             color: var(--light-primary);
             background-color: var(--bg-dark);
