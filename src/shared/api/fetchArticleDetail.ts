@@ -6,7 +6,7 @@ import { paramsSerializer } from 'shared/lib/paramsSerializer';
 const fetchArticleDetail = async <T>(url: ApiRoutes, slug?: string): Promise<ResponseType<T>> => {
     try {
         // TODO: Удалить после тестирования
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        // await new Promise(resolve => setTimeout(resolve, 3000));
 
         const response = await $apiServer(`${url}/${slug}`, {
             params: { populate: 'main.preview,tags,category,seo' },

@@ -3,8 +3,8 @@ import cls from './Skeleton.module.scss';
 import { AppTheme } from '../../types/Theme';
 
 export enum SkeletonMode {
-    BLOCK,
-    LINES,
+    BLOCK = 'block',
+    LINES = 'lines',
 }
 
 interface SkeletonProps {

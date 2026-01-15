@@ -57,7 +57,8 @@ const nextConfig: NextConfig = {
                 as: '*.ts',
             },
         }
-    }
+    },
+    output: 'standalone',
 };
 
 export default nextConfig;

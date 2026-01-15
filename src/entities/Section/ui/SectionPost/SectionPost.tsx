@@ -30,7 +30,7 @@ export const SectionPost = (props: SectionProps) => {
     return (
         <section className={classNames(cls.section, className)}>
             <Container>
-                <Stack size={StackSizeType.MIDDLE}>
+                <Stack size={StackSizeType.MEDIUM}>
                     <div className={classNames(grid.grid, cls.grid)}>
                         <div
                             className={

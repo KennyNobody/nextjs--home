@@ -4,7 +4,7 @@ import cls from './Stack.module.scss';
 
 export enum StackSizeType {
     LARGE = 'large',
-    MIDDLE = 'middle',
+    MEDIUM = 'medium',
 }
 
 interface StackProps {

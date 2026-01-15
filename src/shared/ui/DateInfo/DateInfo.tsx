@@ -6,7 +6,7 @@ interface DateProps {
     date: Date | string;
     className?: string;
     mode?: 'numeric' | 'text';
-    lang?: string;
+    lang?: 'ru' | 'en';
 }
 
 export const DateInfo = (props: DateProps) => {

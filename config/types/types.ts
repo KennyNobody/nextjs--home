@@ -3,7 +3,7 @@ enum BuildMode {
     PROD = 'production',
 }
 
-enum BuildProject {
+enum ProjectMode {
     FRONTEND = 'frontend',
     STORYBOOK = 'storybook',
     JEST = 'jest',
@@ -11,5 +11,5 @@ enum BuildProject {
 
 export {
     BuildMode,
-    BuildProject,
+    ProjectMode,
 }

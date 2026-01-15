@@ -1,8 +1,9 @@
-import 'shared/styles/index.scss';
 import { ReactNode } from 'react';
-import { fontInter } from 'shared/next-fonts/fontInter';
-import { AppLayout } from 'app/components/AppLayout/AppLayout';
 import { ThemeProvider } from 'next-themes';
+import { AppLayout } from 'app/components/AppLayout/AppLayout';
+import { ProjectMode } from '../../config/types/types';
+import { AppDecorator } from '../shared/providers/AppDecorator';
+import { StyleDecorator } from '../shared/providers/StyleDecorator/StyleDecorator';
 
 interface RootLayoutProps {
     children: ReactNode;
@@ -12,14 +13,14 @@ export default function RootLayout(props: RootLayoutProps) {
     const { children } = props;
 
     return (
-        <html lang="ru" data-theme="light" suppressHydrationWarning>
-            <body className={`${fontInter.variable}`}>
-                <ThemeProvider>
+        <AppDecorator mode={ProjectMode.FRONTEND}>
+            <ThemeProvider>
+                <StyleDecorator>
                     <AppLayout>
                         {children}
                     </AppLayout>
-                </ThemeProvider>
-            </body>
-        </html>
+                </StyleDecorator>
+            </ThemeProvider>
+        </AppDecorator>
     );
 }

@@ -3,8 +3,8 @@ import { JSX, ReactNode } from 'react';
 import cls from './Title.module.scss';
 
 export enum TitleModeType {
-    MAIN,
-    REGULAR,
+    MAIN = 'main',
+    REGULAR = 'regular',
 }
 
 interface TitleProps {

@@ -31,8 +31,8 @@ export const LinkNav = (props: LinkAppProps) => {
             mode={SkeletonMode.BLOCK}
             className={
                 classNames(
-                    cls.skeleton,
                     cls.block,
+                    // cls['block--skeleton'],
                     themeProp && cls[`block--${themeProp}`],
                     className,
                 )
@@ -47,7 +47,7 @@ export const LinkNav = (props: LinkAppProps) => {
                 classNames([
                     cls.block,
                     themeProp && cls[`block--${themeProp}`],
-                    isActive && [cls['block--active']],
+                    isActive && cls['block--active'],
                     className,
                 ])
             }

@@ -18,7 +18,6 @@ export const Nav = (props: NavProps) => {
     } = props;
 
     const { contentKey } = useRouteConfig();
-    console.log(contentKey);
 
     return (
         <nav className={classNames(cls.block, className)}>

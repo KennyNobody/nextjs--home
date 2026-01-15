@@ -1,0 +1,13 @@
+[data-theme="light"] {
+    .block {
+        color: var(--dark-primary);
+        background-color: var(--bg-light);
+    }
+}
+
+[data-theme="dark"] {
+    .block {
+        color: var(--light-primary);
+        background-color: var(--bg-dark);
+    }
+}
