@@ -4,6 +4,7 @@ import cls from './Switcher.module.scss';
 import { AppTheme } from '../../types/Theme';
 
 interface SwitcherProps {
+    label: string;
     className?: string;
     isChecked: boolean;
     themeProp?: AppTheme;
@@ -12,6 +13,7 @@ interface SwitcherProps {
 
 export const Switcher = (props: SwitcherProps) => {
     const {
+        label,
         className,
         isChecked,
         themeProp,
@@ -19,7 +21,15 @@ export const Switcher = (props: SwitcherProps) => {
     } = props;
 
     return (
-        <label className={classNames(cls.label, className)} aria-label={'Переключить цветовую схему'}>
+        <label className={classNames(cls.label, className)}>
+            {
+                label
+                && (
+                    <span className={classNames(cls.title)}>
+                        { label }
+                    </span>
+                )
+            }
             <input
                 type="checkbox"
                 checked={isChecked}

@@ -1,19 +1,19 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import classNames from 'classnames';
 import {
     ArticleCategory,
     ArticleCategoryMode,
 } from 'entities/Category';
+import classNames from 'classnames';
 import {
     Skeleton,
     SkeletonMode,
 } from 'shared/ui/Skeleton/Skeleton';
 import { AppTheme } from 'shared/types/Theme';
 import cls from './ArticlePhoto.module.scss';
-import { ArticlePhotoType } from '../../model/types/ArticlePhoto';
 import { _BASE_URL_ } from 'shared/config/envConfig';
 import { RouterLinks } from 'shared/config/routerConfig';
+import { ArticlePhotoType } from '../../model/types/ArticlePhoto';
 
 interface ArticlePhotoProps {
     className?: string;
