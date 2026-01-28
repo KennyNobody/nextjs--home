@@ -25,7 +25,8 @@ const fetchDevServer = async (
         const response = await $apiServer(url, {
             params,
             paramsSerializer,
-            next: { revalidate: 10 }
+            // next: { revalidate: 10 }
+            cache: 'force-cache',
         });
 
         return await response.json();

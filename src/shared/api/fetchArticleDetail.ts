@@ -11,7 +11,8 @@ const fetchArticleDetail = async <T>(url: ApiRoutes, slug?: string): Promise<Res
         const response = await $apiServer(`${url}/${slug}`, {
             params: { populate: 'main.preview,tags,category,seo' },
             paramsSerializer,
-            next: { revalidate: 3600 }
+            // next: { revalidate: 3600 }
+            cache: 'force-cache',
         });
 
         return await response.json();

@@ -33,7 +33,7 @@ export const FancyboxDecorator = (props: FancyboxProps) => {
             NativeFancybox.unbind(container);
             NativeFancybox.close();
         };
-    });
+    }, []);
 
     return (
         <div
