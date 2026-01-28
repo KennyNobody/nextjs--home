@@ -7,7 +7,7 @@ const fetchAppMainServer = async () => {
         const response = await $apiServer(ApiRoutes.MAIN, {
             params: { populate: '*' },
             paramsSerializer,
-            cache: 'force-cache',
+            // cache: 'force-cache',
         });
 
         return await response.json();

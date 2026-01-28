@@ -7,7 +7,7 @@ const fetchPageIndex = async (url: ApiRoutes) => {
         const response = await $apiServer(url, {
             params: { populate: '*' },
             paramsSerializer,
-            next: { revalidate: 3600 }
+            // next: { revalidate: 3600 }
         });
 
         return await response.json();

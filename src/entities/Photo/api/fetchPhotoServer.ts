@@ -25,7 +25,7 @@ const fetchPhotoServer = async (
             params,
             paramsSerializer,
             // next: { revalidate: 10 },
-            cache: 'force-cache',
+            // cache: 'force-cache',
         });
 
         return await response.json();

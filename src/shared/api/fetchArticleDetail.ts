@@ -12,7 +12,7 @@ const fetchArticleDetail = async <T>(url: ApiRoutes, slug?: string): Promise<Res
             params: { populate: 'main.preview,tags,category,seo' },
             paramsSerializer,
             // next: { revalidate: 3600 }
-            cache: 'force-cache',
+            // cache: 'force-cache',
         });
 
         return await response.json();
