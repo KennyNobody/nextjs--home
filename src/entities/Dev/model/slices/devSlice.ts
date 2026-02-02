@@ -8,6 +8,7 @@ import { DevSchema } from '../types/DevSchema';
 import { fetchDevList } from '../services/fetchDevList';
 import { StateSchema } from 'shared/state/StateSchema';
 import { ResponseType } from 'shared/types/ResponseType';
+import {DataLabels} from "../../../../shared/labels/data";
 
 const devListAdapter = createEntityAdapter<ArticleDevType, number>({
     selectId: (item: ArticleDevType) => item.id,
@@ -89,8 +90,7 @@ const devSlice = createSlice({
 
                 state.isLoading = false;
                 state.currentRequestId = undefined;
-                // @ts-ignore TODO
-                state.errors = action.payload;
+                state.errors = action?.payload ?? DataLabels.UNKNOWS_ERROR;
             });
     },
 });

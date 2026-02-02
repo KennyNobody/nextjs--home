@@ -2,11 +2,10 @@ import {
     createSlice,
     PayloadAction,
 } from '@reduxjs/toolkit';
-import { AppMainResponseType } from '../types/AppMainResponse';
+import { DataLabels } from 'shared/labels/data';
+import { fetchAppMain } from '../services/fetchAppMain';
 import { AppMainSchema } from '../types/AppMainSchema';
-import {
-    fetchAppMain,
-} from '../services/fetchAppMain';
+import { AppMainResponseType } from '../types/AppMainResponse';
 
 
 const initialState: AppMainSchema = {
@@ -35,11 +34,9 @@ const appMainSlice = createSlice({
                 state.data = data;
                 state.isLoading = false;
             })
-            .addCase(fetchAppMain.rejected, (state: AppMainSchema, action) => {
+            .addCase(fetchAppMain.rejected, (state: AppMainSchema, action: PayloadAction<string | undefined>) => {
                 state.isLoading = false;
-
-                // @ts-ignore TODO: Корректно типизировать ошибки
-                state.errors = action.payload;
+                state.errors = action?.payload ?? DataLabels.UNKNOWS_ERROR;
             });
     },
 });

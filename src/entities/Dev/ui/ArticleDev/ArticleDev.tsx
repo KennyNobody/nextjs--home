@@ -62,23 +62,23 @@ export const ArticleDev = (props: ArticleDevProps) => {
                         }
                     />
                 </div>
-                <div className={classNames(grid['grid__col-2'], grid['grid__col-mob-4'])}>
-                    <div className={classNames(cls.main)}>
-                        <GridCategory
-                            showSkeleton={false}
-                            data={data?.tags?.data || []}
-                        />
-                        <Icon
-                            className={
-                                classNames(
-                                    cls.icon,
-                                    cls['icon--desktop'],
-                                    theme && cls[`icon--${theme}`],
-                                )
-                            }
-                        />
-                    </div>
-                </div>
+                {/*<div className={classNames(grid['grid__col-2'], grid['grid__col-mob-4'])}>*/}
+                {/*    <div className={classNames(cls.main)}>*/}
+                {/*        <GridCategory*/}
+                {/*            showSkeleton={false}*/}
+                {/*            data={data?.tags?.data || []}*/}
+                {/*        />*/}
+                {/*        <Icon*/}
+                {/*            className={*/}
+                {/*                classNames(*/}
+                {/*                    cls.icon,*/}
+                {/*                    cls['icon--desktop'],*/}
+                {/*                    theme && cls[`icon--${theme}`],*/}
+                {/*                )*/}
+                {/*            }*/}
+                {/*        />*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </div>
         </Link>
     );

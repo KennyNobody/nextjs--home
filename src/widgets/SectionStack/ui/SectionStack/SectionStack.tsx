@@ -3,14 +3,12 @@ import {
     SectionType,
     SectionPost,
     SectionPhoto,
-    SectionLoading,
 } from 'entities/Section';
 import { ContentKeyType } from 'shared/types/CommonTypes';
 import { Stack, StackSizeType } from 'shared/ui/Stack/Stack';
 
 interface PageIndexProps {
     className?: string;
-    // TODO Нужен всегда?
     isPreview: boolean;
     data?: SectionType[];
 }
@@ -21,14 +19,6 @@ export const SectionsStack = (props: PageIndexProps) => {
         className,
         isPreview,
     } = props;
-
-    // if (isLoading) {
-    //     return (
-    //         <Stack size={StackSizeType.LARGE}>
-    //             <SectionLoading isPreview />
-    //         </Stack>
-    //     );
-    // }
 
     return (
         <Stack size={StackSizeType.LARGE} className={className}>

@@ -3,11 +3,12 @@ import {
     PayloadAction,
     createEntityAdapter,
 } from '@reduxjs/toolkit';
-import { ArticlePostType } from '../types/ArticlePost';
-import { PostSchema } from '../types/PostSchema';
-import { fetchPostList } from '../services/fetchPostList';
+import { DataLabels } from 'shared/labels/data';
 import { StateSchema } from 'shared/state/StateSchema';
 import { ResponseType } from 'shared/types/ResponseType';
+import { PostSchema } from '../types/PostSchema';
+import { ArticlePostType } from '../types/ArticlePost';
+import { fetchPostList } from '../services/fetchPostList';
 
 const postListAdapter = createEntityAdapter<ArticlePostType, number>({
     selectId: (item: ArticlePostType) => item.id,
@@ -90,8 +91,7 @@ const postSlice = createSlice({
 
                 state.isLoading = false;
                 state.currentRequestId = undefined;
-                // @ts-ignore TODO
-                state.errors = action.payload;
+                state.errors = action.payload ?? DataLabels.UNKNOWS_ERROR;
             });
     },
 });

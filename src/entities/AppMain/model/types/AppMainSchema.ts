@@ -4,7 +4,7 @@ import { AppMainType } from './AppMain';
 interface AppMainSchema {
     data?: AppMainType;
     isLoading?: boolean;
-    errors?: FetchBaseQueryError;
+    errors?: string;
 }
 
 export type {

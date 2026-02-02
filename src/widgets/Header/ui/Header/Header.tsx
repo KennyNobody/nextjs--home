@@ -21,6 +21,7 @@ import cls from './Header.module.scss';
 import { Avatar } from '../Avatar/Avatar';
 import { Description } from '../Description/Description';
 import { MenuMobileButton } from '../MenuMobileButton/MenuMobileButton';
+import {RemoveScroll} from "react-remove-scroll";
 
 interface HeaderProps {
     data: AppMainType;
@@ -39,7 +40,6 @@ export const Header = (props: HeaderProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     useEffect(() => {
-        // TODO: Решить или отключить правило
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsOpen(false);
     }, [pathname]);
@@ -78,7 +78,6 @@ export const Header = (props: HeaderProps) => {
                                     )
                                 }
                             >
-                                {/* Блок заголовка */}
                                 <div className={classNames(cls.wrapper)}>
                                     <Head
                                         isMain={layoutMode === PageLayoutMode.FRONT}
@@ -107,19 +106,21 @@ export const Header = (props: HeaderProps) => {
                                     </Head>
                                 </div>
                                 { /* Мобильное меню */ }
-                                <div className={classNames(cls.relative)}>
-                                    <nav
-                                        hidden={!isOpen}
-                                        className={classNames(cls.nav, cls['nav--mobile'])}
-                                    >
-                                        <LinkNav linkKey={ContentKeyType.DEV} href={RouterLinks.DEV.link}>Разработал</LinkNav>
-                                        <LinkNav linkKey={ContentKeyType.PHOTO} href={RouterLinks.PHOTO.link}>Наснимал</LinkNav>
-                                        <LinkNav linkKey={ContentKeyType.POST} href={RouterLinks.POSTS.link}>Поделился</LinkNav>
-                                        <WidgetMobile title={'Тема'}>
-                                            <ThemeSwitcher />
-                                        </WidgetMobile>
-                                    </nav>
-                                </div>
+                                <RemoveScroll enabled={isOpen}>
+                                    <div className={classNames(cls.relative)}>
+                                        <nav
+                                            hidden={!isOpen}
+                                            className={classNames(cls.nav, cls['nav--mobile'])}
+                                        >
+                                            <LinkNav linkKey={ContentKeyType.DEV} href={RouterLinks.DEV.link}>Разработал</LinkNav>
+                                            <LinkNav linkKey={ContentKeyType.PHOTO} href={RouterLinks.PHOTO.link}>Наснимал</LinkNav>
+                                            <LinkNav linkKey={ContentKeyType.POST} href={RouterLinks.POSTS.link}>Поделился</LinkNav>
+                                            <WidgetMobile title={'Тема'}>
+                                                <ThemeSwitcher />
+                                            </WidgetMobile>
+                                        </nav>
+                                    </div>
+                                </RemoveScroll>
                             </div>
                         </div>
                         {/* Правая колонка */}

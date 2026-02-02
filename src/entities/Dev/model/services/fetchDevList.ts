@@ -13,7 +13,11 @@ interface FetchPostListProps {
     mode: 'start' | 'next';
 }
 
-export const fetchDevList = createAsyncThunk<ResponseType<ArticleDevType[]>, FetchPostListProps, ThunkConfig<string>>(
+export const fetchDevList = createAsyncThunk<
+    ResponseType<ArticleDevType[]>,
+    FetchPostListProps,
+    ThunkConfig<string>
+>(
     'dev/fetchDevList',
     async (props, thunkAPI) => {
         const { mode } = props;

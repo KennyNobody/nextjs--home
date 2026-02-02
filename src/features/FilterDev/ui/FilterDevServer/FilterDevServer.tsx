@@ -12,6 +12,10 @@ export const FilterDevServer = async () => {
     // TODO Добавить обработку исключений
     const { data } = response;
 
+    if (!data) {
+        throw new Error('Не удалось загрузить категории');
+    }
+
     return (
         <FilterDevClient data={data} />
     );

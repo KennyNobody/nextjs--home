@@ -7,13 +7,18 @@ import { ResponseType } from 'shared/types/ResponseType';
 import { fetchPostClient } from '../../api/fetchPostClient';
 import { getPostCategory, getPostPagination } from '../selectors/postSelector';
 import { ArticlePostType } from '../types/ArticlePost';
+import axios from "axios";
 
 interface FetchPostListProps {
     replace?: boolean;
     mode: 'start' | 'next';
 }
 
-export const fetchPostList = createAsyncThunk<ResponseType<ArticlePostType[]>, FetchPostListProps, ThunkConfig<string>>(
+export const fetchPostList = createAsyncThunk<
+    ResponseType<ArticlePostType[]>,
+    FetchPostListProps,
+    ThunkConfig<string>
+>(
     'post/fetchPostList',
     async (props, thunkAPI) => {
         const { mode } = props;
@@ -57,7 +62,10 @@ export const fetchPostList = createAsyncThunk<ResponseType<ArticlePostType[]>, F
 
             return await fetchPostClient(ApiRoutes.POSTS_LIST, params);
         } catch (e) {
-            return rejectWithValue('error');
+            if (axios.isAxiosError(e)) {
+                return rejectWithValue(e.response?.data?.message || e.message || 'Network error');
+            }
+            return rejectWithValue('Unknown error');
         }
     }
 );

@@ -52,7 +52,6 @@ export const ListPhotoClient = (props: ListPhotoClientProps) => {
         page = 1,
     } = pagination || {};
 
-    // TODO: Какой в этом смысл?
     const loadNextPage = () => {
         if (!isLoading && pageCount > page) {
             dispatch(fetchPhotoList({

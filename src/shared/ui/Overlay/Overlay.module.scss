@@ -6,8 +6,6 @@
     max-height: 100vh;
     visibility: visible;
     transition: 0.3s opacity;
-
-    // TODO: Протестировать в других браузерах
     backdrop-filter: blur(0.4rem);
 
     &[hidden] {

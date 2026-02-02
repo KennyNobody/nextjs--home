@@ -8,6 +8,7 @@ import { PhotoSchema } from '../types/PhotoSchema';
 import { fetchPhotoList } from '../services/fetchPhotoList';
 import { StateSchema } from 'shared/state/StateSchema';
 import { ResponseType } from 'shared/types/ResponseType';
+import {DataLabels} from "../../../../shared/labels/data";
 
 const photoListAdapter = createEntityAdapter<ArticlePhotoType, number>({
     selectId: (item: ArticlePhotoType) => item.id,
@@ -82,8 +83,7 @@ const photoSlice = createSlice({
 
                 state.isLoading = false;
                 state.currentRequestId = undefined;
-                // @ts-ignore TODO
-                state.errors = action.payload;
+                state.errors = action?.payload ?? DataLabels.UNKNOWS_ERROR;
             });
     },
 });

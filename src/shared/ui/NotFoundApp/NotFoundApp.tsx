@@ -1,20 +1,21 @@
 'use client'
 
+import Link from 'next/link';
 import Image from 'next/image';
 import classNames from 'classnames';
-import picture from 'shared/assets/images/cat.jpg';
-import cls from './ErrorApp.module.scss';
-import {DataLabels} from "../../labels/data";
+import picture from 'shared/assets/images/floppa.jpg';
+import cls from './NotFoundApp.module.scss';
+import { DataLabels } from '../../labels/data';
+import { RouterConfig } from '../../config/routerConfig';
 
-interface ErrorAppProps {
+interface NotFoundAppProps {
     className?: string
 }
 
-export const ErrorApp = (props: ErrorAppProps) => {
+export const NotFoundApp = (props: NotFoundAppProps) => {
     const { className } = props;
 
     const reloadPage = () => location.reload();
-    console.log(picture);
 
     return (
         <div className={classNames(cls.block, className)}>
@@ -24,22 +25,22 @@ export const ErrorApp = (props: ErrorAppProps) => {
                     height={224}
                     src={picture}
                     unoptimized={true}
-                    alt={DataLabels.ERROR_ALT}
+                    alt={ DataLabels.ALT_404 }
                 />
             </picture>
             <h2 className={classNames(cls.title)}>
-                { DataLabels.ERROR_TITLE }
+                { DataLabels.TITLE_404 }
             </h2>
             <p className={classNames(cls.caption)}>
-                { DataLabels.ERROR_DESCRIPTION }
+                { DataLabels.DESCRIPTION_404 }
             </p>
-            <button
-                type="button"
+            <Link
                 onClick={reloadPage}
+                href={RouterConfig.MAIN}
                 className={classNames(cls.button)}
             >
-                { DataLabels.ERROR_LABEL }
-            </button>
+                { DataLabels.LABEL_404 }
+            </Link>
         </div>
     );
 };

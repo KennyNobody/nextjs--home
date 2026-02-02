@@ -9,9 +9,6 @@ const fetchCategoryServer = async (
     url: ApiRoutes
 ): Promise<ResponseType<ArticleCategoryType[]>> => {
     try {
-        // TODO: Удалить после тестирования
-        // await new Promise(resolve => setTimeout(resolve, 5000));
-
         const params: ApiRequestParams = {
             pagination: {
                 page: 1,

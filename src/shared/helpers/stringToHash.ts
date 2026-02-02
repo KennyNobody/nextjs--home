@@ -6,8 +6,6 @@
 export const stringToHash = (str: string): string => {
     let hash = 0;
 
-    // console.log(str);
-
     if (str.length === 0) return hash.toString();
 
     for (let i = 0; i < str.length; i++) {

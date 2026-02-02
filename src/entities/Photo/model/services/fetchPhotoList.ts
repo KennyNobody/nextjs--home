@@ -13,7 +13,11 @@ interface FetchPhotoListProps {
     mode: 'start' | 'next';
 }
 
-export const fetchPhotoList = createAsyncThunk<ResponseType<ArticlePhotoType[]>, FetchPhotoListProps, ThunkConfig<string>>(
+export const fetchPhotoList = createAsyncThunk<
+    ResponseType<ArticlePhotoType[]>,
+    FetchPhotoListProps,
+    ThunkConfig<string>
+>(
     'photo/fetchPhotoList',
     async (props, thunkAPI) => {
         const { mode } = props;

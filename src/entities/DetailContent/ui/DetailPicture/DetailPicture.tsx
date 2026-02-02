@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import classNames from 'classnames';
 import { MediaFileType } from 'entities/Media';
+import { DataLabels } from 'shared/labels/data';
 import { EditorWrapper } from 'shared/ui/EditorWrapper/EditorWrapper';
 import cls from './DetailPicture.module.scss';
 
@@ -16,8 +17,8 @@ export const DetailPicture = (props: DetailPictureProps) => {
     const imageHeight = image.height;
 
     if (!imageUrl || !imageWidth || !imageHeight) {
-        console.warn('Сервер не передал размеры изображения:', image.name);
-        return null;
+        console.warn(`${DataLabels.IMAGE_NO_SIZE}: ${image.name}` );
+
     }
 
     return (
@@ -26,9 +27,9 @@ export const DetailPicture = (props: DetailPictureProps) => {
                 quality={90}
                 loading="lazy"
                 sizes={'1920px'}
-                width={imageWidth}
                 src={`${imageUrl}`}
-                height={imageHeight}
+                width={imageWidth || 0}
+                height={imageHeight || 0}
                 alt={image.alternativeText || ''}
                 data-caption={image.caption || ''}
                 data-fancybox={galleryKey || 'post-gallery'}
