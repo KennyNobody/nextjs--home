@@ -36,9 +36,6 @@ const eslintConfig = defineConfig([
             'object-curly-spacing': [2, 'always'],
             'quotes': [2, 'single'],
             '@typescript-eslint/no-unsafe-argument': 'off',
-            'react-compiler/react-compiler': ['error', {
-                'allowSetStateInEffect': true
-            }]
         },
     },
     {
