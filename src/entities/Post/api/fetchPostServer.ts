@@ -9,9 +9,6 @@ const fetchPostServer = async (
     url: ApiRoutes
 ): Promise<ResponseType<ArticlePostType[]>> => {
     try {
-        // TODO: Удалить после тестирования
-        // await new Promise(resolve => setTimeout(resolve, 10000));
-
         const params: ApiRequestParams = {
             pagination: {
                 page: 1,

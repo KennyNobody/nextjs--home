@@ -10,9 +10,6 @@ const fetchDevServer = async (
     url: ApiRoutes
 ): Promise<ResponseType<ArticleDevType[]>> => {
     try {
-        // TODO: Удалить после тестирования
-        // await new Promise(resolve => setTimeout(resolve, 10000));
-
         const params: ApiRequestParams = {
             pagination: {
                 page: 1,

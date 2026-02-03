@@ -42,7 +42,6 @@ export const DetailContentClient = (props: DetailContentClientProps) => {
             className={
                 classNames(
                     cls.block,
-                    // cls[`block--${theme}`],
                 )
             }
         >

@@ -1,19 +1,4 @@
-.block {
-    &--dark {
-        background-color: var(--bg-dark);
-    }
-}
-
-[data-theme="light"] {
-
-}
-
-// TODO: Возможно не нужно
-[data-theme="dark"] {
-    .block:not(.block--light, .block--dark) {
-        background-color: var(--bg-dark);
-    }
-}
+.block {}
 
 .picture {
     top: 0;

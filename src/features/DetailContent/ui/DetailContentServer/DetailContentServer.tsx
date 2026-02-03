@@ -6,6 +6,7 @@ import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { ResponseType } from 'shared/types/ResponseType';
 import { ContentKeyType } from 'shared/types/CommonTypes';
 import { DetailContentClient } from '../DetailContentClient/DetailContentClient';
+import {DataLabels} from "../../../../shared/labels/data";
 
 interface DetailContentServerProps {
     slug: string;
@@ -29,7 +30,10 @@ export const DetailContentServer = async (props: DetailContentServerProps) => {
     const fetchFunction = fetchRequests[mode];
     const response = await fetchFunction(slug);
 
-    // TODO Добавить обработку исключений
+    if (!response || !response.data) {
+        throw new Error(DataLabels.LOADING_ERROR);
+    }
+    
     const { data } = response;
 
     return (

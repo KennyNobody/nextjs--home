@@ -12,8 +12,7 @@ interface ArticlePostType {
     updatedAt: Date;
     publishedAt?: Date;
     main?: DetailContentType;
-    // TODO: Точно всегда есть?
-    seo: MetaPageType;
+    seo?: MetaPageType;
     tags?: {
         data: ArticleCategoryType[];
     };

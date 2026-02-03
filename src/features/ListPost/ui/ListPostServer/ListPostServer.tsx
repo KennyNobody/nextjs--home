@@ -3,6 +3,7 @@ import {
     ArticlePostType,
     fetchPostServer,
 } from 'entities/Post';
+import { DataLabels } from 'shared/labels/data';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { ResponseType } from 'shared/types/ResponseType';
 import { StoreInitializer } from 'shared/state/StoreInitializer';
@@ -16,7 +17,10 @@ export const ListPostServer = async (props: ListPostServerProps) => {
     const { isPreview } = props;
     const response: ResponseType<ArticlePostType[]> = await fetchPostServer(ApiRoutes.POSTS_LIST);
 
-    // TODO Добавить обработку исключений
+    if (!response || !response.data) {
+        throw new Error(DataLabels.LOADING_ERROR);
+    }
+
     const { data, meta } = response;
 
     return (

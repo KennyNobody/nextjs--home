@@ -3,6 +3,7 @@ import {
     ArticlePhotoType,
     fetchPhotoServer,
 } from 'entities/Photo';
+import { DataLabels } from 'shared/labels/data';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { ResponseType } from 'shared/types/ResponseType';
 import { StoreInitializer } from 'shared/state/StoreInitializer';
@@ -16,7 +17,10 @@ export const ListPhotoServer = async (props: ListPhotoServerProps) => {
     const { isPreview } = props;
     const response: ResponseType<ArticlePhotoType[]> = await fetchPhotoServer(ApiRoutes.PHOTO_LIST);
 
-    // TODO Добавить обработку исключений
+    if (!response || !response.data) {
+        throw new Error(DataLabels.LOADING_ERROR);
+    }
+
     const { data, meta } = response;
 
     return (

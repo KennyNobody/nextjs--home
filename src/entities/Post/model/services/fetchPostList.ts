@@ -37,18 +37,10 @@ export const fetchPostList = createAsyncThunk<
                 sort: 'publishedAt:DESC',
             }
 
-            // TODO: Порефакторить запросы везде
-            if (mode === 'start') {
-                params.pagination = {
-                    page: 1,
-                    pageSize: 8,
-                }
-            } else if (mode === 'next') {
-                params.pagination = {
-                    page,
-                    pageSize: 8,
-                }
-            }
+            params.pagination = {
+                page: mode === 'start' ? 1 : page,
+                pageSize: 8,
+            };
 
             if (category) {
                 params.filters = {
