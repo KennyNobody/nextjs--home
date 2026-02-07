@@ -12,27 +12,27 @@ const nextConfig: NextConfig = {
     //     _BASE_URL_: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
     //     _PROJECT_: BuildProject.FRONTEND,
     // },
-    async headers() {
-        return [
-            {
-                source: '/(.*)',
-                headers: [
-                    {
-                        key: 'X-Frame-Options',
-                        value: 'DENY',
-                    },
-                    {
-                        key: 'X-Content-Type-Options',
-                        value: 'nosniff',
-                    },
-                    {
-                        key: 'Strict-Transport-Security',
-                        value: 'max-age=31536000; includeSubDomains; preload',
-                    },
-                ],
-            },
-        ]
-    },
+    // async headers() {
+    //     return [
+    //         {
+    //             source: '/(.*)',
+    //             headers: [
+    //                 {
+    //                     key: 'X-Frame-Options',
+    //                     value: 'DENY',
+    //                 },
+    //                 {
+    //                     key: 'X-Content-Type-Options',
+    //                     value: 'nosniff',
+    //                 },
+    //                 {
+    //                     key: 'Strict-Transport-Security',
+    //                     value: 'max-age=31536000; includeSubDomains; preload',
+    //                 },
+    //             ],
+    //         },
+    //     ]
+    // },
     images: {
         remotePatterns: [
             {
