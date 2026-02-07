@@ -61,20 +61,20 @@ export const SectionDev = (props: SectionProps) => {
                             !isPreview
                             && (
                                 <>
-                                    <div
-                                        className={
-                                            classNames(
-                                                grid['grid__col-2'],
-                                                grid['grid__col-mob-4'],
-                                            )
-                                        }
-                                    >
-                                        <LinkRegular
-                                            href="#"
-                                            text={'CV'}
-                                            className={classNames(cls.link)}
-                                        />
-                                    </div>
+                                    {/*<div*/}
+                                    {/*    className={*/}
+                                    {/*        classNames(*/}
+                                    {/*            grid['grid__col-2'],*/}
+                                    {/*            grid['grid__col-mob-4'],*/}
+                                    {/*        )*/}
+                                    {/*    }*/}
+                                    {/*>*/}
+                                    {/*    <LinkRegular*/}
+                                    {/*        href="#"*/}
+                                    {/*        text={'CV'}*/}
+                                    {/*        className={classNames(cls.link)}*/}
+                                    {/*    />*/}
+                                    {/*</div>*/}
                                     <div
                                         className={
                                             classNames(

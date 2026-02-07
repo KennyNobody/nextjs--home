@@ -11,7 +11,7 @@ interface ArticlePhotoType {
     updatedAt: Date;
     publishedAt?: Date;
     main?: DetailContentType;
-    seo?: MetaPageType;
+    seo: MetaPageType;
     tags?: {
         data: ArticleCategoryType[];
     };

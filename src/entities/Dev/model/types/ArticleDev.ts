@@ -10,7 +10,7 @@ interface ArticleDevType {
     documentId: string;
     createdAt: Date;
     updatedAt: Date;
-    seo?: MetaPageType;
+    seo: MetaPageType;
     publishedAt?: Date;
     main?: DetailContentType;
     tags?: {
