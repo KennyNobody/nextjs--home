@@ -29,20 +29,6 @@ const nextConfig: NextConfig = {
                         key: 'Strict-Transport-Security',
                         value: 'max-age=31536000; includeSubDomains; preload',
                     },
-                    {
-                        key: 'Content-Security-Policy',
-                        value: `
-                          default-src 'self';
-                          script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-insights.com;
-                          style-src 'self' 'unsafe-inline';
-                          img-src 'self' data: https:;
-                          font-src 'self';
-                          connect-src 'self' https://va.vercel-insights.com;
-                          frame-src 'none';
-                          base-uri 'self';
-                          object-src 'none';
-                        `.replace(/\s{2,}/g, ' ').trim(),
-                    },
                 ],
             },
         ]
