@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Fieldset } from './Fieldset';
+import { End } from './End';
 
 const meta = {
-    title: 'Shared/Fieldset',
-    component: Fieldset,
+    title: 'Shared/End',
+    component: End,
     parameters: {
-        layout: 'fullscreen',
+        layout: 'centered',
         nextjs: {
             appDirectory: true,
             router: {
@@ -14,21 +14,11 @@ const meta = {
         },
     },
     tags: ['autodocs'],
-} satisfies Meta<typeof Fieldset>;
+} satisfies Meta<typeof End>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     name: 'Default',
-    args: {
-        title: 'Title',
-        children: (
-            <>
-                <div>Child 1</div>
-                <div>Child 2</div>
-                <div>Child 3</div>
-            </>
-        )
-    },
 };

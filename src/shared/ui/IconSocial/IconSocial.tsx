@@ -41,3 +41,5 @@ export const IconSocial = (props: IconSocialProps) => {
 
     return renderIcon(iconKey, className);
 };
+
+// TODO: Вынести в Storybook

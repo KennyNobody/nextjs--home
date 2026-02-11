@@ -15,13 +15,6 @@ const meta = {
     },
     tags: ['autodocs'],
     argTypes: {},
-    // decorators: [
-    //     (Story) => (
-    //         <div style={{ maxWidth: '100%', width: '360px' }}>
-    //             <Story />
-    //         </div>
-    //     ),
-    // ],
 } satisfies Meta<typeof DateInfo>;
 
 export default meta;

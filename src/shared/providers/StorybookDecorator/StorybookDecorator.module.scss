@@ -1,0 +1,23 @@
+.block {
+	max-width: 100%;
+
+	&--size-small {
+		width: 360px;
+	}
+
+	&--size-medium {
+		width: 480px;
+	}
+
+	&--size-large {
+		width: 580px;
+	}
+
+	&--size-full {
+		width: 100%;
+	}
+
+	&--padding-small {
+
+	}
+}

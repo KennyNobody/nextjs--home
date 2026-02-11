@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { LinkNav } from './LinkNav';
 import { AppTheme } from '../../types/Theme';
 import { ContentKeyType } from '../../types/CommonTypes';
+import {StorybookDecorator} from "../../providers/StorybookDecorator/StorybookDecorator";
 
 const meta = {
     title: 'Shared/LinkNav',
@@ -39,11 +40,10 @@ const meta = {
         },
     },
     decorators: [
-        // TODO: Вынести в компонент
         (Story) => (
-            <div style={{ maxWidth: '100%', width: '360px' }}>
+            <StorybookDecorator mode={'size-small'}>
                 <Story />
-            </div>
+            </StorybookDecorator>
         ),
     ],
 } satisfies Meta<typeof LinkNav>;
@@ -51,12 +51,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Regular: Story = {
+export const Default: Story = {
     name: 'Default',
     args: {
         href: '#',
         linkKey: ContentKeyType.POST,
         children: 'Заголовок',
+        isActive: false,
     },
 };
 

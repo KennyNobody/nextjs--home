@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { Fieldset } from './Fieldset';
+import { WidgetMobile } from './WidgetMobile';
 
 const meta = {
-    title: 'Shared/Fieldset',
-    component: Fieldset,
+    title: 'Shared/WidgetMobile',
+    component: WidgetMobile,
     parameters: {
-        layout: 'fullscreen',
+        layout: 'centered',
         nextjs: {
             appDirectory: true,
             router: {
@@ -14,7 +14,16 @@ const meta = {
         },
     },
     tags: ['autodocs'],
-} satisfies Meta<typeof Fieldset>;
+    argTypes: {},
+    decorators: [
+        // TODO: Вынести в компонент
+        (Story) => (
+            <div style={{ maxWidth: '100%', width: '360px' }}>
+                <Story />
+            </div>
+        ),
+    ],
+} satisfies Meta<typeof WidgetMobile>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -25,10 +34,8 @@ export const Default: Story = {
         title: 'Title',
         children: (
             <>
-                <div>Child 1</div>
-                <div>Child 2</div>
-                <div>Child 3</div>
+                <div>Child</div>
             </>
-        )
+        ),
     },
 };

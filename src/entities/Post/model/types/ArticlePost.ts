@@ -8,9 +8,9 @@ interface ArticlePostType {
     title: string;
     locale: string;
     documentId: string;
-    createdAt: Date;
-    updatedAt: Date;
-    publishedAt?: Date;
+    createdAt: Date | string;
+    updatedAt: Date  | string;
+    publishedAt?: Date  | string;
     main?: DetailContentType;
     seo: MetaPageType;
     tags?: {

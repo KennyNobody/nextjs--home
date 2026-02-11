@@ -20,7 +20,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Regular: Story = {
+export const Default: Story = {
     name: 'Default',
     args: {
         children: (

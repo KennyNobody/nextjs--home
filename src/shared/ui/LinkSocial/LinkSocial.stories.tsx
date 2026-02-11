@@ -28,6 +28,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// TODO: Доработать svg для vite
 export const Regular: Story = {
     name: 'Regular',
     args: {

@@ -1,6 +1,7 @@
 import { AppTheme } from 'shared/types/Theme';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { Skeleton, SkeletonMode } from './Skeleton';
+import {StorybookDecorator} from "../../providers/StorybookDecorator/StorybookDecorator";
 
 const meta = {
     title: 'Shared/Skeleton',
@@ -29,11 +30,10 @@ const meta = {
 
     },
     decorators: [
-        // TODO: Вынести в компонент
         (Story) => (
-            <div style={{ maxWidth: '100%', width: '480px' }}>
+            <StorybookDecorator mode={'size-medium'}>
                 <Story />
-            </div>
+            </StorybookDecorator>
         ),
     ],
 } satisfies Meta<typeof Skeleton>;

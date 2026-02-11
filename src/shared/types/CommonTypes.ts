@@ -35,15 +35,16 @@ interface MetaSocial {
 }
 
 interface MetaPageType {
-    metaTitle: string;
-    metaDescription: string;
+    id: number;
+    metaTitle: string | null;
+    metaDescription: string | null;
     metaImage?: { data: MediaFileType };
-    metaSocial: MetaSocial[];
-    keywords?: string;
-    metaRobots?: string;
+    metaSocial?: MetaSocial[];
+    keywords?: string | null;
+    metaRobots?: string | null;
     structuredData?: any;
-    metaViewport?: string;
-    canonicalURL?: string;
+    metaViewport?: string | null;
+    canonicalURL?: string | null;
 }
 
 export {

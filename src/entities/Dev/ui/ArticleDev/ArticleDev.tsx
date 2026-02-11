@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import classNames from 'classnames';
 import { AppTheme } from 'shared/types/Theme';
-import { GridCategory } from 'entities/Category';
 import grid from 'shared/styles/grid.module.scss';
 import Icon from 'shared/assets/icons/arrow-next.svg';
 import { RouterLinks } from 'shared/config/routerConfig';

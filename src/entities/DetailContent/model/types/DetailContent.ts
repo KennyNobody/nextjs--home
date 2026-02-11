@@ -7,8 +7,8 @@ interface DetailContentType {
         data: MediaFileType;
     },
     showPreview: boolean;
-    previewTitle: string;
-    previewCaption: string;
+    previewTitle: string | null;
+    previewCaption: string | null;
     previewInverted: boolean;
     content: BlocksContent;
 }

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { Editor } from './Editor';
+import {StorybookDecorator} from "../../providers/StorybookDecorator/StorybookDecorator";
 
 const meta = {
     title: 'Shared/Editor',
@@ -14,6 +15,13 @@ const meta = {
         },
     },
     tags: ['autodocs'],
+    decorators: [
+        (Story) => (
+            <StorybookDecorator mode={'padding-small'}>
+                <Story />
+            </StorybookDecorator>
+        ),
+    ],
     argTypes: {},
 } satisfies Meta<typeof Editor>;
 
@@ -54,8 +62,8 @@ const sampleContent = `
 <p>Final paragraph with a very long link to test overflow: <a href="#">https://example.com/very/long/url/that/should/truncate/properly/when/displayed</a></p>
 `;
 
-export const NumericRu: Story = {
-    name: 'Props children',
+export const Default: Story = {
+    name: 'Default',
     args: {
         data: sampleContent,
     },

@@ -7,11 +7,11 @@ interface ArticleDevType {
     slug: string;
     title: string;
     locale: string;
-    documentId: string;
-    createdAt: Date;
-    updatedAt: Date;
+    // documentId: string;
+    createdAt: Date | string;
+    updatedAt: Date | string;
     seo: MetaPageType;
-    publishedAt?: Date;
+    publishedAt?: Date | string;
     main?: DetailContentType;
     tags?: {
         data: ArticleCategoryType[];

@@ -1,9 +1,8 @@
-import { ThemeProvider } from 'next-themes';
+import './style.scss';
 import type { Preview } from '@storybook/nextjs-vite'
 import { AppDecorator } from 'shared/providers/AppDecorator';
 import { ProjectMode } from '../config/types/types';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
-import { StyleDecorator } from 'shared/providers/StyleDecorator/StyleDecorator';
 
 const preview: Preview = {
     parameters: {

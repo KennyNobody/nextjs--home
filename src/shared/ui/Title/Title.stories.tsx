@@ -30,8 +30,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Main: Story = {
-    name: 'Main',
+export const Default: Story = {
+    name: 'Default',
     args: {
         mode: TitleModeType.MAIN,
         children: 'Title main',

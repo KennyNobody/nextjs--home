@@ -3,9 +3,9 @@ interface ArticleCategoryType {
     title: string;
     slug: string;
     locale: string;
-    createdAt: Date;
-    updatedAt: Date;
-    publishedAt?: Date;
+    createdAt: Date | string;
+    updatedAt: Date | string;
+    publishedAt?: Date | string;
     // localizations?: {
     //     data: ArticleCategoryType[]
     // };

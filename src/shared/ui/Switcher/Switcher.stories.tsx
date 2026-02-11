@@ -26,10 +26,11 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// export const FieldsetStory: Story = {
-//     name: 'Props children',
-//     args: {
-//         isChecked: false,
-//         changeEvent: () => console.log('Toggled'),
-//     },
-// };
+export const Default: Story = {
+    name: 'Default',
+    args: {
+        isChecked: false,
+        label: 'Toggle',
+        changeEvent: () => console.log('Toggled'),
+    },
+};

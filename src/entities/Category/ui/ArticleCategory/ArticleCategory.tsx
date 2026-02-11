@@ -6,8 +6,8 @@ import cls from './ArticleCategory.module.scss';
 import { ArticleCategoryType } from '../../model/types/ArticleCategory';
 
 export enum ArticleCategoryMode {
-    STATIC,
-    INPUT,
+    STATIC = 'static',
+    INPUT = 'input',
 }
 
 interface ArticleCategoryProps {
