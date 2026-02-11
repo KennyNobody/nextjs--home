@@ -16,7 +16,7 @@ const meta = {
     },
     tags: ['autodocs'],
     args: {
-        data: [mock, mock, mock, mock, mock, mock],
+        data: [mock, mock],
         showSkeleton: false,
     },
     argTypes: {
@@ -27,6 +27,10 @@ const meta = {
         data: {
             control: false,
             description: 'Массив статей для отображения',
+        },
+        showEnd: {
+            control: 'boolean',
+            description: 'Показать финальный текст',
         }
     },
 } satisfies Meta<typeof GridPhoto>;
@@ -34,6 +38,17 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Lines: Story = {
-    name: 'Lines',
+export const Default: Story = {
+    name: 'Default',
+    args: {
+        showSkeleton: false,
+        showEnd: true,
+    }
+};
+
+export const Loading: Story = {
+    name: 'Loading',
+    args: {
+        showSkeleton: true,
+    }
 };

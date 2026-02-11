@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { GridPosts } from './GridPosts';
-import { data as mock } from './../../mocks/data';
+import { GridCategory } from './GridCategory';
+import { data as mock } from '../../mocks/articleCategory';
 
 const meta = {
-    title: 'Entities/GridPosts',
-    component: GridPosts,
+    title: 'Entities/GridCategory',
+    component: GridCategory,
     parameters: {
         layout: 'fullscreen',
         nextjs: {
@@ -16,7 +16,7 @@ const meta = {
     },
     tags: ['autodocs'],
     args: {
-        data: [mock, mock, mock, mock, mock, mock, mock, mock, mock, mock, mock, mock],
+        data: [mock, mock, mock],
         showSkeleton: false,
     },
     argTypes: {
@@ -26,14 +26,10 @@ const meta = {
         },
         data: {
             control: false,
-            description: 'Массив статей для отображения',
+            description: 'Массив записей для отображения',
         },
-        showEnd: {
-            control: 'boolean',
-            description: 'Показать финальный текст',
-        }
     },
-} satisfies Meta<typeof GridPosts>;
+} satisfies Meta<typeof GridCategory>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -42,7 +38,6 @@ export const Default: Story = {
     name: 'Default',
     args: {
         showSkeleton: false,
-        showEnd: true,
     }
 };
 

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { GridPosts } from './GridPosts';
+import { GridDev } from './GridDev';
 import { data as mock } from './../../mocks/data';
 
 const meta = {
-    title: 'Entities/GridPosts',
-    component: GridPosts,
+    title: 'Entities/GridDev',
+    component: GridDev,
     parameters: {
         layout: 'fullscreen',
         nextjs: {
@@ -16,7 +16,7 @@ const meta = {
     },
     tags: ['autodocs'],
     args: {
-        data: [mock, mock, mock, mock, mock, mock, mock, mock, mock, mock, mock, mock],
+        data: [mock, mock, mock],
         showSkeleton: false,
     },
     argTypes: {
@@ -33,7 +33,7 @@ const meta = {
             description: 'Показать финальный текст',
         }
     },
-} satisfies Meta<typeof GridPosts>;
+} satisfies Meta<typeof GridDev>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
