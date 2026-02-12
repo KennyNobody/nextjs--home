@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import * as Sentry from '@sentry/nextjs'
 import { ErrorApp } from 'shared/ui/ErrorApp/ErrorApp';
 
 interface ErrorInterface {
@@ -9,14 +10,17 @@ interface ErrorInterface {
 }
 
 export default function Error(props: ErrorInterface) {
-    const {
-        error,
-        reset,
-    } = props;
+    const { error } = props;
 
     useEffect(() => {
-        // TODO: Отравить в Sentry
-        console.error(error)
+        Sentry.captureException(error, {
+            tags: {
+                errorBoundary: 'root',
+            },
+            extra: {
+                digest: error.digest,
+            },
+        })
     }, [error])
 
     return <ErrorApp />;

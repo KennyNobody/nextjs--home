@@ -1,21 +1,23 @@
+import * as Sentry from '@sentry/nextjs'
 import { ApiError, ErrorLogEntry } from 'shared/types/ErrorTypes';
 
 let errors: ErrorLogEntry[] = [];
 
-const sendToExternalLogger = ( logEntry: ErrorLogEntry): void => {
-    // Здесь можно интегрировать Sentry, LogRocket и т.д.
-    console.log('Шлем в сервис логгирования');
-    console.error(logEntry);
-    // if (process.env.NODE_ENV === 'production') {
-    //     // Пример отправки в внешний сервис
-    //     fetch('/api/log-error', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify(logEntry),
-    //     }).catch(() => {
-    //         // Игнорируем ошибки логирования
-    //     });
-    // }
+const sendToExternalLogger = (logEntry: ErrorLogEntry): void => {
+    Sentry.captureException(new Error(logEntry.error.message), {
+        tags: {
+            error_type: 'api_error',
+            status_code: logEntry.error.status.toString(),
+            endpoint: logEntry.error.endpoint,
+            method: logEntry.error.method,
+        },
+        extra: {
+            log_id: logEntry.id,
+            timestamp: logEntry.error.timestamp,
+            full_error: logEntry.error,
+            context: logEntry,
+        },
+    });
 };
 
 const logError = (error: ApiError, context?: Partial<ErrorLogEntry>): void => {
