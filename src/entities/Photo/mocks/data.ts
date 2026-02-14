@@ -82,6 +82,7 @@ const data: ArticlePhotoType = {
         // }
     },
     seo: {
+        id: 1,
         metaTitle: 'Meta title',
         metaDescription: null,
         keywords: null,

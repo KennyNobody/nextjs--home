@@ -12,6 +12,7 @@ import {
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/state/hooks';
 import { Fieldset } from 'shared/ui/Fieldset/Fieldset';
+import { useCallback } from 'react';
 
 interface PostFilterClientProps {
     data?: ArticleCategoryType[];
@@ -25,13 +26,13 @@ export const FilterPostClient = (props: PostFilterClientProps) => {
     const dispatch = useAppDispatch();
     const activeCategory: number | undefined = useSelector(getPostCategory);
 
-    const changeCategory = (item: ArticleCategoryType | undefined): void => {
+    const changeCategory = useCallback((item: ArticleCategoryType | undefined): void => {
         dispatch(postActions.toggleCategory(item?.id || undefined));
         dispatch(fetchPostList({
             mode: 'start',
             replace: true,
         }));
-    };
+    }, [dispatch]);
 
     return (
         <Fieldset title={'Фильтр по категориям'}>

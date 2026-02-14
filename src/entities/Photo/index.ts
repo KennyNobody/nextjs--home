@@ -24,9 +24,5 @@ export {
 } from './model/selectors/photoSelector';
 
 export {
-    fetchPhotoServer,
-} from './api/fetchPhotoServer';
-
-export {
     fetchPhotoList,
 } from './model/services/fetchPhotoList';

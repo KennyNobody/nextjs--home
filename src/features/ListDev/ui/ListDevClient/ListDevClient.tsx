@@ -52,7 +52,6 @@ export const ListDevClient = (props: ListDevClientProps) => {
         page = 1,
     } = pagination || {};
 
-    // TODO: Какой в этом смысл?
     const loadNextPage = useCallback(() => {
         if (!isLoading && pageCount > page) {
             dispatch(fetchDevList({
@@ -61,13 +60,6 @@ export const ListDevClient = (props: ListDevClientProps) => {
             }));
         }
     }, [pageCount, page, dispatch, isLoading]);
-
-    const updateData = () => {
-        dispatch(fetchDevList({
-            mode: 'start',
-            replace: true,
-        }));
-    }
 
     useInfiniteScroll({
         triggerRef,
@@ -78,7 +70,7 @@ export const ListDevClient = (props: ListDevClientProps) => {
         return () => {
             dispatch(devActions.clearListData());
         };
-    }, []);
+    }, [dispatch]);
 
     return (
         <div

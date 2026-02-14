@@ -1,13 +1,10 @@
-import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { $apiServer } from 'shared/api/apiServer';
+import { ApiRoutes } from 'shared/api/apiEndpoints';
+import { ResponseType } from 'shared/types/ResponseType';
 import { paramsSerializer } from 'shared/lib/paramsSerializer';
-import { ApiRequestParams } from 'shared/types/ApiRequestParams';
-import { ResponseType } from '../../../shared/types/ResponseType';
-import { ArticlePostType } from '../model/types/ArticlePost';
+import { ApiRequestParams } from '../types/ApiRequestParams';
 
-const fetchPostServer = async (
-    url: ApiRoutes
-): Promise<ResponseType<ArticlePostType[]>> => {
+const fetchArticleList = async <T>(url: ApiRoutes): Promise<ResponseType<T>> => {
     try {
         const params: ApiRequestParams = {
             pagination: {
@@ -21,18 +18,18 @@ const fetchPostServer = async (
         const response = await $apiServer(url, {
             params,
             paramsSerializer,
-            // next: { revalidate: 10 }
+            // next: { revalidate: 3600 }
             // cache: 'force-cache',
         });
 
         return await response.json();
     } catch (error) {
-        console.error(error);
+        console.error('Fetch detail error:', error);
         throw error;
     }
 };
 
 
 export {
-    fetchPostServer,
+    fetchArticleList,
 }

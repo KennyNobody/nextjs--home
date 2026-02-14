@@ -5,6 +5,7 @@ import grid from 'shared/styles/grid.module.scss';
 import cls from './GridPhoto.module.scss';
 import { ArticlePhoto } from '../ArticlePhoto/ArticlePhoto';
 import { ArticlePhotoType } from '../../model/types/ArticlePhoto';
+import {useMemo} from "react";
 
 interface GridPostsProps {
     className?: string;
@@ -21,7 +22,7 @@ export const GridPhoto = (props: GridPostsProps) => {
         showEnd,
     } = props;
 
-    const skeleton = (
+    const skeleton = useMemo(() =>
         new Array(2).fill(null).map((_, index) => (
             <div
                 key={index}
@@ -30,7 +31,7 @@ export const GridPhoto = (props: GridPostsProps) => {
                 <ArticlePhoto />
             </div>
         ))
-    );
+    , []);
 
     const content = (
         data

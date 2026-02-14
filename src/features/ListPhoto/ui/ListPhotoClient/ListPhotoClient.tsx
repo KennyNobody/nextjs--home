@@ -2,7 +2,7 @@
 
 import {
     useRef,
-    useEffect,
+    useEffect, useCallback,
 } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
@@ -52,14 +52,14 @@ export const ListPhotoClient = (props: ListPhotoClientProps) => {
         page = 1,
     } = pagination || {};
 
-    const loadNextPage = () => {
+    const loadNextPage = useCallback(() => {
         if (!isLoading && pageCount > page) {
             dispatch(fetchPhotoList({
                 mode: 'next',
                 replace: false,
             }));
         }
-    };
+    }, [pageCount, page, dispatch, isLoading]);
 
     useInfiniteScroll({
         triggerRef,
@@ -70,7 +70,7 @@ export const ListPhotoClient = (props: ListPhotoClientProps) => {
         return () => {
             dispatch(photoActions.clearListData());
         };
-    }, []);
+    }, [dispatch]);
 
     return (
         <div

@@ -6,6 +6,7 @@ import {
     ArticleCategoryMode,
 } from '../ArticleCategory/ArticleCategory';
 import cls from './ListCategory.module.scss';
+import { useMemo } from 'react';
 
 interface ListCategoryProps {
     className?: string;
@@ -24,14 +25,14 @@ export const ListCategory = (props: ListCategoryProps) => {
         selectedItem,
     } = props;
 
-    const skeleton = (
+    const skeleton = useMemo(() =>
         new Array(5).fill(null).map((_, index: number) => (
             <ArticleCategory
                 key={index}
                 mode={ArticleCategoryMode.STATIC}
             />
         ))
-    );
+    , []);
 
     const content = (
         data

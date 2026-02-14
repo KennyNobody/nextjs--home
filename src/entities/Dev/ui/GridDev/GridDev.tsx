@@ -3,6 +3,7 @@ import { End } from 'shared/ui/End/End';
 import cls from './GridDev.module.scss';
 import { ArticleDev } from '../ArticleDev/ArticleDev';
 import { ArticleDevType } from '../../model/types/ArticleDev';
+import {useMemo} from "react";
 
 interface ListDevProps {
     showEnd?: boolean;
@@ -19,13 +20,13 @@ export const GridDev = (props: ListDevProps) => {
         showSkeleton,
     } = props;
 
-    const skeleton = (
+    const skeleton = useMemo(() =>
         new Array(3).fill(null).map((_, index) => (
             <li key={index}>
                 <ArticleDev />
             </li>
         ))
-    );
+    , []);
 
     const content = (
         data?.map((item) => (

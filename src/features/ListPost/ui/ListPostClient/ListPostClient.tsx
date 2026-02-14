@@ -55,7 +55,6 @@ export const ListPostClient = (props: ListPostClientProps) => {
         page = 1,
     } = pagination || {};
 
-    // TODO: Какой в этом смысл?
     const loadNextPage = useCallback(() => {
         if (!isLoading && pageCount > page) {
             dispatch(fetchPostList({
@@ -74,7 +73,7 @@ export const ListPostClient = (props: ListPostClientProps) => {
         return () => {
             dispatch(postActions.clearListData());
         };
-    }, []);
+    }, [dispatch]);
 
     const displayData = useMemo(() => {
         return isPreview ? addRandomNulls(data) : data;

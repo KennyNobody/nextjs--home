@@ -5,6 +5,7 @@ import { AppTheme } from 'shared/types/Theme';
 import cls from './GridPosts.module.scss';
 import { ArticlePost } from '../ArticlePost/ArticlePost';
 import { ArticlePostType } from '../../model/types/ArticlePost';
+import {useMemo} from "react";
 
 interface GridPostsProps {
     className?: string;
@@ -21,7 +22,7 @@ export const GridPosts = (props: GridPostsProps) => {
         showEnd,
     } = props;
 
-    const skeleton = (
+    const skeleton = useMemo(() =>
         new Array(12).fill(null).map((_, index) => (
             <div
                 key={index}
@@ -36,7 +37,7 @@ export const GridPosts = (props: GridPostsProps) => {
                 <ArticlePost />
             </div>
         ))
-    );
+    , []);
 
     const content = (
         data
@@ -52,7 +53,7 @@ export const GridPosts = (props: GridPostsProps) => {
 
             return (
                 <div
-                    key={index}
+                    key={item?.id}
                     className={
                         classNames(
                             grid['grid__col-1'],

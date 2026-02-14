@@ -25,9 +25,5 @@ export {
 } from './model/selectors/devSelector';
 
 export {
-    fetchDevServer,
-} from './api/fetchDevServer';
-
-export {
     fetchDevList,
 } from './model/services/fetchDevList';

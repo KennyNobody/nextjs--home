@@ -6,8 +6,8 @@ import { RequestProps } from 'shared/types/Request';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { ResponseType } from 'shared/types/ResponseType';
 import { ContentKeyType } from 'shared/types/CommonTypes';
+import { notFound } from 'next/dist/client/components/not-found';
 import { generatePageMetadata } from 'shared/lib/generatePageMetadata';
-import {notFound} from "next/dist/client/components/not-found";
 
 async function getPageData(documentId: string): Promise<ResponseType<ArticlePhotoType>> {
     return await fetchArticleDetail(ApiRoutes.PHOTO_LIST, documentId);

@@ -25,9 +25,5 @@ export {
 } from './model/selectors/postSelector';
 
 export {
-    fetchPostServer,
-} from './api/fetchPostServer';
-
-export {
     fetchPostList,
 } from './model/services/fetchPostList';
