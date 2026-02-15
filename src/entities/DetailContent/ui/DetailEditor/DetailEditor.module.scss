@@ -1,0 +1,30 @@
+.block {
+    padding: 60px 50px;
+    border-radius: 28px;
+}
+
+[data-theme="light"] {
+    .block:not(.block--light, .block--dark) {
+        background-color: var(--light-accent);
+    }
+}
+
+[data-theme="dark"] {
+    .block:not(.block--light, .block--dark) {
+        background-color: var(--dark-accent);
+    }
+}
+
+@media (width <= 2160px) {
+    .block {
+        padding: 50px 40px;
+        border-radius: 22px;
+    }
+}
+
+@media (width <= 1200px) {
+    .block {
+        padding: 25px 15px;
+        border-radius: 16px;
+    }
+}

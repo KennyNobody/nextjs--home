@@ -1,0 +1,33 @@
+.block {
+    height: 100%;
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+//[data-theme="light"] {
+//    .block {
+//        color: var(--dark-primary);
+//        background-color: var(--bg-light);
+//    }
+//}
+//
+//[data-theme="dark"] {
+//    .block {
+//        color: var(--light-primary);
+//        background-color: var(--bg-dark);
+//    }
+//}
+
+.header {
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.footer {
+    z-index: 2;
+    position: relative;
+}

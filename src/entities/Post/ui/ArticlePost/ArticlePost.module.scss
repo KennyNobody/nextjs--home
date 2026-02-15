@@ -1,0 +1,151 @@
+.article {
+    width: 100%;
+    display: flex;
+    color: inherit;
+    overflow: hidden;
+    position: relative;
+    border-radius: 24px;
+    text-decoration: none;
+    aspect-ratio: 1 / 1.15;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &--content {
+        padding: var(--card-padding-l);
+    }
+
+    &--light {
+        background-color: var(--light-accent);
+    }
+
+    &--dark {
+        background-color: var(--dark-accent);
+    }
+}
+
+[data-theme="light"] {
+    .article:not(.article--light, .article--dark) {
+        background-color: var(--light-accent);
+    }
+}
+
+[data-theme="dark"] {
+    .article:not(.article--light, .article--dark) {
+        background-color: var(--dark-accent);
+    }
+}
+
+.skeleton {
+    width: 100%;
+    height: 100%;
+}
+
+.picture {
+    inset: 0;
+    z-index: 0;
+    position: absolute;
+
+    img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.main {
+    z-index: 1;
+    position: relative;
+}
+
+.title {
+    font-size: 38px;
+    font-weight: 400;
+    margin-bottom: 7px;
+
+    &--light {
+        color: var(--dark-primary);
+    }
+
+    &--dark {
+        color: var(--light-accent);
+    }
+}
+
+[data-theme="light"] {
+    .title:not(.title--light, .title--dark) {
+        color: var(--dark-primary);
+    }
+}
+
+[data-theme="dark"] {
+    .title:not(.title--light, .title--dark) {
+        color: var(--light-accent);
+    }
+}
+
+.caption {
+    font-size: 24px;
+
+    &--light {
+        color: var(--dark-secondary);
+    }
+
+    &--dark {
+        color: var(--light-primary);
+    }
+}
+
+[data-theme="light"] {
+    .caption:not(.caption--light, .caption--dark) {
+        color: var(--light-accent);
+    }
+}
+
+[data-theme="dark"] {
+    .caption:not(.caption--light, .caption--dark) {
+        color: var(--dark-accent);
+    }
+}
+
+.tag {
+    z-index: 1;
+    position: relative;
+    width: fit-content;
+    align-self: flex-end;
+}
+
+@media (width <= 2160px) {
+    .article {
+        &--content {
+            padding: var(--card-padding-m);
+        }
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .caption {
+        font-size: 16px;
+    }
+}
+
+@media (width <= 1200px) {
+    .article {
+        border-radius: 16px;
+
+        &--content {
+            padding: var(--card-padding-s);
+        }
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .caption {
+        font-size: 14px;
+    }
+}

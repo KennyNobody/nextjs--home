@@ -1,0 +1,63 @@
+.name {
+    font-size: 28px;
+    transition: 0.3s all;
+    line-height: var(--name-reg-line-height-l);
+
+    &--main {
+        font-size: 43px;
+        line-height: var(--name-main-line-height-l);
+    }
+}
+
+.skeleton {
+    width: 60%;
+    height: var(--name-reg-line-height-l);
+
+    &--main {
+        height: var(--name-main-line-height-l);
+    }
+}
+
+@media (width <= 2160px) {
+    .name {
+        font-size: 24px;
+        line-height: var(--name-reg-line-height-m);
+
+        &--main {
+            font-size: 32px;
+            line-height: var(--name-main-line-height-m);
+        }
+    }
+
+    .skeleton {
+        height: var(--name-reg-line-height-m);
+
+        &--main {
+            height: var(--name-main-line-height-m);
+        }
+    }
+}
+
+@media (width <= 1200px) {
+    .name {
+        font-size: 18px;
+        line-height: var(--name-reg-line-height-s);
+
+        &--main {
+            line-height: var(--name-main-line-height-s);
+        }
+    }
+
+    .skeleton {
+        height: var(--name-reg-line-height-s);
+
+        &--main {
+            height: var(--name-main-line-height-s);
+        }
+    }
+
+    .nickname {
+        display: none;
+        visibility: hidden;
+    }
+}

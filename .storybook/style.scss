@@ -1,0 +1,21 @@
+html {
+	&[data-theme="light"] {
+		.docs-story,
+		#storybook-root {
+			color: var(--dark-primary) !important;
+			background-color: var(--bg-light) !important;
+		}
+	}
+
+	&[data-theme="dark"] {
+		.docs-story,
+		#storybook-root {
+			color: var(--light-primary) !important;
+			background-color: var(--bg-dark) !important;
+		}
+	}
+}
+
+.sbdocs-content {
+	max-width: 1920px !important;
+}

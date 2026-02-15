@@ -1,0 +1,159 @@
+.block {
+    padding: 36px 0;
+
+    &--front {
+        margin-bottom: 180px;
+    }
+
+    &--list {
+        margin-bottom: 95px;
+    }
+
+    &--detail {
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        position: absolute;
+    }
+}
+
+.avatar {
+    margin-right: 14px;
+}
+
+.switcher {
+    flex-shrink: 0;
+}
+
+.name {
+    margin-right: 32px;
+
+    &--front {
+        flex-grow: 1;
+    }
+}
+
+.button {
+    display: none;
+    visibility: hidden;
+}
+
+.head {
+    flex-grow: 1;
+}
+
+.relative {
+    position: relative;
+}
+
+.nav {
+    &--desktop {
+
+    }
+
+    &--mobile {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media (width <= 2160px) {
+    .block {
+        padding: 24px 0;
+
+        &--front {
+            margin-bottom: 150px;
+        }
+
+        &--list {
+            margin-bottom: 80px;
+        }
+    }
+
+    .name {
+        margin-right: 22px;
+    }
+
+    .avatar {
+        margin-right: 12px;
+    }
+}
+
+@media (width <= 1200px) {
+    .block {
+        padding: 14px 0;
+
+        &--front {
+            margin-bottom: 60px;
+        }
+
+        &--list {
+            z-index: 5;
+            position: fixed;
+            margin-bottom: 0;
+        }
+
+        &--detail {
+            z-index: 5;
+            position: fixed;
+        }
+    }
+
+    .avatar {
+        margin-right: 10px;
+    }
+
+    .name {
+        flex-grow: 1;
+    }
+
+    .switcher {
+        display: none;
+        visibility: hidden;
+    }
+
+    .nav {
+        left: 0;
+        right: 0;
+        gap: 8px;
+        z-index: 7;
+        position: absolute;
+        flex-direction: column;
+
+        &--mobile {
+            display: flex;
+            visibility: visible;
+
+            &[hidden] {
+                display: none;
+                visibility: hidden;
+            }
+        }
+
+        &--desktop {
+            display: none;
+            visibility: hidden;
+        }
+    }
+
+    .button {
+        display: flex;
+        visibility: visible;
+    }
+
+    .head {
+        gap: 8px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .overlay {
+        z-index: 5;
+    }
+
+    .wrapper {
+        z-index: 6;
+        position: relative;
+    }
+}

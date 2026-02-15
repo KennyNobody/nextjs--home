@@ -1,0 +1,48 @@
+.block {}
+
+.picture {
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    position: fixed;
+    transition: 0.3s opacity;
+
+    &[hidden] {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.intro-main {
+    position: relative;
+    margin-top: calc(100vh - 180px);
+}
+
+@media (width <= 2160px) {
+    .intro-main {
+        margin-top: calc(100vh - 130px);
+    }
+}
+
+@media (width <= 1200px) {
+    .intro-main {
+        margin-top: calc(100vh - 80px);
+    }
+
+    .container-editor {
+        padding: 0;
+    }
+}

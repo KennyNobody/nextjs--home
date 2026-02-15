@@ -1,0 +1,20 @@
+.block {
+    color: inherit;
+    font-size: var(--link-regular-line-height-l);
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+@media (width <= 2160px) {
+    .block {
+        font-size: var(--link-regular-line-height-m);
+    }
+}
+
+@media (width <= 1200px) {
+    .block {
+        font-size: var(--link-regular-line-height-s);
+    }
+}

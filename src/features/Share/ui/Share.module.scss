@@ -1,0 +1,98 @@
+.block {
+    gap: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-size: 24px;
+}
+
+.button {
+    margin: 0;
+    padding: 0;
+    width: 84px;
+    height: 48px;
+    display: flex;
+    cursor: pointer;
+    background: none;
+    border: 1px solid;
+    border-radius: 48px;
+    align-items: center;
+    transition: 0.3s all;
+    justify-content: center;
+
+    &--light {
+        border-color: var(--dark-primary);
+    }
+
+    &--dark {
+        border-color: var(--light-primary);
+    }
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+[data-theme="light"] {
+    .button:not(.button--light, .button--dark) {
+        border-color: var(--dark-primary);
+    }
+}
+
+[data-theme="dark"] {
+    .button:not(.button--light, .button--dark) {
+        border-color: var(--light-primary);
+    }
+}
+
+.icon {
+    width: 30px;
+    height: 18px;
+    display: block;
+    transition: 0.3s all;
+
+    &--light {
+        fill: var(--dark-primary);
+    }
+
+    &--dark {
+        fill: var(--light-primary);
+    }
+}
+
+[data-theme="light"] {
+    .icon:not(.icon--light, .icon--dark) {
+        fill: var(--dark-primary);
+    }
+}
+
+[data-theme="dark"] {
+    .icon:not(.icon--light, .icon--dark) {
+        fill: var(--light-primary);
+    }
+}
+
+@media (width <= 2160px) {
+    .title {
+        font-size: 20px;
+    }
+
+    .icon {
+        width: 24px;
+        height: 16px;
+    }
+}
+
+@media (width <= 1200px) {
+    .title {
+        display: none;
+        visibility: hidden;
+    }
+
+    .controls {
+        display: none;
+        visibility: hidden;
+    }
+}

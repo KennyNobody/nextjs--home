@@ -1,0 +1,28 @@
+.grid {
+    gap: 30px 20px;
+}
+
+@media (width <= 2160px) {
+
+}
+
+@media (width <= 1200px) {
+    .grid {
+        gap: 20px 10px;
+    }
+
+    .cell-years,
+    .cell-separator {
+        display: none;
+        visibility: hidden;
+    }
+
+    .col-clear {
+        display: none;
+        visibility: hidden;
+    }
+
+    .toolbar-bottom {
+        justify-content: center;
+    }
+}

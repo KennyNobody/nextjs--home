@@ -1,0 +1,21 @@
+.block {
+    font-size: 90px;
+    font-weight: 450;
+    text-decoration: none;
+    transition: 0.3s opacity;
+    line-height: var(--title-line-height-l);
+}
+
+@media (width <= 2160px) {
+    .block {
+        font-size: 76px;
+        line-height: var(--title-line-height-m);
+    }
+}
+
+@media (width <= 1200px) {
+    .block {
+        font-size: 32px;
+        line-height: var(--title-line-height-s);
+    }
+}

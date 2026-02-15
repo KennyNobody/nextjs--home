@@ -1,0 +1,27 @@
+.block {
+    display: flex;
+    border-radius: 8px;
+    align-items: center;
+    transition: 0.3s all;
+    padding: 0 12px 0 24px;
+    justify-content: space-between;
+    min-height: var(--menu-mobile-item-height-s);
+}
+
+[data-theme="light"] {
+    .block:not(.block--light, .block--dark) {
+        color: var(--dark-primary);
+        background-color: var(--light-accent);
+    }
+}
+
+[data-theme="dark"] {
+    .block:not(.block--light, .block--dark) {
+        color: var(--light-primary);
+        background-color: var(--dark-accent);
+    }
+}
+
+.title {
+    font-size: 20px;
+}
