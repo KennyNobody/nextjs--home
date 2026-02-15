@@ -1,9 +1,9 @@
+import { useMemo } from 'react';
 import classNames from 'classnames';
 import { End } from 'shared/ui/End/End';
 import cls from './GridDev.module.scss';
 import { ArticleDev } from '../ArticleDev/ArticleDev';
 import { ArticleDevType } from '../../model/types/ArticleDev';
-import {useMemo} from "react";
 
 interface ListDevProps {
     showEnd?: boolean;

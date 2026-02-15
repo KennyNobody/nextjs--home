@@ -47,7 +47,9 @@ export const ListPostClient = (props: ListPostClientProps) => {
     const paginationRedux: PaginationType | undefined = useSelector(getPostPagination);
     const isReduxInitialized = useSelector(getPostIsInit);
 
-    const data = isReduxInitialized ? dataRedux : (dataPrefetch || []);
+    const data = useMemo(() => {
+        return isReduxInitialized ? dataRedux : (dataPrefetch || []);
+    }, [isReduxInitialized, dataRedux, dataPrefetch]);
     const pagination = isReduxInitialized ? paginationRedux : paginationPrefetch;
 
     const {

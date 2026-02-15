@@ -1,13 +1,13 @@
+import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { ThunkConfig } from 'shared/state/StateSchema';
 import { ApiRequestParams } from 'shared/types/ApiRequestParams';
-import { ResponseType } from 'shared/types/ResponseType';
 
+import { ResponseType } from 'shared/types/ResponseType';
 import { fetchPostClient } from '../../api/fetchPostClient';
 import { getPostCategory, getPostPagination } from '../selectors/postSelector';
 import { ArticlePostType } from '../types/ArticlePost';
-import axios from "axios";
 
 interface FetchPostListProps {
     replace?: boolean;

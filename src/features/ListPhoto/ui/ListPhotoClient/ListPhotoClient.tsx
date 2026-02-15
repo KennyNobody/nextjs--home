@@ -2,7 +2,9 @@
 
 import {
     useRef,
-    useEffect, useCallback,
+    useMemo,
+    useEffect,
+    useCallback,
 } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
@@ -44,7 +46,9 @@ export const ListPhotoClient = (props: ListPhotoClientProps) => {
     const paginationRedux: PaginationType | undefined = useSelector(getPhotoPagination);
     const isReduxInitialized = useSelector(getPhotoIsInit);
 
-    const data = isReduxInitialized ? dataRedux : (dataPrefetch || []);
+    const data = useMemo(() => {
+        return isReduxInitialized ? dataRedux : dataPrefetch;
+    }, [isReduxInitialized, dataRedux, dataPrefetch]);
     const pagination = isReduxInitialized ? paginationRedux : paginationPrefetch;
 
     const {

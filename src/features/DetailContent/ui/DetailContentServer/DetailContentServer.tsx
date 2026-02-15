@@ -1,12 +1,12 @@
 import { ArticleDevType, } from 'entities/Dev';
 import { ArticlePostType } from 'entities/Post';
+import { DataLabels } from 'shared/labels/data';
 import { ArticlePhotoType } from 'entities/Photo';
 import { fetchArticleDetail } from 'entities/Page';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { ResponseType } from 'shared/types/ResponseType';
 import { ContentKeyType } from 'shared/types/CommonTypes';
 import { DetailContentClient } from '../DetailContentClient/DetailContentClient';
-import {DataLabels} from "../../../../shared/labels/data";
 
 interface DetailContentServerProps {
     slug: string;
@@ -33,7 +33,7 @@ export const DetailContentServer = async (props: DetailContentServerProps) => {
     if (!response || !response.data) {
         throw new Error(DataLabels.LOADING_ERROR);
     }
-    
+
     const { data } = response;
 
     return (

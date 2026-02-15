@@ -1,11 +1,11 @@
 import {
     fetchCategoryServer,
 } from 'entities/Category';
+import { DataLabels } from 'shared/labels/data';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { ArticleCategoryType } from 'entities/Category';
 import { ResponseType } from 'shared/types/ResponseType';
 import { FilterDevClient } from '../FilterDevClient/FilterDevClient';
-import {DataLabels} from "../../../../shared/labels/data";
 
 export const FilterDevServer = async () => {
     const response: ResponseType<ArticleCategoryType[]> = await fetchCategoryServer(ApiRoutes.DEV_TAG_LIST);

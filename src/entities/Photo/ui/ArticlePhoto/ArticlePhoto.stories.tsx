@@ -1,8 +1,7 @@
-import { AppTheme } from 'shared/types/Theme';
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { ArticlePhoto } from './ArticlePhoto';
+import { StorybookDecorator } from 'shared/providers/StorybookDecorator/StorybookDecorator';
 import { data } from './../../mocks/data';
-import {StorybookDecorator} from "../../../../shared/providers/StorybookDecorator/StorybookDecorator";
+import { ArticlePhoto } from './ArticlePhoto';
 
 const meta = {
     title: 'Entities/ArticlePhoto',

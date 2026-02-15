@@ -1,5 +1,5 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
+// import storybook from "eslint-plugin-storybook";
 
 import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
@@ -24,9 +24,9 @@ const eslintConfig = defineConfig([
             '@typescript-eslint/naming-convention': [0],
             'jsx-a11y/label-has-associated-control': [0],
             'linebreak-style': [1, 'windows'],
-            'react/no-array-index-key': [0],
-            'react-hooks/rules-of-hooks': [0],
-            'react-hooks/exhaustive-deps': [0],
+            // 'react/no-array-index-key': [0],
+            // 'react-hooks/rules-of-hooks': [0],
+            // 'react-hooks/exhaustive-deps': [0],
             'no-param-reassign': [0],
             'no-restricted-syntax': [0],
             'react/prop-types': [0],
@@ -57,6 +57,8 @@ const eslintConfig = defineConfig([
         'out/**',
         'build/**',
         'next-env.d.ts',
+        '.storybook/**',
+        'storybook-static/**',
     ]),
 ])
 

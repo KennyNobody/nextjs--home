@@ -1,6 +1,6 @@
+import { MetaPageType } from 'shared/types/CommonTypes';
 import { ArticleCategoryType } from 'entities/Category';
 import { DetailContentType } from 'entities/DetailContent';
-import {MetaPageType} from "../../../../shared/types/CommonTypes";
 
 interface ArticleDevType {
     id: number;

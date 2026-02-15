@@ -1,11 +1,11 @@
+import { useMemo } from 'react';
 import classNames from 'classnames';
 import { End } from 'shared/ui/End/End';
-import grid from 'shared/styles/grid.module.scss';
 import { AppTheme } from 'shared/types/Theme';
+import grid from 'shared/styles/grid.module.scss';
 import cls from './GridPosts.module.scss';
 import { ArticlePost } from '../ArticlePost/ArticlePost';
 import { ArticlePostType } from '../../model/types/ArticlePost';
-import {useMemo} from "react";
 
 interface GridPostsProps {
     className?: string;
@@ -53,7 +53,7 @@ export const GridPosts = (props: GridPostsProps) => {
 
             return (
                 <div
-                    key={item?.id}
+                    key={item?.id || index}
                     className={
                         classNames(
                             grid['grid__col-1'],

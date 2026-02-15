@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import classNames from 'classnames';
 import { End } from 'shared/ui/End/End';
 import { AppTheme } from 'shared/types/Theme';
@@ -5,7 +6,6 @@ import grid from 'shared/styles/grid.module.scss';
 import cls from './GridPhoto.module.scss';
 import { ArticlePhoto } from '../ArticlePhoto/ArticlePhoto';
 import { ArticlePhotoType } from '../../model/types/ArticlePhoto';
-import {useMemo} from "react";
 
 interface GridPostsProps {
     className?: string;

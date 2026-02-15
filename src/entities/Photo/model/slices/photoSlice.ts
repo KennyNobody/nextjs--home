@@ -3,12 +3,12 @@ import {
     PayloadAction,
     createEntityAdapter,
 } from '@reduxjs/toolkit';
-import { ArticlePhotoType } from '../types/ArticlePhoto';
-import { PhotoSchema } from '../types/PhotoSchema';
-import { fetchPhotoList } from '../services/fetchPhotoList';
+import { DataLabels } from 'shared/labels/data';
 import { StateSchema } from 'shared/state/StateSchema';
 import { ResponseType } from 'shared/types/ResponseType';
-import {DataLabels} from "../../../../shared/labels/data";
+import { PhotoSchema } from '../types/PhotoSchema';
+import { ArticlePhotoType } from '../types/ArticlePhoto';
+import { fetchPhotoList } from '../services/fetchPhotoList';
 
 const photoListAdapter = createEntityAdapter<ArticlePhotoType, number>({
     selectId: (item: ArticlePhotoType) => item.id,

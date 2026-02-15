@@ -3,12 +3,12 @@ import {
     PayloadAction,
     createEntityAdapter,
 } from '@reduxjs/toolkit';
-import { ArticleDevType } from '../types/ArticleDev';
-import { DevSchema } from '../types/DevSchema';
-import { fetchDevList } from '../services/fetchDevList';
+import { DataLabels } from 'shared/labels/data';
 import { StateSchema } from 'shared/state/StateSchema';
 import { ResponseType } from 'shared/types/ResponseType';
-import {DataLabels} from "../../../../shared/labels/data";
+import { DevSchema } from '../types/DevSchema';
+import { ArticleDevType } from '../types/ArticleDev';
+import { fetchDevList } from '../services/fetchDevList';
 
 const devListAdapter = createEntityAdapter<ArticleDevType, number>({
     selectId: (item: ArticleDevType) => item.id,

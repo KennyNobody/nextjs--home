@@ -2,6 +2,7 @@
 
 import {
     useRef,
+    useMemo,
     useEffect,
     useCallback,
 } from 'react';
@@ -44,7 +45,9 @@ export const ListDevClient = (props: ListDevClientProps) => {
     const paginationRedux: PaginationType | undefined = useSelector(getDevPagination);
     const isReduxInitialized = useSelector(getDevIsInit);
 
-    const data = isReduxInitialized ? dataRedux : dataPrefetch;
+    const data = useMemo(() => {
+        return isReduxInitialized ? dataRedux : dataPrefetch;
+    }, [isReduxInitialized, dataRedux, dataPrefetch]);
     const pagination = isReduxInitialized ? paginationRedux : paginationPrefetch;
 
     const {
