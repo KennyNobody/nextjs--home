@@ -53,7 +53,6 @@
     "postcss-pxtorem": "^6.1.0",
     "sass": "^1.97.0",
     "shared": "^0.2.0",
-    "storybook": "^10.1.11",
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^39.0.1",
     "stylelint-config-standard-scss": "^16.0.0",
