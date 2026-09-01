@@ -56,7 +56,6 @@ export const DetailContentClient = (props: DetailContentClientProps) => {
                             fill={true}
                             quality={100}
                             src={imageUrl}
-                            unoptimized={true}
                             alt={data?.title || 'Обложка поста'}
                         />
                     )
