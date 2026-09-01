@@ -20,6 +20,8 @@ export const handleApiError = (
     endpoint: string,
     method: string = 'GET'
 ): ApiError => {
+    console.error('RAW ERROR DEBUG:', error);
+
     const strapiError = extractStrapiError(error);
     const validationErrors = extractValidationErrors(strapiError);
 

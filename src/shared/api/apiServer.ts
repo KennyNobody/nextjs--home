@@ -47,6 +47,8 @@ const $apiServer = async (endpoint: string, config: FetchConfig = {}) => {
 
         return response;
     } catch (error) {
+        console.error('REAL FETCH ERROR:', error);
+
         if (error && typeof error === 'object' && 'statusCode' in error) {
             return Promise.reject(error);
         }
