@@ -30,7 +30,12 @@ const nextConfig: NextConfig = {
     //         },
     //     ]
     // },
+    experimental: {
+        imgOptTimeoutInSeconds: 60,
+        imgOptConcurrency: 1,
+    },
     images: {
+        minimumCacheTTL: 60 * 60 * 24 * 365,
         dangerouslyAllowLocalIP: true,
         remotePatterns: [
             {
