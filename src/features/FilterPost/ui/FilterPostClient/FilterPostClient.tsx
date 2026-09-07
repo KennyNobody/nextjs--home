@@ -30,7 +30,6 @@ export const FilterPostClient = (props: PostFilterClientProps) => {
         dispatch(postActions.toggleCategory(item?.id || undefined));
         dispatch(fetchPostList({
             mode: 'start',
-            replace: true,
         }));
     }, [dispatch]);
 

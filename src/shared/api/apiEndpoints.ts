@@ -11,6 +11,13 @@ enum ApiRoutes {
     PAGE_PHOTO = 'page-photo',
 }
 
+enum ApiEInternalRoutes {
+    POSTS_LIST = 'posts',
+    DEVS_LIST = 'devs',
+    PHOTO_LIST = 'photos',
+}
+
 export {
     ApiRoutes,
+    ApiEInternalRoutes,
 };

@@ -23,7 +23,7 @@ const initialState: PhotoSchema = {
     errors: undefined,
     ids: [],
     entities: {},
-    isInit: false,
+    // isInit: false,
     pagination: undefined,
     currentRequestId: undefined,
 };
@@ -38,13 +38,13 @@ const photoSlice = createSlice({
             if (data && meta?.pagination) {
                 state.pagination = meta.pagination;
                 photoListAdapter.setAll(state, data);
-                state.isInit = true;
+                // state.isInit = true;
             }
         },
         clearListData: (state) => {
             photoListAdapter.removeAll(state);
             state.pagination = undefined;
-            state.isInit = false;
+            // state.isInit = false;
         },
     },
     extraReducers: (builder) => {
@@ -52,8 +52,9 @@ const photoSlice = createSlice({
 
         builder
             .addCase(request.pending, (state, action) => {
-                const { replace } = action.meta.arg;
-                if (replace) {
+                const isStart = action.meta.arg.mode === 'start';
+
+                if (isStart) {
                     photoListAdapter.removeAll(state);
                     state.pagination = undefined;
                 }
@@ -67,10 +68,10 @@ const photoSlice = createSlice({
                 if (state.currentRequestId !== action.meta.requestId) return;
 
                 const { data, meta } = action.payload;
-                const addData =
-                    action?.meta?.arg?.replace
-                        ? photoListAdapter.setAll
-                        : photoListAdapter.addMany;
+                const isStart = action.meta.arg.mode === 'start';
+                const addData = isStart
+                    ? photoListAdapter.setAll
+                    : photoListAdapter.addMany;
                 addData(state, data);
 
                 if (meta?.pagination) state.pagination = meta.pagination;

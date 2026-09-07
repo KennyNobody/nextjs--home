@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
-import qs from 'qs';
 import { handleApiError } from 'shared/lib/apiErrorHandler';
+import { paramsSerializer } from 'shared/lib/paramsSerializer';
 
 const baseUrl = `${process.env.NEXT_PUBLIC_URL}/api/`;
 
@@ -11,14 +11,12 @@ interface FetchConfig extends RequestInit {
 }
 
 const $apiServer = async (endpoint: string, config: FetchConfig = {}) => {
-    const { params, paramsSerializer: serializer, ...fetchConfig } = config;
+    const { params, ...fetchConfig } = config;
 
     let url = `${baseUrl}${endpoint}`;
-    if (params && serializer) {
-        const searchParams = qs.stringify(params);
-        url += `?${searchParams}`;
+    if (params) {
+        url += `?${paramsSerializer(params)}`;
     }
-
 
     try {
         const response = await fetch(url, {

@@ -27,7 +27,6 @@ export const FilterDevClient = (props: FilterDevClientProps) => {
         dispatch(devActions.toggleTag(item?.id || undefined));
         dispatch(fetchDevList({
             mode: 'start',
-            replace: true,
         }));
     }
 

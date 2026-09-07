@@ -12,7 +12,6 @@ import {
     GridPhoto,
     photoActions,
     getPhotoList,
-    getPhotoIsInit,
     fetchPhotoList,
     getPhotoLoading,
     ArticlePhotoType,
@@ -44,12 +43,11 @@ export const ListPhotoClient = (props: ListPhotoClientProps) => {
 
     const isLoading: boolean = useSelector(getPhotoLoading) || false;
     const paginationRedux: PaginationType | undefined = useSelector(getPhotoPagination);
-    const isReduxInitialized = useSelector(getPhotoIsInit);
 
     const data = useMemo(() => {
-        return isReduxInitialized ? dataRedux : dataPrefetch;
-    }, [isReduxInitialized, dataRedux, dataPrefetch]);
-    const pagination = isReduxInitialized ? paginationRedux : paginationPrefetch;
+        return dataRedux.length ? dataRedux : (dataPrefetch || []);
+    }, [dataRedux, dataPrefetch]);
+    const pagination = paginationRedux ?? paginationPrefetch;
 
     const {
         pageCount = 1,
@@ -60,7 +58,6 @@ export const ListPhotoClient = (props: ListPhotoClientProps) => {
         if (!isLoading && pageCount > page) {
             dispatch(fetchPhotoList({
                 mode: 'next',
-                replace: false,
             }));
         }
     }, [pageCount, page, dispatch, isLoading]);

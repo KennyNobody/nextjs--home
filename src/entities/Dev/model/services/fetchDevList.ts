@@ -4,12 +4,11 @@ import { ThunkConfig } from 'shared/state/StateSchema';
 import { ApiRequestParams } from 'shared/types/ApiRequestParams';
 import { ResponseType } from 'shared/types/ResponseType';
 
-import { fetchDevClient } from '../../api/fetchDevClient';
+import { fetchDevListClient } from '../../api/fetchDevListClient';
 import { getDevTag, getDevPagination } from '../selectors/devSelector';
 import { ArticleDevType } from '../types/ArticleDev';
 
 interface FetchPostListProps {
-    replace?: boolean;
     mode: 'start' | 'next';
 }
 
@@ -51,7 +50,7 @@ export const fetchDevList = createAsyncThunk<
                 };
             }
 
-            return await fetchDevClient(ApiRoutes.DEVS_LIST, params);
+            return await fetchDevListClient(ApiRoutes.DEVS_LIST, params);
         } catch (e) {
             return rejectWithValue('error');
         }

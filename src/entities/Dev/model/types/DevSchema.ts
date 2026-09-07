@@ -8,6 +8,6 @@ export interface DevSchema extends EntityState<ArticleDevType, number> {
     errors?: string;
     tag: number | undefined;
     pagination?: PaginationType;
-    isInit: boolean;
+    // isInit: boolean;
     currentRequestId?: string;
 }

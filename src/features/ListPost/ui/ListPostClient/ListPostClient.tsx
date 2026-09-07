@@ -11,7 +11,7 @@ import {
     getPostList,
     postActions,
     fetchPostList,
-    getPostIsInit,
+    // getPostIsInit,
     getPostLoading,
     ArticlePostType,
     getPostPagination,
@@ -45,12 +45,17 @@ export const ListPostClient = (props: ListPostClientProps) => {
 
     const dataRedux: ArticlePostType[] = useSelector(getPostList.selectAll);
     const paginationRedux: PaginationType | undefined = useSelector(getPostPagination);
-    const isReduxInitialized = useSelector(getPostIsInit);
+    // const isReduxInitialized = useSelector(getPostIsInit);
 
     const data = useMemo(() => {
-        return isReduxInitialized ? dataRedux : (dataPrefetch || []);
-    }, [isReduxInitialized, dataRedux, dataPrefetch]);
-    const pagination = isReduxInitialized ? paginationRedux : paginationPrefetch;
+        // БЫЛО: return isReduxInitialized ? dataRedux : (dataPrefetch || []);
+        // СТАЛО: переключаемся по факту наличия данных в redux, а не по флагу isInit
+        return dataRedux.length ? dataRedux : (dataPrefetch || []);
+    }, [dataRedux, dataPrefetch]); // <-- убрана зависимость isReduxInitialized
+
+    // БЫЛО: const pagination = isReduxInitialized ? paginationRedux : paginationPrefetch;
+    // СТАЛО: если в redux есть pagination — берём её, иначе fallback на prefetch
+    const pagination = paginationRedux ?? paginationPrefetch;
 
     const {
         pageCount = 1,
@@ -61,7 +66,6 @@ export const ListPostClient = (props: ListPostClientProps) => {
         if (!isLoading && pageCount > page) {
             dispatch(fetchPostList({
                 mode: 'next',
-                replace: false,
             }));
         }
     }, [pageCount, page, dispatch, isLoading]);

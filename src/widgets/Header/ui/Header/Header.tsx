@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 import grid from 'shared/styles/grid.module.scss';
 import React, { useEffect, useState } from 'react';
+import { RemoveScroll } from 'react-remove-scroll';
 import { Overlay } from 'shared/ui/Overlay/Overlay';
 import { LinkNav } from 'shared/ui/LinkNav/LinkNav';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
@@ -21,7 +22,6 @@ import cls from './Header.module.scss';
 import { Avatar } from '../Avatar/Avatar';
 import { Description } from '../Description/Description';
 import { MenuMobileButton } from '../MenuMobileButton/MenuMobileButton';
-import {RemoveScroll} from "react-remove-scroll";
 
 interface HeaderProps {
     data: AppMainType;
@@ -82,11 +82,16 @@ export const Header = (props: HeaderProps) => {
                                     <Head
                                         isMain={layoutMode === PageLayoutMode.FRONT}
                                     >
-                                        <Avatar
-                                            isMain={layoutMode === PageLayoutMode.FRONT}
-                                            className={classNames(cls.avatar)}
-                                            url={data?.preview?.data?.formats?.small?.url}
-                                        />
+                                        {
+                                            data?.preview
+                                            && (
+                                                <Avatar
+                                                    picture={data?.preview.data}
+                                                    isMain={layoutMode === PageLayoutMode.FRONT}
+                                                    className={classNames(cls.avatar)}
+                                                />
+                                            )
+                                        }
                                         <Name
                                             name={data?.name}
                                             nickname={data?.nickname}

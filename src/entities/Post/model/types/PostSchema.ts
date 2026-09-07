@@ -8,6 +8,6 @@ export interface PostSchema extends EntityState<ArticlePostType, number> {
     errors?: string;
     category: number | undefined;
     pagination?: PaginationType;
-    isInit: boolean;
+    // isInit: boolean;
     currentRequestId?: string;
 }

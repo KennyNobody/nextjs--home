@@ -13,7 +13,6 @@ import {
     devActions,
     getDevList,
     fetchDevList,
-    getDevIsInit,
     getDevLoading,
     ArticleDevType,
     getDevPagination,
@@ -43,12 +42,11 @@ export const ListDevClient = (props: ListDevClientProps) => {
     const dispatch = useAppDispatch();
     const dataRedux: ArticleDevType[] = useSelector(getDevList.selectAll);
     const paginationRedux: PaginationType | undefined = useSelector(getDevPagination);
-    const isReduxInitialized = useSelector(getDevIsInit);
 
     const data = useMemo(() => {
-        return isReduxInitialized ? dataRedux : dataPrefetch;
-    }, [isReduxInitialized, dataRedux, dataPrefetch]);
-    const pagination = isReduxInitialized ? paginationRedux : paginationPrefetch;
+        return dataRedux.length ? dataRedux : (dataPrefetch || []);
+    }, [dataRedux, dataPrefetch]);
+    const pagination = paginationRedux ?? paginationPrefetch;
 
     const {
         pageCount = 1,
@@ -59,7 +57,6 @@ export const ListDevClient = (props: ListDevClientProps) => {
         if (!isLoading && pageCount > page) {
             dispatch(fetchDevList({
                 mode: 'next',
-                replace: false,
             }));
         }
     }, [pageCount, page, dispatch, isLoading]);
@@ -84,7 +81,7 @@ export const ListDevClient = (props: ListDevClientProps) => {
             <GridDev
                 data={data}
                 showSkeleton={isLoading && !data?.length}
-                showEnd={!isPreview && !isLoading && !isPreview && page === pageCount}
+                showEnd={!isPreview && !isLoading && page === pageCount}
             />
             {!isPreview && <div ref={triggerRef} />}
         </div>

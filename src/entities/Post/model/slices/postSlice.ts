@@ -24,7 +24,7 @@ const initialState: PostSchema = {
     category: undefined,
     ids: [],
     entities: {},
-    isInit: false,
+    // isInit: false,
     pagination: undefined,
     currentRequestId: undefined,
 };
@@ -39,13 +39,15 @@ const postSlice = createSlice({
             if (data && meta?.pagination) {
                 state.pagination = meta.pagination;
                 postListAdapter.setAll(state, data);
-                state.isInit = true;
+                // state.isInit = true;
             }
         },
         clearListData: (state) => {
             postListAdapter.removeAll(state);
             state.pagination = undefined;
-            state.isInit = false;
+            // state.isInit = false;
+
+            // console.log('Сбрасываем');
         },
         toggleCategory: (state, action: PayloadAction<number | undefined>) => {
             if (state.category === action.payload) {
@@ -60,8 +62,9 @@ const postSlice = createSlice({
 
         builder
             .addCase(request.pending, (state, action) => {
-                const { replace } = action.meta.arg;
-                if (replace) {
+                const isStart = action.meta.arg.mode === 'start';
+
+                if (isStart) {
                     postListAdapter.removeAll(state);
                     state.pagination = undefined;
                 }
@@ -75,10 +78,10 @@ const postSlice = createSlice({
                 if (state.currentRequestId !== action.meta.requestId) return;
 
                 const { data, meta } = action.payload;
-                const addData =
-                    action?.meta?.arg?.replace
-                        ? postListAdapter.setAll
-                        : postListAdapter.addMany;
+                const isStart = action.meta.arg.mode === 'start';
+                const addData = isStart
+                    ? postListAdapter.setAll
+                    : postListAdapter.addMany;
                 addData(state, data);
 
                 if (meta?.pagination) state.pagination = meta.pagination;

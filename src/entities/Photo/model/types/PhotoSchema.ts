@@ -7,6 +7,6 @@ export interface PhotoSchema extends EntityState<ArticlePhotoType, number> {
     // errors?: FetchBaseQueryError;
     errors?: string;
     pagination?: PaginationType;
-    isInit: boolean;
+    // isInit: boolean;
     currentRequestId?: string;
 }

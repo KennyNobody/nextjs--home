@@ -18,7 +18,6 @@ export {
 
 export {
     getPhotoErrors,
-    getPhotoIsInit,
     getPhotoLoading,
     getPhotoPagination,
 } from './model/selectors/photoSelector';
@@ -26,3 +25,7 @@ export {
 export {
     fetchPhotoList,
 } from './model/services/fetchPhotoList';
+
+export {
+    fetchPhotoListServer,
+} from './api/fetchPhotoListServer';

@@ -1,6 +1,9 @@
+import {
+    getMediaUrl,
+    MediaFileType,
+} from 'entities/Media';
 import Image from 'next/image';
 import classNames from 'classnames';
-import { MediaFileType } from 'entities/Media';
 import { DataLabels } from 'shared/labels/data';
 import { EditorWrapper } from 'shared/ui/EditorWrapper/EditorWrapper';
 import cls from './DetailPicture.module.scss';
@@ -12,35 +15,37 @@ interface DetailPictureProps {
 
 export const DetailPicture = (props: DetailPictureProps) => {
     const { image, galleryKey } = props;
-    const imageUrl = image.url;
-    const imageWidth = image.width;
-    const imageHeight = image.height;
 
-    if (!imageUrl || !imageWidth || !imageHeight) {
-        console.warn(`${DataLabels.IMAGE_NO_SIZE}: ${image.name}` );
+    const {
+        url,
+        alt,
+        width,
+        height,
+    } = getMediaUrl(image, 'full');
 
+    if (!url || !width || !height) {
+        console.warn(`${DataLabels.IMAGE_NO_SIZE}: ${image.name}`);
+        return null;
     }
 
     return (
         <figure className={classNames(cls.figure)}>
             <Image
+                alt={alt}
+                src={url}
                 quality={90}
+                width={width}
+                sizes="1920px"
                 loading="lazy"
-                sizes={'1920px'}
-                src={`${imageUrl}`}
-                width={imageWidth || 0}
-                height={imageHeight || 0}
-                alt={image.alternativeText || ''}
+                height={height}
                 data-caption={image.caption || ''}
                 data-fancybox={galleryKey || 'post-gallery'}
-                style={{
-                    aspectRatio: `${imageWidth} / ${imageHeight}`
-                }}
             />
             <figcaption className={classNames(cls.figcaption)}>
                 <EditorWrapper>
-                    {image?.caption
-                        && <p className={classNames(cls.caption)}>{image.caption}</p>}
+                    {image.caption && (
+                        <p className={classNames(cls.caption)}>{image.caption}</p>
+                    )}
                 </EditorWrapper>
             </figcaption>
         </figure>

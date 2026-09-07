@@ -18,7 +18,7 @@ export {
 
 export {
     getPostErrors,
-    getPostIsInit,
+    // getPostIsInit,
     getPostLoading,
     getPostCategory,
     getPostPagination,
@@ -27,3 +27,7 @@ export {
 export {
     fetchPostList,
 } from './model/services/fetchPostList';
+
+export {
+    fetchPostListServer,
+} from './api/fetchPostListServer';

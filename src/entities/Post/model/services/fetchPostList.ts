@@ -1,16 +1,15 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ApiRoutes } from 'shared/api/apiEndpoints';
+import {ApiEInternalRoutes, ApiRoutes} from 'shared/api/apiEndpoints';
 import { ThunkConfig } from 'shared/state/StateSchema';
 import { ApiRequestParams } from 'shared/types/ApiRequestParams';
 
 import { ResponseType } from 'shared/types/ResponseType';
-import { fetchPostClient } from '../../api/fetchPostClient';
+import { fetchPostListClient } from '../../api/fetchPostListClient';
 import { getPostCategory, getPostPagination } from '../selectors/postSelector';
 import { ArticlePostType } from '../types/ArticlePost';
 
 interface FetchPostListProps {
-    replace?: boolean;
     mode: 'start' | 'next';
 }
 
@@ -52,7 +51,7 @@ export const fetchPostList = createAsyncThunk<
                 };
             }
 
-            return await fetchPostClient(ApiRoutes.POSTS_LIST, params);
+            return await fetchPostListClient(ApiEInternalRoutes.POSTS_LIST, params);
         } catch (e) {
             if (axios.isAxiosError(e)) {
                 return rejectWithValue(e.response?.data?.message || e.message || 'Network error');
