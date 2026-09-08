@@ -16,7 +16,7 @@ export function useInfiniteScroll({ callback, triggerRef }: useInfiniteScrollOpt
 
         const options = {
             root: document,
-            rootMargin: '-1px 0px 0px 0px',
+            rootMargin: '-1px 0px 500px 0px',
             threshold: [1],
         };
 

@@ -17,6 +17,11 @@ const FORMAT_PRIORITY: Array<'thumbnail' | 'small' | 'medium' | 'large'> = [
     'thumbnail',
 ];
 
+const buildUrl = (path: string | undefined): string => {
+    if (!path) return '';
+    return /^https?:\/\//i.test(path) ? path : `${_MEDIA_URL_}${path}`;
+};
+
 const getMediaUrl = (
     media: MediaFileType | undefined,
     format: ImageFormatType,
@@ -28,7 +33,7 @@ const getMediaUrl = (
 
     if (format === 'full') {
         return {
-            url: media.url ? `${_MEDIA_URL_}${media.url}` : '',
+            url: buildUrl(media.url),
             alt: media.alternativeText || '',
             width: media.width ?? 0,
             height: media.height ?? 0,
@@ -42,19 +47,17 @@ const getMediaUrl = (
     const selectedFormat = availableFormat ? media.formats?.[availableFormat] : null;
 
     const url = availableFormat
-        ? `${_MEDIA_URL_}${media.formats?.[availableFormat]?.url}`
-        : media.url
-            ? `${_MEDIA_URL_}${media.url}`
-            : '';
+        ? buildUrl(media.formats?.[availableFormat]?.url)
+        : buildUrl(media.url);
 
     return {
         url,
         alt: media.alternativeText || '',
         width: selectedFormat?.width ?? media.width ?? 0,
         height: selectedFormat?.height ?? media.height ?? 0,
-    };
+    }
 };
 
 export {
     getMediaUrl,
-};
+}
