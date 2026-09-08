@@ -33,8 +33,6 @@ export const DetailContentClient = (props: DetailContentClientProps) => {
         alt,
     } = getMediaUrl(data?.main?.preview?.data, 'full');
 
-    console.log(data?.main?.preview?.data);
-
     return (
         <div className={cls.block}>
             <picture className={cls.picture} style={{ opacity }}>

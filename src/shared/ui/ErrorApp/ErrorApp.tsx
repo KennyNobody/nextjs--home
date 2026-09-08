@@ -14,7 +14,6 @@ export const ErrorApp = (props: ErrorAppProps) => {
     const { className } = props;
 
     const reloadPage = () => location.reload();
-    console.log(picture);
 
     return (
         <div className={classNames(cls.block, className)}>
