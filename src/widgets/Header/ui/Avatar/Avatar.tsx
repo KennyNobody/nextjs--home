@@ -1,6 +1,7 @@
 import {
     getMediaUrl,
     MediaFileType,
+    getMediaPublicUrl,
 } from 'entities/Media';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -31,7 +32,7 @@ export const Avatar = (props: AvatarProps) => {
     } = props;
 
     const pictureSmall = getMediaUrl(picture, 'small');
-    const pictureLarge = getMediaUrl(picture, 'large');
+    const pictureLargePublic = getMediaPublicUrl(picture, 'large');
 
     const main = (
         <div
@@ -55,7 +56,7 @@ export const Avatar = (props: AvatarProps) => {
             }
             {
                 !isLoading
-                && pictureSmall.url
+                && pictureLargePublic.url
                 && (
                     <FancyboxDecorator
                         className={classNames(cls.decorator)}
@@ -66,7 +67,7 @@ export const Avatar = (props: AvatarProps) => {
                             loading="lazy"
                             alt="аватар автора"
                             src={pictureSmall.url}
-                            data-src={pictureLarge.url}
+                            data-src={pictureLargePublic.url}
                             aria-label={'увеличить фотографию'}
                             data-fancybox={galleryKey || 'avatar-gallery'}
                         />
@@ -101,7 +102,7 @@ export const Avatar = (props: AvatarProps) => {
             }
             {
                 !isLoading
-                && pictureLarge.url
+                && pictureLargePublic.url
                 && (
                     <Image
                         width={64}
@@ -109,7 +110,7 @@ export const Avatar = (props: AvatarProps) => {
                         loading="lazy"
                         alt="аватар автора"
                         src={pictureSmall.url}
-                        data-src={pictureLarge.url}
+                        data-src={pictureLargePublic.url}
                     />
                 )
             }

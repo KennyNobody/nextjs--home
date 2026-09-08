@@ -9,4 +9,5 @@ export {
 
 export {
     getMediaUrl,
+    getMediaPublicUrl,
 } from './lib/getMediaUrl';
