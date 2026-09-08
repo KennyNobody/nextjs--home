@@ -1,14 +1,15 @@
+import {
+    getMediaUrl,
+    MediaFileType,
+} from 'entities/Media';
 import Link from 'next/link';
 import Image from 'next/image';
 import classNames from 'classnames';
-import {getMediaUrl, MediaFileType} from "entities/Media";
 import { AppTheme } from 'shared/types/Theme';
-import { _BASE_URL_ } from 'shared/config/envConfig';
 import { RouterLinks } from 'shared/config/routerConfig';
 import FancyboxDecorator from 'shared/providers/FancyboxDecorator';
 import { Skeleton, SkeletonMode } from 'shared/ui/Skeleton/Skeleton';
 import cls from './Avatar.module.scss';
-import {getAbsoluteUrl} from "../../../../shared/helpers/getAbsoluteUrl";
 
 interface AvatarProps {
     isMain: boolean;
