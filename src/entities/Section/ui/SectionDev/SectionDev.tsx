@@ -57,10 +57,10 @@ export const SectionDev = (props: SectionProps) => {
                                 }
                             </Toolbar>
                         </div>
-                        {
-                            !isPreview
-                            && (
-                                <>
+                        {/*{*/}
+                        {/*    !isPreview*/}
+                        {/*    && (*/}
+                        {/*        <>*/}
                                     {/*<div*/}
                                     {/*    className={*/}
                                     {/*        classNames(*/}
@@ -75,19 +75,19 @@ export const SectionDev = (props: SectionProps) => {
                                     {/*        className={classNames(cls.link)}*/}
                                     {/*    />*/}
                                     {/*</div>*/}
-                                    <div
-                                        className={
-                                            classNames(
-                                                grid['grid__col-2'],
-                                                grid['grid__col-mob-4'],
-                                            )
-                                        }
-                                    >
-                                        <FilterDevServer />
-                                    </div>
-                                </>
-                            )
-                        }
+                                    {/*<div*/}
+                                    {/*    className={*/}
+                                    {/*        classNames(*/}
+                                    {/*            grid['grid__col-2'],*/}
+                                    {/*            grid['grid__col-mob-4'],*/}
+                                    {/*        )*/}
+                                    {/*    }*/}
+                                    {/*>*/}
+                                    {/*    <FilterDevServer />*/}
+                                    {/*</div>*/}
+                        {/*        </>*/}
+                        {/*    )*/}
+                        {/*}*/}
                     </div>
                     <Suspense fallback={<GridDev showSkeleton={true} />}>
                         <ListDevServer isPreview={isPreview} />

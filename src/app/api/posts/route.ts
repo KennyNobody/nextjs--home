@@ -8,16 +8,25 @@ const paginationSchema = z.object({
     pageSize: z.coerce.number().int().min(1).max(50).optional().catch(undefined),
 });
 
+const categoryFilterSchema = z.object({
+    category: z.object({
+        id: z.object({
+            $eq: z.coerce.number(),
+        }),
+    }),
+}).optional();
+
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams.toString();
     const parsed = qs.parse(searchParams, {
         allowDots: false,
     });
 
+    const filters = categoryFilterSchema.parse(parsed.filters);
     const { page, pageSize } = paginationSchema.parse(parsed.pagination ?? {});
 
     try {
-        const data = await fetchPostListServer({ page, pageSize });
+        const data = await fetchPostListServer({ page, pageSize, filters });
         return NextResponse.json(data);
     } catch (error) {
         return NextResponse.json(

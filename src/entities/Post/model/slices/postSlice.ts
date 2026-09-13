@@ -50,6 +50,8 @@ const postSlice = createSlice({
             // console.log('Сбрасываем');
         },
         toggleCategory: (state, action: PayloadAction<number | undefined>) => {
+            console.log("сбрасываем категорию");
+
             if (state.category === action.payload) {
                 state.category = undefined;
             } else {
@@ -87,6 +89,8 @@ const postSlice = createSlice({
                     ? postListAdapter.setAll
                     : postListAdapter.addMany;
                 addData(state, data);
+
+                console.log(data.length);
 
                 if (meta?.pagination) state.pagination = meta.pagination;
 

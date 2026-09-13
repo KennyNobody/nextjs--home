@@ -50,7 +50,7 @@ export const ListPostClient = (props: ListPostClientProps) => {
     const isReduxRelevant = isPreviewData === !!isPreview;
 
     const data = useMemo(() => {
-        return (isReduxRelevant && dataRedux.length) ? dataRedux : (dataPrefetch || []);
+        return isReduxRelevant ? dataRedux : (dataPrefetch || []);
     }, [isReduxRelevant, dataRedux, dataPrefetch]);
 
     const pagination = isReduxRelevant ? (paginationRedux ?? paginationPrefetch) : paginationPrefetch;
@@ -73,22 +73,21 @@ export const ListPostClient = (props: ListPostClientProps) => {
         callback: loadNextPage,
     });
 
-    // useEffect(() => {
-    //     return () => {
-    //         dispatch(postActions.clearListData());
-    //     };
-    // }, [dispatch]);
-
     const displayData = useMemo(() => {
         return isPreview ? addRandomNulls(data) : data;
     }, [isPreview, data]);
+
+    useEffect(() => {
+        dispatch(postActions.toggleCategory());
+    }, [dispatch]);
 
     return (
         <div className={classNames(cls.block, className)}>
             <GridPosts
                 data={displayData}
+                isLoading={isLoading}
+                showFooter={!isPreview}
                 showSkeleton={isLoading && !data?.length}
-                showEnd={!isPreview && !isLoading && page === pageCount}
             />
             {!isPreview && <div ref={triggerRef} />}
         </div>

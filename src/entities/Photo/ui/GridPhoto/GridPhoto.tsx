@@ -9,17 +9,19 @@ import { ArticlePhotoType } from '../../model/types/ArticlePhoto';
 
 interface GridPostsProps {
     className?: string;
-    data?: ArticlePhotoType[];
+    isLoading?: boolean;
+    showFooter?: boolean;
     showSkeleton?: boolean;
-    showEnd?: boolean;
+    data?: ArticlePhotoType[];
 }
 
 export const GridPhoto = (props: GridPostsProps) => {
     const {
         data,
-        showSkeleton,
         className,
-        showEnd,
+        isLoading,
+        showFooter,
+        showSkeleton,
     } = props;
 
     const skeleton = useMemo(() =>
@@ -62,7 +64,12 @@ export const GridPhoto = (props: GridPostsProps) => {
             <div className={classNames(grid.grid, cls.grid, className)}>
                 { showSkeleton ? skeleton : content }
             </div>
-            {showEnd && <End />}
+            {
+                showFooter
+                && (
+                    <End text={isLoading ? 'Загрузка...' : 'Дальше ничего нет'} />
+                )
+            }
         </div>
     );
 };

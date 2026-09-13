@@ -28,10 +28,6 @@ const meta = {
             control: false,
             description: 'Массив статей для отображения',
         },
-        showEnd: {
-            control: 'boolean',
-            description: 'Показать финальный текст',
-        }
     },
 } satisfies Meta<typeof GridPhoto>;
 
@@ -42,7 +38,6 @@ export const Default: Story = {
     name: 'Default',
     args: {
         showSkeleton: false,
-        showEnd: true,
     }
 };
 

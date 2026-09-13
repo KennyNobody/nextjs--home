@@ -7,5 +7,9 @@ import { ArticlePostType } from '../model/types/ArticlePost';
 
 export const fetchPostListClient = async (route: ApiEInternalRoutes, params?: ApiRequestParams) => {
     const response: AxiosResponse<ResponseType<ArticlePostType[]>> = await $apiClient.get(route, { params });
+
+    console.log(params);
+    console.log(response);
+
     return response.data;
 };

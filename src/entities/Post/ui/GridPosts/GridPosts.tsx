@@ -8,18 +8,20 @@ import { ArticlePost } from '../ArticlePost/ArticlePost';
 import { ArticlePostType } from '../../model/types/ArticlePost';
 
 interface GridPostsProps {
+    isLoading?: boolean;
     className?: string;
-    data?: (ArticlePostType | null)[];
+    showFooter?: boolean;
     showSkeleton?: boolean;
-    showEnd?: boolean;
+    data?: (ArticlePostType | null)[];
 }
 
 export const GridPosts = (props: GridPostsProps) => {
     const {
         data,
-        showSkeleton,
         className,
-        showEnd,
+        isLoading,
+        showFooter,
+        showSkeleton,
     } = props;
 
     const skeleton = useMemo(() =>
@@ -86,7 +88,12 @@ export const GridPosts = (props: GridPostsProps) => {
             <div className={classNames(grid.grid, cls.grid, className)}>
                 { showSkeleton ? skeleton : content }
             </div>
-            {showEnd && <End />}
+            {
+                showFooter
+                && (
+                    <End text={isLoading ? 'Загрузка...' : 'Дальше ничего нет'} />
+                )
+            }
         </div>
     );
 };

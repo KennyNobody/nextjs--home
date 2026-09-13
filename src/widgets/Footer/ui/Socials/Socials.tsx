@@ -15,18 +15,18 @@ export const Socials = (props: SocialsProps) => {
         {
             iconKey: IconKey.TG,
             href: 'https://t.me/Kenny_Nobody',
-            label: 'написать в телеграм',
+            label: 'перейти в телеграм',
         },
-        {
-            iconKey: IconKey.INST,
-            href: 'https://www.instagram.com/kenny_nobody/',
-            label: 'перейти в instagram'
-        },
-        {
-            iconKey: IconKey.VK,
-            href: 'https://vk.com/kenny_nobody',
-            label: 'перейти во вконтакте'
-        },
+        // {
+        //     iconKey: IconKey.INST,
+        //     href: 'https://www.instagram.com/kenny_nobody/',
+        //     label: 'перейти в instagram'
+        // },
+        // {
+        //     iconKey: IconKey.VK,
+        //     href: 'https://vk.com/kenny_nobody',
+        //     label: 'перейти во вконтакте'
+        // },
         {
             iconKey: IconKey.GH,
             href: 'https://github.com/KennyNobody/',

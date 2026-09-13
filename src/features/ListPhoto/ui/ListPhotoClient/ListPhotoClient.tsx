@@ -77,8 +77,9 @@ export const ListPhotoClient = (props: ListPhotoClientProps) => {
         >
             <GridPhoto
                 data={data}
+                isLoading={isLoading}
+                showFooter={!isPreview}
                 showSkeleton={isLoading && !data?.length}
-                showEnd={!isPreview && !isLoading && page === pageCount}
             />
             {!isPreview && <div ref={triggerRef} />}
         </div>

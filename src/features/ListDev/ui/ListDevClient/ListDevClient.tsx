@@ -76,8 +76,9 @@ export const ListDevClient = (props: ListDevClientProps) => {
         >
             <GridDev
                 data={data}
+                isLoading={isLoading}
+                showFooter={!isPreview}
                 showSkeleton={isLoading && !data?.length}
-                showEnd={!isPreview && !isLoading && page === pageCount}
             />
             {!isPreview && <div ref={triggerRef} />}
         </div>

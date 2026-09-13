@@ -32,7 +32,7 @@ export const fetchPostList = createAsyncThunk<
 
         try {
             const params: ApiRequestParams = {
-                populate: 'main.preview,category',
+                populate: ['main.preview', 'category'],
                 sort: 'publishedAt:DESC',
             }
 
