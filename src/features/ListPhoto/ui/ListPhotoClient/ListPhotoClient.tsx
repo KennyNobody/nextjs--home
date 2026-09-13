@@ -3,19 +3,18 @@
 import {
     useRef,
     useMemo,
-    useEffect,
     useCallback,
 } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import {
     GridPhoto,
-    photoActions,
     getPhotoList,
     fetchPhotoList,
     getPhotoLoading,
     ArticlePhotoType,
     getPhotoPagination,
+    getPhotoIsPreviewData,
 } from 'entities/Photo';
 import cls from './ListPhotoClient.module.scss';
 import { PaginationType } from 'entities/Pagination';
@@ -43,11 +42,14 @@ export const ListPhotoClient = (props: ListPhotoClientProps) => {
 
     const isLoading: boolean = useSelector(getPhotoLoading) || false;
     const paginationRedux: PaginationType | undefined = useSelector(getPhotoPagination);
+    const isPreviewData = useSelector(getPhotoIsPreviewData);
+
+    const isReduxRelevant = isPreviewData === !!isPreview;
 
     const data = useMemo(() => {
-        return dataRedux.length ? dataRedux : (dataPrefetch || []);
-    }, [dataRedux, dataPrefetch]);
-    const pagination = paginationRedux ?? paginationPrefetch;
+        return (isReduxRelevant && dataRedux.length) ? dataRedux : (dataPrefetch || []);
+    }, [isReduxRelevant, dataRedux, dataPrefetch]);
+    const pagination = isReduxRelevant ? (paginationRedux ?? paginationPrefetch) : paginationPrefetch;
 
     const {
         pageCount = 1,
@@ -66,12 +68,6 @@ export const ListPhotoClient = (props: ListPhotoClientProps) => {
         triggerRef,
         callback: loadNextPage,
     });
-
-    useEffect(() => {
-        return () => {
-            dispatch(photoActions.clearListData());
-        };
-    }, [dispatch]);
 
     return (
         <div

@@ -3,19 +3,18 @@
 import {
     useRef,
     useMemo,
-    useEffect,
     useCallback,
 } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import {
     GridDev,
-    devActions,
     getDevList,
     fetchDevList,
     getDevLoading,
     ArticleDevType,
     getDevPagination,
+    getDevIsPreviewData,
 } from 'entities/Dev';
 import { useAppDispatch } from 'shared/state/hooks';
 import cls from './ListDevClient.module.scss';
@@ -42,11 +41,14 @@ export const ListDevClient = (props: ListDevClientProps) => {
     const dispatch = useAppDispatch();
     const dataRedux: ArticleDevType[] = useSelector(getDevList.selectAll);
     const paginationRedux: PaginationType | undefined = useSelector(getDevPagination);
+    const isPreviewData = useSelector(getDevIsPreviewData);
+
+    const isReduxRelevant = isPreviewData === !!isPreview;
 
     const data = useMemo(() => {
-        return dataRedux.length ? dataRedux : (dataPrefetch || []);
-    }, [dataRedux, dataPrefetch]);
-    const pagination = paginationRedux ?? paginationPrefetch;
+        return (isReduxRelevant && dataRedux.length) ? dataRedux : (dataPrefetch || []);
+    }, [isReduxRelevant, dataRedux, dataPrefetch]);
+    const pagination = isReduxRelevant ? (paginationRedux ?? paginationPrefetch) : paginationPrefetch;
 
     const {
         pageCount = 1,
@@ -65,12 +67,6 @@ export const ListDevClient = (props: ListDevClientProps) => {
         triggerRef,
         callback: loadNextPage,
     });
-
-    useEffect(() => {
-        return () => {
-            dispatch(devActions.clearListData());
-        };
-    }, [dispatch]);
 
     return (
         <div

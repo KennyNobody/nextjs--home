@@ -10,4 +10,5 @@ export interface PostSchema extends EntityState<ArticlePostType, number> {
     pagination?: PaginationType;
     // isInit: boolean;
     currentRequestId?: string;
+    isPreviewData?: boolean;
 }

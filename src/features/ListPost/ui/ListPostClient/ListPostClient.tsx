@@ -11,10 +11,10 @@ import {
     getPostList,
     postActions,
     fetchPostList,
-    // getPostIsInit,
     getPostLoading,
     ArticlePostType,
     getPostPagination,
+    getPostIsPreviewData,
 } from 'entities/Post';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
@@ -45,17 +45,15 @@ export const ListPostClient = (props: ListPostClientProps) => {
 
     const dataRedux: ArticlePostType[] = useSelector(getPostList.selectAll);
     const paginationRedux: PaginationType | undefined = useSelector(getPostPagination);
-    // const isReduxInitialized = useSelector(getPostIsInit);
+    const isPreviewData = useSelector(getPostIsPreviewData);
+
+    const isReduxRelevant = isPreviewData === !!isPreview;
 
     const data = useMemo(() => {
-        // БЫЛО: return isReduxInitialized ? dataRedux : (dataPrefetch || []);
-        // СТАЛО: переключаемся по факту наличия данных в redux, а не по флагу isInit
-        return dataRedux.length ? dataRedux : (dataPrefetch || []);
-    }, [dataRedux, dataPrefetch]); // <-- убрана зависимость isReduxInitialized
+        return (isReduxRelevant && dataRedux.length) ? dataRedux : (dataPrefetch || []);
+    }, [isReduxRelevant, dataRedux, dataPrefetch]);
 
-    // БЫЛО: const pagination = isReduxInitialized ? paginationRedux : paginationPrefetch;
-    // СТАЛО: если в redux есть pagination — берём её, иначе fallback на prefetch
-    const pagination = paginationRedux ?? paginationPrefetch;
+    const pagination = isReduxRelevant ? (paginationRedux ?? paginationPrefetch) : paginationPrefetch;
 
     const {
         pageCount = 1,
@@ -75,11 +73,11 @@ export const ListPostClient = (props: ListPostClientProps) => {
         callback: loadNextPage,
     });
 
-    useEffect(() => {
-        return () => {
-            dispatch(postActions.clearListData());
-        };
-    }, [dispatch]);
+    // useEffect(() => {
+    //     return () => {
+    //         dispatch(postActions.clearListData());
+    //     };
+    // }, [dispatch]);
 
     const displayData = useMemo(() => {
         return isPreview ? addRandomNulls(data) : data;

@@ -20,6 +20,7 @@ export {
     getPhotoErrors,
     getPhotoLoading,
     getPhotoPagination,
+    getPhotoIsPreviewData,
 } from './model/selectors/photoSelector';
 
 export {

@@ -56,6 +56,9 @@ const postSlice = createSlice({
                 state.category = action.payload;
             }
         },
+        setDataMode: (state, action: PayloadAction<boolean>) => {
+            state.isPreviewData = action.payload;
+        },
     },
     extraReducers: (builder) => {
         const request = fetchPostList;
@@ -67,6 +70,7 @@ const postSlice = createSlice({
                 if (isStart) {
                     postListAdapter.removeAll(state);
                     state.pagination = undefined;
+                    state.isPreviewData = false;
                 }
 
                 state.currentRequestId = action.meta.requestId;

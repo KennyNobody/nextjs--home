@@ -18,10 +18,10 @@ export {
 
 export {
     getPostErrors,
-    // getPostIsInit,
     getPostLoading,
     getPostCategory,
     getPostPagination,
+    getPostIsPreviewData,
 } from './model/selectors/postSelector';
 
 export {

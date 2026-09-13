@@ -19,9 +19,9 @@ export {
 export {
     getDevTag,
     getDevErrors,
-    // getDevIsInit,
     getDevLoading,
     getDevPagination,
+    getDevIsPreviewData,
 } from './model/selectors/devSelector';
 
 export {

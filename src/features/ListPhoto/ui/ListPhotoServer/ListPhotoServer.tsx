@@ -27,6 +27,7 @@ export const ListPhotoServer = async (props: ListPhotoServerProps) => {
             <StoreInitializer
                 actions={[
                     photoActions.setResponseData(response),
+                    photoActions.setDataMode(!!isPreview),
                 ]}
             />
 

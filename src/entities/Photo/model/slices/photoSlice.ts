@@ -18,6 +18,8 @@ export const getPhotoList = photoListAdapter.getSelectors<StateSchema>(
     (state) => state.photo || photoListAdapter.getInitialState(),
 );
 
+export const getPhotoIsPreviewData = (state: StateSchema) => state.photo?.isPreviewData;
+
 const initialState: PhotoSchema = {
     isLoading: false,
     errors: undefined,
@@ -26,6 +28,7 @@ const initialState: PhotoSchema = {
     // isInit: false,
     pagination: undefined,
     currentRequestId: undefined,
+    isPreviewData: undefined,
 };
 
 const photoSlice = createSlice({
@@ -46,6 +49,9 @@ const photoSlice = createSlice({
             state.pagination = undefined;
             // state.isInit = false;
         },
+        setDataMode: (state, action: PayloadAction<boolean>) => {
+            state.isPreviewData = action.payload;
+        },
     },
     extraReducers: (builder) => {
         const request = fetchPhotoList;
@@ -57,6 +63,7 @@ const photoSlice = createSlice({
                 if (isStart) {
                     photoListAdapter.removeAll(state);
                     state.pagination = undefined;
+                    state.isPreviewData = false;
                 }
 
                 state.currentRequestId = action.meta.requestId;

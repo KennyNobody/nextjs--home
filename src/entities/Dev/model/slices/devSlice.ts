@@ -18,6 +18,8 @@ export const getDevList = devListAdapter.getSelectors<StateSchema>(
     (state) => state.dev || devListAdapter.getInitialState(),
 );
 
+export const getDevIsPreviewData = (state: StateSchema) => state.dev?.isPreviewData;
+
 const initialState: DevSchema = {
     isLoading: false,
     errors: undefined,
@@ -26,6 +28,7 @@ const initialState: DevSchema = {
     entities: {},
     // isInit: false,
     pagination: undefined,
+    isPreviewData: undefined,
 };
 
 const devSlice = createSlice({
@@ -53,6 +56,9 @@ const devSlice = createSlice({
                 state.tag = action.payload;
             }
         },
+        setDataMode: (state, action: PayloadAction<boolean>) => {
+            state.isPreviewData = action.payload;
+        },
     },
     extraReducers: (builder) => {
         const request = fetchDevList;
@@ -64,6 +70,7 @@ const devSlice = createSlice({
                 if (isStart) {
                     devListAdapter.removeAll(state);
                     state.pagination = undefined;
+                    state.isPreviewData = false;
                 }
 
                 state.currentRequestId = action.meta.requestId;

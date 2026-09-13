@@ -27,6 +27,7 @@ export const ListDevServer = async (props: ListDevServerProps) => {
             <StoreInitializer
                 actions={[
                     devActions.setResponseData(response),
+                    devActions.setDataMode(!!isPreview),
                 ]}
             />
 

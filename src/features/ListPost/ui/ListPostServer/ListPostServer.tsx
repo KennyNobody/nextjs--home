@@ -26,6 +26,7 @@ export const ListPostServer = async (props: ListPostServerProps) => {
             <StoreInitializer
                 actions={[
                     postActions.setResponseData(response),
+                    postActions.setDataMode(!!isPreview),
                 ]}
             />
 
