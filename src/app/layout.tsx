@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { ThemeProvider } from 'next-themes';
 import { AppLayout } from 'app/components/AppLayout/AppLayout';
-import { ProjectMode } from '../../config/types/types';
 import { AppDecorator } from '../shared/providers/AppDecorator';
 import { StyleDecorator } from '../shared/providers/StyleDecorator/StyleDecorator';
 
@@ -13,7 +12,7 @@ export default function RootLayout(props: RootLayoutProps) {
     const { children } = props;
 
     return (
-        <AppDecorator mode={ProjectMode.FRONTEND}>
+        <AppDecorator>
             <ThemeProvider>
                 <StyleDecorator>
                     <AppLayout>
