@@ -37,7 +37,7 @@
     "@types/react-dom": "^19",
     "@vitest/browser-playwright": "^5.0.1",
     "@vitest/coverage-v8": "^5.0.1",
-    "eslint": "^10",
+    "eslint": "^9.39.5",
     "eslint-config-next": "16.3.5",
     "husky": "^9.1.7",
     "playwright": "^1.63.0",
@@ -48,7 +48,7 @@
     "stylelint": "^17.15.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-config-standard-scss": "^17.0.0",
-    "typescript": "^7",
+    "typescript": "^6.0.3",
     "vite": "^8.3.0",
     "vite-plugin-svgr": "^5.2.0",
     "vitest": "^5.0.1"
