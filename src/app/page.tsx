@@ -1,10 +1,10 @@
 import {
     fetchPageIndex,
 } from 'entities/Page';
-import Page from 'pagesApp/Page';
 import { Metadata } from 'next';
-import { ApiRoutes } from '../shared/api/apiEndpoints';
-import { generatePageMetadata } from '../shared/lib/generatePageMetadata';
+import Page from 'pagesApp/Page';
+import { ApiRoutes } from 'shared/api/apiEndpoints';
+import { generatePageMetadata } from 'shared/lib/generatePageMetadata';
 
 async function getPageData() {
     return await fetchPageIndex(ApiRoutes.PAGE_FRONT);
@@ -20,7 +20,6 @@ export default async function PageApp() {
 
     return (
         <Page
-            mode={'front'}
             data={response?.data}
         />
     );

@@ -5,11 +5,10 @@ import { ResponseType } from 'shared/types/ResponseType';
 import { ApiRequestParams } from 'shared/types/ApiRequestParams';
 
 import { ArticlePhotoType } from '../types/ArticlePhoto';
-import { fetchPhotoClient } from '../../api/fetchPhotoClient';
+import { fetchPhotoListClient } from '../../api/fetchPhotoListClient';
 import { getPhotoPagination } from '../selectors/photoSelector';
 
 interface FetchPhotoListProps {
-    replace?: boolean;
     mode: 'start' | 'next';
 }
 
@@ -40,7 +39,7 @@ export const fetchPhotoList = createAsyncThunk<
                 pageSize: 8,
             };
 
-            return await fetchPhotoClient(ApiRoutes.PHOTO_LIST, params);
+            return await fetchPhotoListClient(ApiRoutes.PHOTO_LIST, params);
         } catch (e) {
             return rejectWithValue('error');
         }

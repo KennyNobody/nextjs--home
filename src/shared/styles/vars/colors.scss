@@ -1,16 +1,9 @@
 :root {
-    // all
-    --blue: #3653A1; // синий для ссылок
-
-    // light
-    --bg-light: #DDDFE1; // фон светлый
-    --light-accent: #F5F5F5; // светлый карточки
-    --dark-primary: #232323; // темный для контента
-    --dark-secondary: #606060CC; // темный для подписей
-
-    // dark
-    --bg-dark: #19191A; // фон темный
-    --dark-accent: #1F1F1F; // темный карточки
-    --light-primary: #E0E0E0; // белый для контента
-    --light-secondary: #E8E8E8B2; // белый для подписей
+    --color-black: #0B0B0B;
+    --color-white: #fff;
+    --color-gray-mid: #808080;
+    --color-gray-light: #D9D9D9;
+    --color-lilac: #6F64BC;
+    --color-lilac-dark: #4F4883;
+    --color-service: #58FF00FF;
 }

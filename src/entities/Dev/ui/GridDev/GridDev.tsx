@@ -1,13 +1,14 @@
 import { useMemo } from 'react';
 import classNames from 'classnames';
-import { End } from 'shared/ui/End/End';
+import { End } from 'shared/ui/_End/End';
 import cls from './GridDev.module.scss';
 import { ArticleDev } from '../ArticleDev/ArticleDev';
 import { ArticleDevType } from '../../model/types/ArticleDev';
 
 interface ListDevProps {
-    showEnd?: boolean;
     className?: string;
+    isLoading?: boolean;
+    showFooter?: boolean;
     showSkeleton?: boolean;
     data?: ArticleDevType[];
 }
@@ -15,8 +16,9 @@ interface ListDevProps {
 export const GridDev = (props: ListDevProps) => {
     const {
         data,
-        showEnd,
         className,
+        isLoading,
+        showFooter,
         showSkeleton,
     } = props;
 
@@ -43,7 +45,12 @@ export const GridDev = (props: ListDevProps) => {
             <ul className={classNames(cls.list, className)}>
                 { showSkeleton ? skeleton : content }
             </ul>
-            {showEnd && <End />}
+            {
+                showFooter
+                && (
+                    <End text={isLoading ? 'Загрузка...' : 'Дальше ничего нет'} />
+                )
+            }
         </div>
     );
 };

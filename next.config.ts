@@ -1,4 +1,4 @@
-import { withSentryConfig } from '@sentry/nextjs';
+import { withSentryConfig } from '@sentry/nextjs/config';
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
@@ -30,7 +30,13 @@ const nextConfig: NextConfig = {
     //         },
     //     ]
     // },
+    experimental: {
+        imgOptTimeoutInSeconds: 60,
+        imgOptConcurrency: 1,
+    },
     images: {
+        minimumCacheTTL: 60 * 60 * 24 * 365,
+        dangerouslyAllowLocalIP: true,
         remotePatterns: [
             {
                 protocol: 'https',
@@ -53,7 +59,7 @@ const nextConfig: NextConfig = {
                 hostname: '127.0.0.1',
                 port: '1337',
                 pathname: '/uploads/**',
-            }
+            },
         ],
         qualities: [75, 90, 100],
     },

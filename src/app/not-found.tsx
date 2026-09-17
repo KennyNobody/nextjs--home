@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { NotFoundApp } from 'shared/ui/NotFoundApp/NotFoundApp';
+import { NotFoundApp } from 'shared/ui/_NotFoundApp/NotFoundApp';
 import { DataLabels } from '../shared/labels/data';
 
 export const metadata: Metadata = {

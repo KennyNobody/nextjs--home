@@ -1,9 +1,7 @@
 import React from 'react';
+import Link from 'next/link';
 import classNames from 'classnames';
-import { LinkNav } from 'shared/ui/LinkNav/LinkNav';
-import useRouteConfig from 'shared/hooks/useLayoutMode';
 import { RouterLinks } from 'shared/config/routerConfig';
-import { ContentKeyType } from 'shared/types/CommonTypes';
 import cls from './Nav.module.scss';
 
 interface NavProps {
@@ -17,34 +15,22 @@ export const Nav = (props: NavProps) => {
         className,
     } = props;
 
-    const { contentKey } = useRouteConfig();
-
     return (
         <nav className={classNames(cls.block, className)}>
-            <LinkNav
-                isLoading={isLoading}
-                href={RouterLinks.DEV.link}
-                linkKey={ContentKeyType.DEV}
-                isActive={contentKey === ContentKeyType.DEV}
-            >
-                Разработка
-            </LinkNav>
-            <LinkNav
-                isLoading={isLoading}
-                href={RouterLinks.PHOTO.link}
-                linkKey={ContentKeyType.PHOTO}
-                isActive={contentKey === ContentKeyType.PHOTO}
-            >
-                Фото-проекты
-            </LinkNav>
-            <LinkNav
-                isLoading={isLoading}
-                href={RouterLinks.POSTS.link}
-                linkKey={ContentKeyType.POST}
-                isActive={contentKey === ContentKeyType.POST}
-            >
-                Заметки
-            </LinkNav>
+            <Link href={RouterLinks.MAIN.link}>
+                Главная
+            </Link>
+            <Link href={RouterLinks.POSTS.link}>
+                Список
+            </Link>
+            {/*<LinkNav*/}
+            {/*    isLoading={isLoading}*/}
+            {/*    href={RouterLinks.POSTS.link}*/}
+            {/*    // linkKey={ContentKeyType.POST}*/}
+            {/*    // isActive={contentKey === ContentKeyType.POST}*/}
+            {/*>*/}
+            {/*    Заметки*/}
+            {/*</LinkNav>*/}
         </nav>
     );
 };

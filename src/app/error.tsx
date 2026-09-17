@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import * as Sentry from '@sentry/nextjs'
-import { ErrorApp } from 'shared/ui/ErrorApp/ErrorApp';
+import { ErrorApp } from 'shared/ui/_ErrorApp/ErrorApp';
 
 interface ErrorInterface {
     error: Error & { digest?: string }

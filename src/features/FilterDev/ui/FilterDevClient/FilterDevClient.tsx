@@ -11,7 +11,7 @@ import {
 } from 'entities/Category';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/state/hooks';
-import { Fieldset } from 'shared/ui/Fieldset/Fieldset';
+import { Fieldset } from 'shared/ui/_Fieldset/Fieldset';
 
 interface FilterDevClientProps {
     data?: ArticleCategoryType[];
@@ -27,7 +27,6 @@ export const FilterDevClient = (props: FilterDevClientProps) => {
         dispatch(devActions.toggleTag(item?.id || undefined));
         dispatch(fetchDevList({
             mode: 'start',
-            replace: true,
         }));
     }
 

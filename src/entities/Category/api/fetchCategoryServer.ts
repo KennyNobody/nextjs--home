@@ -1,6 +1,5 @@
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { $apiServer } from 'shared/api/apiServer';
-import { paramsSerializer } from 'shared/lib/paramsSerializer';
 import { ApiRequestParams } from 'shared/types/ApiRequestParams';
 import { ResponseType } from '../../../shared/types/ResponseType';
 import { ArticleCategoryType } from '../model/types/ArticleCategory';
@@ -20,7 +19,6 @@ const fetchCategoryServer = async (
 
         const response = await $apiServer(url, {
             params,
-            paramsSerializer,
             // next: { revalidate: 10 }
             // cache: 'force-cache',
         });

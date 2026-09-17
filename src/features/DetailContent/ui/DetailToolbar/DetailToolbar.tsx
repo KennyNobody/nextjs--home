@@ -8,7 +8,7 @@ import { AppTheme } from 'shared/types/Theme';
 import { ArticleDevType } from 'entities/Dev';
 import { ArticlePostType } from 'entities/Post';
 import { ArticlePhotoType } from 'entities/Photo';
-import { DateInfo } from 'shared/ui/DateInfo/DateInfo';
+import { DateInfo } from 'shared/ui/_DateInfo/DateInfo';
 import Icon from 'shared/assets/icons/arrow-scroll.svg';
 import cls from './DetailToolbar.module.scss';
 

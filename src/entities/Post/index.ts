@@ -18,12 +18,16 @@ export {
 
 export {
     getPostErrors,
-    getPostIsInit,
     getPostLoading,
     getPostCategory,
     getPostPagination,
+    getPostIsPreviewData,
 } from './model/selectors/postSelector';
 
 export {
     fetchPostList,
 } from './model/services/fetchPostList';
+
+export {
+    fetchPostListServer,
+} from './api/fetchPostListServer';

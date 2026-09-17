@@ -6,3 +6,8 @@ export type {
 export {
     FileItem,
 } from './ui/FileItem';
+
+export {
+    getMediaUrl,
+    getMediaPublicUrl,
+} from './lib/getMediaUrl';

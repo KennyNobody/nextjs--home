@@ -19,11 +19,15 @@ export {
 export {
     getDevTag,
     getDevErrors,
-    getDevIsInit,
     getDevLoading,
     getDevPagination,
+    getDevIsPreviewData,
 } from './model/selectors/devSelector';
 
 export {
     fetchDevList,
 } from './model/services/fetchDevList';
+
+export {
+    fetchDevListServer,
+} from './api/fetchDevListServer';

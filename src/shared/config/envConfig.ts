@@ -1,6 +1,7 @@
-import { ProjectMode } from '../../../config/types/types';
+const _MEDIA_URL_ = process.env.NEXT_PUBLIC_MEDIA_URL  || '';
+const _MEDIA_PUBLIC_URL_ = process.env.NEXT_PUBLIC_MEDIA_PUBLIC_URL  || '';
 
-export const _IS_DEV_ = process.env.NODE_ENV === 'development';
-export const _BASE_URL_ = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000';
-export const _MEDIA_URL_ = process.env.NEXT_PUBLIC_MEDIA_URL || process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-export const _PROJECT_ = ProjectMode.FRONTEND;
+export {
+    _MEDIA_URL_,
+    _MEDIA_PUBLIC_URL_,
+}

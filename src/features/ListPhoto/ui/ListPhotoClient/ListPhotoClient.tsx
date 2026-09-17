@@ -3,20 +3,18 @@
 import {
     useRef,
     useMemo,
-    useEffect,
     useCallback,
 } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import {
     GridPhoto,
-    photoActions,
     getPhotoList,
-    getPhotoIsInit,
     fetchPhotoList,
     getPhotoLoading,
     ArticlePhotoType,
     getPhotoPagination,
+    getPhotoIsPreviewData,
 } from 'entities/Photo';
 import cls from './ListPhotoClient.module.scss';
 import { PaginationType } from 'entities/Pagination';
@@ -44,12 +42,14 @@ export const ListPhotoClient = (props: ListPhotoClientProps) => {
 
     const isLoading: boolean = useSelector(getPhotoLoading) || false;
     const paginationRedux: PaginationType | undefined = useSelector(getPhotoPagination);
-    const isReduxInitialized = useSelector(getPhotoIsInit);
+    const isPreviewData = useSelector(getPhotoIsPreviewData);
+
+    const isReduxRelevant = isPreviewData === !!isPreview;
 
     const data = useMemo(() => {
-        return isReduxInitialized ? dataRedux : dataPrefetch;
-    }, [isReduxInitialized, dataRedux, dataPrefetch]);
-    const pagination = isReduxInitialized ? paginationRedux : paginationPrefetch;
+        return (isReduxRelevant && dataRedux.length) ? dataRedux : (dataPrefetch || []);
+    }, [isReduxRelevant, dataRedux, dataPrefetch]);
+    const pagination = isReduxRelevant ? (paginationRedux ?? paginationPrefetch) : paginationPrefetch;
 
     const {
         pageCount = 1,
@@ -60,7 +60,6 @@ export const ListPhotoClient = (props: ListPhotoClientProps) => {
         if (!isLoading && pageCount > page) {
             dispatch(fetchPhotoList({
                 mode: 'next',
-                replace: false,
             }));
         }
     }, [pageCount, page, dispatch, isLoading]);
@@ -70,12 +69,6 @@ export const ListPhotoClient = (props: ListPhotoClientProps) => {
         callback: loadNextPage,
     });
 
-    useEffect(() => {
-        return () => {
-            dispatch(photoActions.clearListData());
-        };
-    }, [dispatch]);
-
     return (
         <div
             className={
@@ -84,8 +77,9 @@ export const ListPhotoClient = (props: ListPhotoClientProps) => {
         >
             <GridPhoto
                 data={data}
+                isLoading={isLoading}
+                showFooter={!isPreview}
                 showSkeleton={isLoading && !data?.length}
-                showEnd={!isPreview && !isLoading && page === pageCount}
             />
             {!isPreview && <div ref={triggerRef} />}
         </div>

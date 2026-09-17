@@ -18,14 +18,17 @@ export const getPhotoList = photoListAdapter.getSelectors<StateSchema>(
     (state) => state.photo || photoListAdapter.getInitialState(),
 );
 
+export const getPhotoIsPreviewData = (state: StateSchema) => state.photo?.isPreviewData;
+
 const initialState: PhotoSchema = {
     isLoading: false,
     errors: undefined,
     ids: [],
     entities: {},
-    isInit: false,
+    // isInit: false,
     pagination: undefined,
     currentRequestId: undefined,
+    isPreviewData: undefined,
 };
 
 const photoSlice = createSlice({
@@ -38,13 +41,16 @@ const photoSlice = createSlice({
             if (data && meta?.pagination) {
                 state.pagination = meta.pagination;
                 photoListAdapter.setAll(state, data);
-                state.isInit = true;
+                // state.isInit = true;
             }
         },
         clearListData: (state) => {
             photoListAdapter.removeAll(state);
             state.pagination = undefined;
-            state.isInit = false;
+            // state.isInit = false;
+        },
+        setDataMode: (state, action: PayloadAction<boolean>) => {
+            state.isPreviewData = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -52,10 +58,12 @@ const photoSlice = createSlice({
 
         builder
             .addCase(request.pending, (state, action) => {
-                const { replace } = action.meta.arg;
-                if (replace) {
+                const isStart = action.meta.arg.mode === 'start';
+
+                if (isStart) {
                     photoListAdapter.removeAll(state);
                     state.pagination = undefined;
+                    state.isPreviewData = false;
                 }
 
                 state.currentRequestId = action.meta.requestId;
@@ -67,10 +75,10 @@ const photoSlice = createSlice({
                 if (state.currentRequestId !== action.meta.requestId) return;
 
                 const { data, meta } = action.payload;
-                const addData =
-                    action?.meta?.arg?.replace
-                        ? photoListAdapter.setAll
-                        : photoListAdapter.addMany;
+                const isStart = action.meta.arg.mode === 'start';
+                const addData = isStart
+                    ? photoListAdapter.setAll
+                    : photoListAdapter.addMany;
                 addData(state, data);
 
                 if (meta?.pagination) state.pagination = meta.pagination;

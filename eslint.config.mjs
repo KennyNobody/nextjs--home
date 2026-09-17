@@ -1,6 +1,3 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-// import storybook from "eslint-plugin-storybook";
-
 import { defineConfig, globalIgnores } from 'eslint/config';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 
@@ -45,9 +42,9 @@ const eslintConfig = defineConfig([
             ecmaVersion: 'latest',
             sourceType: 'module',
             globals: {
-                '_IS_DEV_': 'readonly',
+                // '_IS_DEV_': 'readonly',
                 '_BASE_URL_': 'readonly',
-                '_PROJECT_': 'readonly',
+                // '_PROJECT_': 'readonly',
             },
         }
     },
@@ -57,8 +54,6 @@ const eslintConfig = defineConfig([
         'out/**',
         'build/**',
         'next-env.d.ts',
-        '.storybook/**',
-        'storybook-static/**',
     ]),
 ])
 

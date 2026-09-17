@@ -18,7 +18,7 @@
 [data-theme="light"] {
     .block {
         &::before {
-            background-color: rgb(43 43 43 / 50%);
+            background-color: var(--color-service);
         }
     }
 }
@@ -26,7 +26,7 @@
 [data-theme="dark"] {
     .block {
         &::before {
-            background-color: rgb(255 255 255 / 15%);
+            background-color: var(--color-service);
         }
     }
 }

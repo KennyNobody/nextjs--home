@@ -18,7 +18,6 @@ export default async function PageApp() {
 
     return (
         <Page
-            mode={'index'}
             data={response?.data}
         />
     )

@@ -1,13 +1,6 @@
-html {
-    overflow-y: scroll;
-    //scroll-behavior: smooth;
-}
-
 body {
     line-height: 1.3;
-    font-family: var(--font-main), Roboto, sans-serif;
-}
 
-a, input, button {
-    outline-color: var(--blue);
+    // font-family: var(--font-regular), Roboto, sans-serif;
+    font-family: TTNorms, Roboto, sans-serif;
 }

@@ -11,10 +11,10 @@ import {
     getPostList,
     postActions,
     fetchPostList,
-    getPostIsInit,
     getPostLoading,
     ArticlePostType,
     getPostPagination,
+    getPostIsPreviewData,
 } from 'entities/Post';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
@@ -45,12 +45,15 @@ export const ListPostClient = (props: ListPostClientProps) => {
 
     const dataRedux: ArticlePostType[] = useSelector(getPostList.selectAll);
     const paginationRedux: PaginationType | undefined = useSelector(getPostPagination);
-    const isReduxInitialized = useSelector(getPostIsInit);
+    const isPreviewData = useSelector(getPostIsPreviewData);
+
+    const isReduxRelevant = isPreviewData === !!isPreview;
 
     const data = useMemo(() => {
-        return isReduxInitialized ? dataRedux : (dataPrefetch || []);
-    }, [isReduxInitialized, dataRedux, dataPrefetch]);
-    const pagination = isReduxInitialized ? paginationRedux : paginationPrefetch;
+        return isReduxRelevant ? dataRedux : (dataPrefetch || []);
+    }, [isReduxRelevant, dataRedux, dataPrefetch]);
+
+    const pagination = isReduxRelevant ? (paginationRedux ?? paginationPrefetch) : paginationPrefetch;
 
     const {
         pageCount = 1,
@@ -61,7 +64,6 @@ export const ListPostClient = (props: ListPostClientProps) => {
         if (!isLoading && pageCount > page) {
             dispatch(fetchPostList({
                 mode: 'next',
-                replace: false,
             }));
         }
     }, [pageCount, page, dispatch, isLoading]);
@@ -71,22 +73,21 @@ export const ListPostClient = (props: ListPostClientProps) => {
         callback: loadNextPage,
     });
 
-    useEffect(() => {
-        return () => {
-            dispatch(postActions.clearListData());
-        };
-    }, [dispatch]);
-
     const displayData = useMemo(() => {
         return isPreview ? addRandomNulls(data) : data;
     }, [isPreview, data]);
+
+    useEffect(() => {
+        dispatch(postActions.toggleCategory());
+    }, [dispatch]);
 
     return (
         <div className={classNames(cls.block, className)}>
             <GridPosts
                 data={displayData}
+                isLoading={isLoading}
+                showFooter={!isPreview}
                 showSkeleton={isLoading && !data?.length}
-                showEnd={!isPreview && !isLoading && page === pageCount}
             />
             {!isPreview && <div ref={triggerRef} />}
         </div>

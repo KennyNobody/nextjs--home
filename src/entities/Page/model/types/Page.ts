@@ -1,5 +1,4 @@
 import { MetaPageType } from 'shared/types/CommonTypes';
-import { SectionType } from 'entities/Section';
 import { DetailContentType } from 'entities/DetailContent';
 
 interface PageType {
@@ -13,7 +12,6 @@ interface PageType {
         data: [any],
     };
     seo: MetaPageType;
-    section?: SectionType[];
     main?: DetailContentType;
 }
 

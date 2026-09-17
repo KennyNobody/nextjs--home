@@ -5,7 +5,6 @@ import { fetchArticleDetail } from 'entities/Page';
 import { RequestProps } from 'shared/types/Request';
 import { ApiRoutes } from 'shared/api/apiEndpoints';
 import { ResponseType } from 'shared/types/ResponseType';
-import { ContentKeyType } from 'shared/types/CommonTypes';
 import { notFound } from 'next/dist/client/components/not-found';
 import { generatePageMetadata } from 'shared/lib/generatePageMetadata';
 
@@ -27,7 +26,6 @@ export default async function PageApp( { params }: RequestProps) {
     return (
         <PageDetail
             slug={documentId}
-            mode={ContentKeyType.POST}
         />
     )
 }
