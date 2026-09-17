@@ -11,7 +11,7 @@ import {
 } from 'entities/Category';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/state/hooks';
-import { Fieldset } from 'shared/ui/Fieldset/Fieldset';
+import { Fieldset } from 'shared/ui/_Fieldset/Fieldset';
 
 interface FilterDevClientProps {
     data?: ArticleCategoryType[];

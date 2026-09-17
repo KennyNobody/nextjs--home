@@ -1,5 +1,4 @@
 import { MediaFileType } from 'entities/Media';
-import { SectionType } from 'entities/Section';
 
 enum LangShownType {
     RU = 'Ру',
@@ -11,24 +10,7 @@ enum LangEngineType {
     EN = 'en',
 }
 
-enum ContentKeyType {
-    DEV = 'dev',
-    PHOTO = 'photo',
-    POST = 'post',
-}
-
-// interface BaseResponseType {
-//     data: any;
-//     meta: any;
-// }
-
-enum SocialNetwork {
-    FACEBOOK = 'Facebook',
-    TWITTER = 'Twitter',
-}
-
 interface MetaSocial {
-    socialNetwork: SocialNetwork;
     title: string;
     description: string;
     image?: { data: MediaFileType };
@@ -50,10 +32,6 @@ interface MetaPageType {
 export {
     LangShownType,
     LangEngineType,
-    ContentKeyType,
-    SocialNetwork,
     type MetaSocial,
     type MetaPageType,
-    // type BaseResponseType,
-    // type PageIndexResponseType,
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Controls } from 'shared/ui/Controls/Controls';
-import { IconKey } from 'shared/ui/IconSocial/IconSocial';
-import { LinkSocial } from 'shared/ui/LinkSocial/LinkSocial';
+import { Controls } from 'shared/ui/_Controls/Controls';
+import { IconKey } from 'shared/ui/_IconSocial/IconSocial';
+import { LinkSocial } from 'shared/ui/_LinkSocial/LinkSocial';
 
 interface SocialsProps {
     className?: string

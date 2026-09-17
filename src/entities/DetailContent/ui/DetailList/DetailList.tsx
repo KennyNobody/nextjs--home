@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { EditorWrapper } from 'shared/ui/EditorWrapper/EditorWrapper';
+import { EditorWrapper } from 'shared/ui/_EditorWrapper/EditorWrapper';
 
 interface DetailParagraphProps {
     children: ReactNode;

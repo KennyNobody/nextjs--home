@@ -8,7 +8,7 @@ import {
     type BlocksContent,
 } from '@strapi/blocks-react-renderer';
 import cls from './DetailEditor.module.scss';
-import { Editor } from 'shared/ui/Editor/Editor';
+import { Editor } from 'shared/ui/_Editor/Editor';
 import { DetailLink } from '../DetailLink/DetailLink';
 import { DetailCode } from '../DetailCode/DetailCode';
 import { DetailList } from '../DetailList/DetailList';

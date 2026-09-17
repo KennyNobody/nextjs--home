@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React, { LinkHTMLAttributes } from 'react';
 import cls from './LinkSocial.module.scss';
 import { AppTheme } from '../../types/Theme';
-import { IconKey, IconSocial } from '../IconSocial/IconSocial';
+import { IconKey, IconSocial } from 'shared/ui/_IconSocial/IconSocial';
 
 interface LinkSocialProps extends LinkHTMLAttributes<HTMLAnchorElement> {
     className?: string;

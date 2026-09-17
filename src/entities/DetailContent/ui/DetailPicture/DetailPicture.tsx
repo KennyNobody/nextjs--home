@@ -5,7 +5,7 @@ import {
 import Image from 'next/image';
 import classNames from 'classnames';
 import { DataLabels } from 'shared/labels/data';
-import { EditorWrapper } from 'shared/ui/EditorWrapper/EditorWrapper';
+import { EditorWrapper } from 'shared/ui/_EditorWrapper/EditorWrapper';
 import cls from './DetailPicture.module.scss';
 
 interface DetailPictureProps {

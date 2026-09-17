@@ -20,7 +20,6 @@ export default async function PageApp() {
 
     return (
         <Page
-            mode={'front'}
             data={response?.data}
         />
     );

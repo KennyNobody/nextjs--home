@@ -9,9 +9,9 @@ import classNames from 'classnames';
 import {
     IconKey,
     IconSocial,
-} from 'shared/ui/IconSocial/IconSocial';
+} from 'shared/ui/_IconSocial/IconSocial';
 import { AppTheme } from 'shared/types/Theme';
-import { Controls } from 'shared/ui/Controls/Controls';
+import { Controls } from 'shared/ui/_Controls/Controls';
 import cls from './Share.module.scss';
 
 interface ShareProps {

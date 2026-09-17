@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import classNames from 'classnames';
-import { End } from 'shared/ui/End/End';
+import { End } from 'shared/ui/_End/End';
 import { AppTheme } from 'shared/types/Theme';
 import grid from 'shared/styles/grid.module.scss';
 import cls from './GridPosts.module.scss';
