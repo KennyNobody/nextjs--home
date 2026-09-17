@@ -11,6 +11,7 @@ export const AppDecorator = (props: AppDecoratorProps) => {
         children,
     } = props;
 
+
     return (
         <html lang="ru" data-theme="light" suppressHydrationWarning>
             <body className={`${fontRegular.variable} ${fontAccent.variable} ${fontRegularPreload.variable}`}>
