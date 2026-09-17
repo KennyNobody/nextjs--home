@@ -17,8 +17,11 @@ export const Nav = (props: NavProps) => {
 
     return (
         <nav className={classNames(cls.block, className)}>
+            <Link href={RouterLinks.MAIN.link}>
+                Главная
+            </Link>
             <Link href={RouterLinks.POSTS.link}>
-                Ссылка
+                Список
             </Link>
             {/*<LinkNav*/}
             {/*    isLoading={isLoading}*/}

@@ -7,9 +7,10 @@ import { ReactNode } from 'react';
 import classNames from 'classnames';
 import { Footer } from 'widgets/Footer';
 import { Header } from 'widgets/Header';
-import cls from './AppLayout.module.scss';
+import { TempService } from 'widgets/TempService';
 import StoreProvider from 'shared/state/StoreProvider';
 import { StoreInitializer } from 'shared/state/StoreInitializer';
+import cls from './AppLayout.module.scss';
 
 interface AppLayoutProps {
     children: ReactNode;
@@ -38,6 +39,7 @@ export const AppLayout = async (props: AppLayoutProps) => {
                     data={response.data}
                     className={classNames(cls.footer)}
                 />
+                <TempService />
             </StoreProvider>
         </div>
     );
